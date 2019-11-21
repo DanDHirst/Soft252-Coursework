@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package usermodels;
 
 /**
  *
  * @author dhirst1
  */
-public class Doctor extends User{
+public class Patient extends User{
 
-    public Doctor(String username, String password, String firstName, String surname, String address) {
+    public Patient(String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
     }
     
