@@ -10,9 +10,31 @@ package usermodels;
  * @author dhirst1
  */
 public class Patient extends User{
-
-    public Patient(String username, String password, String firstName, String surname, String address) {
+    private int age;
+    private String sex;
+    
+    public Patient(int age, String sex, String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
+        this.age = age;
+        this.sex = sex;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    
+    
     
 }
