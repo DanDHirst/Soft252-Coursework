@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usermodels;
+package patientmodels;
 
 /**
  *
  * @author dhirst1
  */
-public class Secretary extends User{
+public class PatientManagmentSystem {
 
-    public Secretary(String username, String password, String firstName, String surname, String address) {
-        super(username, password, firstName, surname, address);
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
     }
     
 }

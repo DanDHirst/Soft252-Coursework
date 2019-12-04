@@ -5,8 +5,9 @@
  */
 package prescriptionmodels;
 
-import usermodels.Doctor;
-import usermodels.Patient;
+import patientmodels.Patient;
+import doctormodels.Doctor;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +17,7 @@ public class Prescription {
     private Patient patient;
     private Doctor doctor;
     private String notes;
+    ArrayList<Medicine> medicines = new ArrayList<>();
 
     public Prescription(Patient patient, Doctor doctor, String notes) {
         this.patient = patient;
@@ -45,6 +47,13 @@ public class Prescription {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public ArrayList<Medicine> getMedicines() {
+        return medicines;
+    }
+    public void addMedicine(Medicine medicine){
+        this.medicines.add(medicine);
     }
     
     

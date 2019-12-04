@@ -3,15 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usermodels;
+package appointmentmodels;
 
-import appointmentmodel.Appointment;
+import java.util.ArrayList;
+
+
 
 /**
  *
  * @author dhirst1
  */
-public interface Appointments {
+public interface AppointmentManagement {
    public void addAppointment(Appointment appointment);
    public void removeAppointment(Appointment appointment);
+   public Appointment findAppointment(Appointment appointment);
+   public ArrayList<Appointment> getAppointments();
+   
 }

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usermodels;
+package patientmodels;
 
 /**
  *
- * @author dhirst1
+ * @author dan
  */
-public enum TypeOfUser {
-    A,D,P,S
+public class PatientStorage {
+    
 }

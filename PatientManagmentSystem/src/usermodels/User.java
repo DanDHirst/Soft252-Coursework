@@ -15,7 +15,6 @@ public abstract class User {
     protected String firstName;
     protected String surname;
     protected String address;
-    protected TypeOfUser typeOfUser;
 
     public User(String username, String password, String firstName, String surname, String address) {
         this.username = username;
@@ -65,13 +64,6 @@ public abstract class User {
         this.address = address;
     }
 
-    public TypeOfUser getTypeOfUser() {
-        return typeOfUser;
-    }
-
-    public void setTypeOfUser(TypeOfUser typeOfUser) {
-        this.typeOfUser = typeOfUser;
-    }
     
     
     
