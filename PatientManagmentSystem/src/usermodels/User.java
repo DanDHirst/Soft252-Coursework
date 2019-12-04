@@ -10,14 +10,14 @@ package usermodels;
  * @author dhirst1
  */
 public abstract class User {
-    protected String username;
+    protected String userID;
     protected String password;
     protected String firstName;
     protected String surname;
     protected String address;
 
     public User(String username, String password, String firstName, String surname, String address) {
-        this.username = username;
+        this.userID = username;
         this.password = password;
         this.firstName = firstName;
         this.surname = surname;
@@ -25,11 +25,11 @@ public abstract class User {
     }
 
     public String getUsername() {
-        return username;
+        return userID;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userID = username;
     }
 
     public String getPassword() {

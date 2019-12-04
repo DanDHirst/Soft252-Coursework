@@ -11,7 +11,7 @@ import usermodels.User;
  *
  * @author dhirst1
  */
-public class Patient extends User{
+public class Patient extends User implements PatientInfo{
     private int age;
     private String sex;
     
@@ -21,18 +21,22 @@ public class Patient extends User{
         this.sex = sex;
     }
 
+    @Override
     public int getAge() {
         return age;
     }
 
+    @Override
     public void setAge(int age) {
         this.age = age;
     }
 
+    @Override
     public String getSex() {
         return sex;
     }
 
+    @Override
     public void setSex(String sex) {
         this.sex = sex;
     }
