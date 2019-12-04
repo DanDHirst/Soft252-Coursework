@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package patientmodels;
+package doctormodels;
 
 import java.util.ArrayList;
 import usermodels.User;
@@ -13,34 +13,30 @@ import usermodels.UserManagement;
  *
  * @author dan
  */
-public class PatientStorage implements UserManagement{
-    ArrayList<Patient> patients= new ArrayList<>();
-    public PatientStorage() {
+public class DoctorStorage implements UserManagement {
+    ArrayList<User> doctors = new ArrayList<>();
+
+    public DoctorStorage() {
     }
 
     @Override
     public void addUser(User user) {
-           this.patients.add((Patient) user);
+        this.doctors.add(user);
     }
 
     @Override
     public void removeUser(User user) {
-        this.patients.remove((Patient) user);
+        this.doctors.remove(user);
     }
 
     @Override
     public User findUser(User user) {
-        int index = this.patients.indexOf(user);
-        return this.patients.get(index);
+        int index = this.doctors.indexOf(user);
+        return this.doctors.get(index);
     }
 
     @Override
     public ArrayList<User> getUsers() {
-        ArrayList<User> tempUser = new ArrayList<>();
-        for (int i = 0; i < this.patients.size(); i++) {
-            tempUser.add(this.patients.get(i));
-	}
-        return tempUser;
+        return this.doctors;
     }
-    
 }

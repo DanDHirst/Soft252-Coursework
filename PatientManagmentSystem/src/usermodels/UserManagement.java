@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author dan
  */
-public interface UserManagment {
+public interface UserManagement {
     public void addUser(User user);
     public void removeUser(User user);
     public User findUser(User user);
