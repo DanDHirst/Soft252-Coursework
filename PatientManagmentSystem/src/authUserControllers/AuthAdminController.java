@@ -6,6 +6,9 @@
 package authUserControllers;
 
 import authusersview.AuthAdminUI;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import userscontroller.AdminUIController;
 
 /**
  *
@@ -16,6 +19,15 @@ public class AuthAdminController {
     public AuthAdminController() {
         AuthAdminView = new AuthAdminUI();    
         AuthAdminView.setVisible(true);
-        //this.AuthPatientView.setBtnListner(new AuthPatientController.RedirectListener());
+        this.AuthAdminView.setBtnAdminLoginListner(new AuthAdminController.AdminAuthRedirectListener());
+    }
+    class AdminAuthRedirectListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            AdminUIController AuthController= new AdminUIController();   
+            AuthAdminView.setVisible(false);
+        }
+        
     }
 }
