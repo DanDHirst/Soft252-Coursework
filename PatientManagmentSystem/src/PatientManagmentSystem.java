@@ -1,6 +1,8 @@
 
 import patientmodels.Patient;
 import patientmodels.PatientStorage;
+import userchoicecontroller.UserRoleChoiceController;
+import userchoiceview.UserRoleChoice;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,6 +22,7 @@ public class PatientManagmentSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        UserRoleChoiceController theController = new UserRoleChoiceController();
         
     }
     
