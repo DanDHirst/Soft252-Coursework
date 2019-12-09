@@ -5,7 +5,10 @@
  */
 package userchoicecontroller;
 
+import authUserControllers.AuthAdminController;
+import authUserControllers.AuthDoctorController;
 import authUserControllers.AuthPatientController;
+import authUserControllers.AuthSecretaryController;
 import authusersview.AuthAdminUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,14 +23,44 @@ public class UserRoleChoiceController {
     public UserRoleChoiceController() {
         theView = new UserRoleChoice();    
         theView.setVisible(true);
-        this.theView.setBtnListner(new RedirectListener());
+        this.theView.setBtnAdminListner(new AdminRedirectListener());
+        this.theView.setBtnPatientListner(new PatientRedirectListener());
+        this.theView.setBtnDoctorListner(new DoctorRedirectListener());
+        this.theView.setBtnSecretaryListner(new SecretaryRedirectListener());
     }
 
-    class RedirectListener implements ActionListener{
+    class AdminRedirectListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            AuthAdminController AuthController= new AuthAdminController();   
+            theView.setVisible(false);
+        }
+        
+    }
+    class DoctorRedirectListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            AuthDoctorController AuthController= new AuthDoctorController();   
+            theView.setVisible(false);
+        }
+        
+    }
+    class PatientRedirectListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
             AuthPatientController AuthController= new AuthPatientController();   
+            theView.setVisible(false);
+        }
+        
+    }
+    class SecretaryRedirectListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            AuthSecretaryController AuthController= new AuthSecretaryController();   
             theView.setVisible(false);
         }
         

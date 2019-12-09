@@ -5,10 +5,17 @@
  */
 package authUserControllers;
 
+import authusersview.AuthSecretaryUI;
+
 /**
  *
  * @author dhirst1
  */
 public class AuthSecretaryController {
-    
+    public AuthSecretaryUI AuthSecretaryView;
+    public AuthSecretaryController() {
+        AuthSecretaryView = new AuthSecretaryUI();    
+        AuthSecretaryView.setVisible(true);
+        //this.AuthPatientView.setBtnListner(new AuthPatientController.RedirectListener());
+    }
 }

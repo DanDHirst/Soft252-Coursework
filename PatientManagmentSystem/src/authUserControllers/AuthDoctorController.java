@@ -5,17 +5,17 @@
  */
 package authUserControllers;
 
-import authusersview.AuthAdminUI;
+import authusersview.AuthDoctorUI;
 
 /**
  *
  * @author dhirst1
  */
-public class AuthAdminController {
-    public AuthAdminUI AuthAdminView;
-    public AuthAdminController() {
-        AuthAdminView = new AuthAdminUI();    
-        AuthAdminView.setVisible(true);
+public class AuthDoctorController {
+    public AuthDoctorUI AuthDoctorView;
+    public AuthDoctorController() {
+        AuthDoctorView = new AuthDoctorUI();    
+        AuthDoctorView.setVisible(true);
         //this.AuthPatientView.setBtnListner(new AuthPatientController.RedirectListener());
     }
 }

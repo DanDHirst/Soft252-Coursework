@@ -124,8 +124,20 @@ public class UserRoleChoice extends javax.swing.JFrame {
         });
     }
 
-    public void setBtnListner(ActionListener listener){
+    public void setBtnDoctorListner(ActionListener listener){
+        btnDoctor.addActionListener(listener);
+        
+    }
+    public void setBtnAdminListner(ActionListener listener){
         btnAdmin.addActionListener(listener);
+        
+    }
+    public void setBtnPatientListner(ActionListener listener){
+        btnPatient.addActionListener(listener);
+        
+    }
+    public void setBtnSecretaryListner(ActionListener listener){
+        btnSecretary.addActionListener(listener);
         
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
