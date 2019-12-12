@@ -8,13 +8,17 @@ package authUserControllers;
 import adminmodels.AdministratorStorage;
 import appointmentmodels.AppointmentStorage;
 import appointmentmodels.PendingAppointments;
-import authusersview.AuthAdminUI;
 import authusersview.AuthPatientUI;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import patientmodels.Patient;
 import patientmodels.PatientStorage;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
+import usermodels.User;
+import userscontroller.PatientUIController;
 
 
 /**
@@ -23,7 +27,6 @@ import secretarymodels.SecretaryStorage;
  */
 public class AuthPatientController {
     public AuthPatientUI AuthPatientView;
-    public AuthAdminUI AuthAdminView;
     public PatientStorage patientStore;
     public DoctorStorage doctorStore;
     public AdministratorStorage adminStore;
@@ -49,5 +52,30 @@ public class AuthPatientController {
         AuthPatientView = new AuthPatientUI();    
         AuthPatientView.setVisible(true);
         //this.AuthPatientView.setBtnListner(new AuthPatientController.RedirectListener());
+        this.AuthPatientView.setBtnPatientLoginListner(new AuthPatientController.PatientAuthRedirectListener());
+    }
+    class PatientAuthRedirectListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            String UserID = checkLogin(AuthPatientView.getUsername(),AuthPatientView.getPassword());
+            if( UserID != null){
+                PatientUIController AuthController= new PatientUIController();   
+                AuthPatientView.setVisible(false);
+            }
+            else{
+                AuthPatientView.setTxtResponse("invalid username and/or password");
+            }
+        }
+        public String checkLogin(String Username,String Password){
+
+            for (User p : patientStore.getUsers()){
+                if(p.getUsername().equals(Username) && p.getPassword().equals(Password)){
+                    return p.getUsername();
+                }
+            }
+            return null;
+        }
+        
     }
 }

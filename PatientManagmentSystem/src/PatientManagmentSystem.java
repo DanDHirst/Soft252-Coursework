@@ -1,4 +1,5 @@
 
+import adminmodels.Administrator;
 import adminmodels.AdministratorStorage;
 import appointmentmodels.AppointmentStorage;
 import appointmentmodels.PendingAppointments;
@@ -40,7 +41,9 @@ public class PatientManagmentSystem {
         patientStore.addUser(patient3);
 
         DoctorStorage doctorStore = new DoctorStorage();
+        Administrator admin1 = new Administrator("person123", "password", "firstname", "surname","25 a place");
         AdministratorStorage adminStore = new AdministratorStorage();
+        adminStore.addUser(admin1);
         SecretaryStorage secretaryStore = new SecretaryStorage();
 
         PrescriptionStorage prescriptionStore = new PrescriptionStorage();

@@ -12,9 +12,14 @@ import authusersview.AuthAdminUI;
 import authusersview.AuthSecretaryUI;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import patientmodels.PatientStorage;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
+import usermodels.User;
+import userscontroller.PatientUIController;
+import userscontroller.SecretaryUIController;
 
 /**
  *
@@ -22,7 +27,6 @@ import secretarymodels.SecretaryStorage;
  */
 public class AuthSecretaryController {
     public AuthSecretaryUI AuthSecretaryView;
-    public AuthAdminUI AuthAdminView;
     public PatientStorage patientStore;
     public DoctorStorage doctorStore;
     public AdministratorStorage adminStore;
@@ -48,5 +52,30 @@ public class AuthSecretaryController {
         AuthSecretaryView = new AuthSecretaryUI();    
         AuthSecretaryView.setVisible(true);
         //this.AuthPatientView.setBtnListner(new AuthPatientController.RedirectListener());
+        this.AuthSecretaryView.setBtnSecretaryLoginListner(new AuthSecretaryController.SecretaryAuthRedirectListener());
+    }
+    class SecretaryAuthRedirectListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            String UserID = checkLogin(AuthSecretaryView.getUsername(),AuthSecretaryView.getPassword());
+            if( UserID != null){
+                SecretaryUIController AuthController= new SecretaryUIController();   
+                AuthSecretaryView.setVisible(false);
+            }
+            else{
+                AuthSecretaryView.setTxtResponse("invalid username and/or password");
+            }
+        }
+        public String checkLogin(String Username,String Password){
+
+            for (User p : secretaryStore.getUsers()){
+                if(p.getUsername().equals(Username) && p.getPassword().equals(Password)){
+                    return p.getUsername();
+                }
+            }
+            return null;
+        }
+        
     }
 }

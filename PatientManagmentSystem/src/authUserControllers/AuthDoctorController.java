@@ -8,13 +8,16 @@ package authUserControllers;
 import adminmodels.AdministratorStorage;
 import appointmentmodels.AppointmentStorage;
 import appointmentmodels.PendingAppointments;
-import authusersview.AuthAdminUI;
 import authusersview.AuthDoctorUI;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import patientmodels.PatientStorage;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
+import usermodels.User;
+import userscontroller.DoctorUIController;
 
 /**
  *
@@ -22,7 +25,6 @@ import secretarymodels.SecretaryStorage;
  */
 public class AuthDoctorController {
     public AuthDoctorUI AuthDoctorView;
-    public AuthAdminUI AuthAdminView;
     public PatientStorage patientStore;
     public DoctorStorage doctorStore;
     public AdministratorStorage adminStore;
@@ -48,5 +50,30 @@ public class AuthDoctorController {
         AuthDoctorView = new AuthDoctorUI();    
         AuthDoctorView.setVisible(true);
         //this.AuthPatientView.setBtnListner(new AuthPatientController.RedirectListener());
+        this.AuthDoctorView.setBtnDoctorLoginListner(new AuthDoctorController.DoctorAuthRedirectListener());
+    }
+    class DoctorAuthRedirectListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            String UserID = checkLogin(AuthDoctorView.getUsername(),AuthDoctorView.getPassword());
+            if( UserID != null){
+                DoctorUIController AuthController= new DoctorUIController();   
+                AuthDoctorView.setVisible(false);
+            }
+            else{
+                AuthDoctorView.setTxtResponse("invalid username and/or password");
+            }
+        }
+        public String checkLogin(String Username,String Password){
+
+            for (User p : doctorStore.getUsers()){
+                if(p.getUsername().equals(Username) && p.getPassword().equals(Password)){
+                    return p.getUsername();
+                }
+            }
+            return null;
+        }
+        
     }
 }

@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import patientmodels.PatientStorage;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
+import usermodels.User;
 import userscontroller.AdminUIController;
 
 /**
@@ -54,8 +55,24 @@ public class AuthAdminController {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            AdminUIController AuthController= new AdminUIController();   
-            AuthAdminView.setVisible(false);
+            String UserID = checkLogin(AuthAdminView.getUsername(),AuthAdminView.getPassword());
+            if( UserID != null){
+                AdminUIController AuthController= new AdminUIController();   
+                AuthAdminView.setVisible(false);
+            }
+            else{
+                AuthAdminView.setTxtResponse("invalid username and/or password");
+            }
+            
+        }
+        public String checkLogin(String Username,String Password){
+
+            for (User p : adminStore.getUsers()){
+                if(p.getUsername().equals(Username) && p.getPassword().equals(Password)){
+                    return p.getUsername();
+                }
+            }
+            return null;
         }
         
     }
