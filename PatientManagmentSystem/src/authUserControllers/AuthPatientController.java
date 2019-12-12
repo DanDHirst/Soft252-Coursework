@@ -13,7 +13,6 @@ import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import patientmodels.Patient;
 import patientmodels.PatientStorage;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
@@ -60,7 +59,9 @@ public class AuthPatientController {
         public void actionPerformed(ActionEvent arg0) {
             String UserID = checkLogin(AuthPatientView.getUsername(),AuthPatientView.getPassword());
             if( UserID != null){
-                PatientUIController AuthController= new PatientUIController();   
+                PatientUIController AuthController= new PatientUIController(patientStore, doctorStore , adminStore
+        ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore
+        ,pendingAppointmentsStore, UserID);   
                 AuthPatientView.setVisible(false);
             }
             else{
