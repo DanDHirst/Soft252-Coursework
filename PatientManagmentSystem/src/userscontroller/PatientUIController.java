@@ -12,6 +12,7 @@ import appointmentmodels.PendingAppointments;
 import authusersview.AuthPatientUI;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
+import modelStore.Models;
 import patientmodels.PatientStorage;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
@@ -22,21 +23,10 @@ import secretarymodels.SecretaryStorage;
  */
 public class PatientUIController {
     public PatientUI PatientView;
-    public PatientStorage patientStore;
-    public DoctorStorage doctorStore;
-    public AdministratorStorage adminStore;
-    public SecretaryStorage secretaryStore;
+    public Models modelStore;
     
-    public PrescriptionStorage prescriptionStore;
-    public DoctorFeedbackStorage doctorFeedbackStore;
-    public AppointmentStorage appointmentStore;
-    public PendingAppointments pendingAppointmentsStore;
-    
-    public PatientUIController(PatientStorage patients,DoctorStorage doctors, 
-            AdministratorStorage admins, SecretaryStorage secretaries, 
-            PrescriptionStorage prescriptions,DoctorFeedbackStorage doctorFeedback, 
-            AppointmentStorage appointments, PendingAppointments pendingAppointments,
-            String UserID) {
+    public PatientUIController(Models modelStore, String UserID) {
+        this.modelStore = modelStore;
         PatientView = new PatientUI();    
         PatientView.setVisible(true);
         PatientView.setPatientID(UserID);

@@ -16,7 +16,10 @@ import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelStore.Models;
 import patientmodels.PatientStorage;
+import patientmodels.PendingPatientAccounts;
+import patientmodels.PendingTerminatePatientAccounts;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
 import userchoiceview.UserRoleChoice;
@@ -28,28 +31,10 @@ import userchoiceview.UserRoleChoice;
 public class UserRoleChoiceController {
     public UserRoleChoice theView;
     //User models
-    public PatientStorage patientStore;
-    public DoctorStorage doctorStore;
-    public AdministratorStorage adminStore;
-    public SecretaryStorage secretaryStore;
-    
-    public PrescriptionStorage prescriptionStore;
-    public DoctorFeedbackStorage doctorFeedbackStore;
-    public AppointmentStorage appointmentStore;
-    public PendingAppointments pendingAppointmentsStore;
-    public UserRoleChoiceController(PatientStorage patients,DoctorStorage doctors, 
-            AdministratorStorage admins, SecretaryStorage secretaries, 
-            PrescriptionStorage prescriptions,DoctorFeedbackStorage doctorFeedback, 
-            AppointmentStorage appointments, PendingAppointments pendingAppointments) {
-        this.patientStore = patients;
-        this.doctorStore = doctors;
-        this.adminStore =admins;
-        this.secretaryStore = secretaries;
-        this.prescriptionStore = prescriptions;
-        this.doctorFeedbackStore = doctorFeedback;
-        this.appointmentStore = appointments;
-        this.pendingAppointmentsStore = pendingAppointments;
+    public Models modelStore;
+    public UserRoleChoiceController(Models modelStore) {
         
+        this.modelStore = modelStore;
         theView = new UserRoleChoice();    
         theView.setVisible(true);
         this.theView.setBtnAdminListner(new AdminRedirectListener());
@@ -62,9 +47,7 @@ public class UserRoleChoiceController {
         
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            AuthAdminController AuthController= new AuthAdminController(patientStore, doctorStore , adminStore
-        ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore
-        ,pendingAppointmentsStore);   
+            AuthAdminController AuthController= new AuthAdminController(modelStore);   
             theView.setVisible(false);
         }
         
@@ -73,9 +56,7 @@ public class UserRoleChoiceController {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            AuthDoctorController AuthController= new AuthDoctorController(patientStore, doctorStore , adminStore
-        ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore
-        ,pendingAppointmentsStore);   
+            AuthDoctorController AuthController= new AuthDoctorController(modelStore);   
             theView.setVisible(false);
         }
         
@@ -84,9 +65,7 @@ public class UserRoleChoiceController {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            AuthPatientController AuthController= new AuthPatientController(patientStore, doctorStore , adminStore
-        ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore
-        ,pendingAppointmentsStore);   
+            AuthPatientController AuthController= new AuthPatientController(modelStore);   
             theView.setVisible(false);
         }
         
@@ -95,9 +74,7 @@ public class UserRoleChoiceController {
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            AuthSecretaryController AuthController= new AuthSecretaryController(patientStore, doctorStore , adminStore
-        ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore
-        ,pendingAppointmentsStore);   
+            AuthSecretaryController AuthController= new AuthSecretaryController(modelStore);   
             theView.setVisible(false);
         }
         

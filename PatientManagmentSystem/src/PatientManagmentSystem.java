@@ -5,12 +5,14 @@ import appointmentmodels.AppointmentStorage;
 import appointmentmodels.PendingAppointments;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
+import modelStore.Models;
 import patientmodels.Patient;
 import patientmodels.PatientStorage;
+import patientmodels.PendingPatientAccounts;
+import patientmodels.PendingTerminatePatientAccounts;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
 import userchoicecontroller.UserRoleChoiceController;
-import userchoiceview.UserRoleChoice;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -50,10 +52,13 @@ public class PatientManagmentSystem {
         DoctorFeedbackStorage doctorFeedbackStore = new DoctorFeedbackStorage();
         AppointmentStorage appointmentStore = new AppointmentStorage();
         PendingAppointments pendingAppointmentsStore = new PendingAppointments();
+        PendingPatientAccounts pendingAccountsStore = new PendingPatientAccounts();
+        PendingTerminatePatientAccounts pendingTerminateAccountsStore = new PendingTerminatePatientAccounts();
+        Models modelStore = new Models(patientStore, doctorStore , adminStore 
+                ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore 
+                ,pendingAppointmentsStore, pendingTerminateAccountsStore, pendingAccountsStore);
         
-        UserRoleChoiceController theController = new UserRoleChoiceController(patientStore, doctorStore , adminStore
-        ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore
-        ,pendingAppointmentsStore);
+        UserRoleChoiceController theController = new UserRoleChoiceController(modelStore);
         
     }
     
