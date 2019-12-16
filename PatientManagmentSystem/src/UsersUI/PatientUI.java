@@ -5,6 +5,7 @@
  */
 package UsersUI;
 
+import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 
 /**
@@ -300,6 +301,9 @@ public class PatientUI extends javax.swing.JFrame {
 
     public void setBoxPrescription(String prescription) {
         this.boxHistory.addItem(prescription);
+    }
+    public void setBtnPatientTerminate(ActionListener listener){
+        this.btnAccountTerminate.addActionListener(listener);
     }
      
 

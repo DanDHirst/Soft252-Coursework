@@ -6,16 +6,10 @@
 package userscontroller;
 
 import UsersUI.PatientUI;
-import adminmodels.AdministratorStorage;
-import appointmentmodels.AppointmentStorage;
-import appointmentmodels.PendingAppointments;
-import authusersview.AuthPatientUI;
-import doctormodels.DoctorFeedbackStorage;
-import doctormodels.DoctorStorage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import modelStore.Models;
-import patientmodels.PatientStorage;
-import prescriptionmodels.PrescriptionStorage;
-import secretarymodels.SecretaryStorage;
+import usermodels.User;
 
 /**
  *
@@ -30,5 +24,31 @@ public class PatientUIController {
         PatientView = new PatientUI();    
         PatientView.setVisible(true);
         PatientView.setPatientID(UserID);
+        this.PatientView.setBtnPatientTerminate(new PatientUIController.PatientTerminateListener());
+    }
+    class PatientTerminateListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String patientID = PatientView.getPatientID();
+            System.out.println(patientID);
+            if(patientID != null){
+                //get patients
+                for (User p : modelStore.patientStore.getUsers()){
+                    //search for exact patient
+                    if(p.getUsername().equals(patientID)){
+                    //add new patient to terminate patient
+                    modelStore.pendingTerminateStore.addUser(p);
+                    }
+                }
+            }
+            
+             
+                
+                
+                
+            
+        }
+        
     }
 }

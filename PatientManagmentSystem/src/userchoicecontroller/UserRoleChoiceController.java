@@ -5,23 +5,13 @@
  */
 package userchoicecontroller;
 
-import adminmodels.AdministratorStorage;
-import appointmentmodels.AppointmentStorage;
-import appointmentmodels.PendingAppointments;
 import authUserControllers.AuthAdminController;
 import authUserControllers.AuthDoctorController;
 import authUserControllers.AuthPatientController;
 import authUserControllers.AuthSecretaryController;
-import doctormodels.DoctorFeedbackStorage;
-import doctormodels.DoctorStorage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelStore.Models;
-import patientmodels.PatientStorage;
-import patientmodels.PendingPatientAccounts;
-import patientmodels.PendingTerminatePatientAccounts;
-import prescriptionmodels.PrescriptionStorage;
-import secretarymodels.SecretaryStorage;
 import userchoiceview.UserRoleChoice;
 
 /**

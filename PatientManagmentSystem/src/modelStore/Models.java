@@ -33,8 +33,9 @@ public class Models {
     public AppointmentStorage appointmentStore;
     public PendingAppointments pendingAppointmentsStore;
     public PendingPatientAccounts pendingAccountsStore;
+    public PendingTerminatePatientAccounts pendingTerminateStore;
 
-    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingPatientAccounts pendingAccountsStore) {
+    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingPatientAccounts pendingAccountsStore, PendingTerminatePatientAccounts pendingTerminateStore) {
         this.patientStore = patientStore;
         this.doctorStore = doctorStore;
         this.adminStore = adminStore;
@@ -44,6 +45,7 @@ public class Models {
         this.appointmentStore = appointmentStore;
         this.pendingAppointmentsStore = pendingAppointmentsStore;
         this.pendingAccountsStore = pendingAccountsStore;
+        this.pendingTerminateStore = pendingTerminateStore;
     }
 
     public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingTerminatePatientAccounts pendingTerminateAccountsStore, PendingPatientAccounts pendingAccountsStore) {
@@ -56,7 +58,10 @@ public class Models {
         this.appointmentStore = appointmentStore;
         this.pendingAppointmentsStore = pendingAppointmentsStore;
         this.pendingAccountsStore = pendingAccountsStore;
+        this.pendingTerminateStore = pendingTerminateAccountsStore;
     }
+
+    
     
 
     public PatientStorage getPatientStore() {
