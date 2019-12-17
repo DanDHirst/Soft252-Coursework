@@ -16,22 +16,29 @@ import java.time.LocalDateTime;
 public class Appointment {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private String doctor;
-    private String patient;
+    private String doctorID;
+    private String patientID;
     private String reason;
 
     public Appointment(LocalDateTime startTime, LocalDateTime endTime, String doctor, String patient) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.doctor = doctor;
-        this.patient = patient;
+        this.doctorID = doctor;
+        this.patientID = patient;
     }
+
+    public Appointment(LocalDateTime startTime, String doctorID, String patientID) {
+        this.startTime = startTime;
+        this.doctorID = doctorID;
+        this.patientID = patientID;
+    }
+    
 
     public Appointment(LocalDateTime startTime, LocalDateTime endTime, String doctor, String patient, String reason) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.doctor = doctor;
-        this.patient = patient;
+        this.doctorID = doctor;
+        this.patientID = patient;
         this.reason = reason;
     }
 
@@ -51,20 +58,20 @@ public class Appointment {
         this.endTime = endTime;
     }
 
-    public String getDoctor() {
-        return doctor;
+    public String getDoctorID() {
+        return doctorID;
     }
 
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
+    public void setDoctorID(String doctorID) {
+        this.doctorID = doctorID;
     }
 
-    public String getPatient() {
-        return patient;
+    public String getPatientID() {
+        return patientID;
     }
 
-    public void setPatient(String patient) {
-        this.patient = patient;
+    public void setPatientID(String patientID) {
+        this.patientID = patientID;
     }
 
     public String getReason() {

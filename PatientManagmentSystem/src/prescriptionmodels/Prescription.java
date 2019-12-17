@@ -7,6 +7,7 @@ package prescriptionmodels;
 
 import patientmodels.Patient;
 import doctormodels.Doctor;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -14,31 +15,48 @@ import java.util.ArrayList;
  * @author dhirst1
  */
 public class Prescription {
-    private Patient patient;
-    private Doctor doctor;
+    private String patientID;
+    private String doctorID;
     private String notes;
+    private LocalDateTime datePrescriped; 
     ArrayList<Medicine> medicines = new ArrayList<>();
 
-    public Prescription(Patient patient, Doctor doctor, String notes) {
-        this.patient = patient;
-        this.doctor = doctor;
+    public Prescription(String patient, String doctor, String notes) {
+        this.patientID = patient;
+        this.doctorID = doctor;
         this.notes = notes;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public Prescription(String patientID, String doctorID, String notes, LocalDateTime datePrescriped) {
+        this.patientID = patientID;
+        this.doctorID = doctorID;
+        this.notes = notes;
+        this.datePrescriped = datePrescriped;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public LocalDateTime getDatePrescriped() {
+        return datePrescriped;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public void setDatePrescriped(LocalDateTime datePrescriped) {
+        this.datePrescriped = datePrescriped;
+    }
+    
+
+    public String getPatient() {
+        return patientID;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setPatient(String patient) {
+        this.patientID = patient;
+    }
+
+    public String getDoctor() {
+        return doctorID;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctorID = doctor;
     }
 
     public String getNotes() {
