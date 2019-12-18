@@ -57,6 +57,8 @@ public class PatientUI extends javax.swing.JFrame {
         btnAppointment = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         btnPrescription = new javax.swing.JButton();
+        boxViewDoctors = new javax.swing.JComboBox<>();
+        btnDoctorView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,6 +110,8 @@ public class PatientUI extends javax.swing.JFrame {
 
         btnPrescription.setText("view Prescription");
 
+        btnDoctorView.setText("View Doctors Ratings");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,7 +138,7 @@ public class PatientUI extends javax.swing.JFrame {
                                         .addComponent(btnAccountTerminate)))
                                 .addGap(77, 77, 77))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 150, Short.MAX_VALUE)
+                                .addGap(0, 152, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
@@ -163,13 +167,16 @@ public class PatientUI extends javax.swing.JFrame {
                                     .addComponent(boxAppointment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(boxPrescription, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(boxHistory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(boxViewDoctors, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(boxHistory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(12, 12, 12)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDoctorView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAppointment, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(btnAppointment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26))
@@ -211,7 +218,11 @@ public class PatientUI extends javax.swing.JFrame {
                                 .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(boxHistory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnHistory)))
+                                    .addComponent(btnHistory))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(boxViewDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnDoctorView)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -311,7 +322,19 @@ public class PatientUI extends javax.swing.JFrame {
     public void setBtnPatientViewPrescription(ActionListener listener){
         this.btnPrescription.addActionListener(listener);
     }
+    public void setBtnPatientViewDoctor(ActionListener listener){
+        this.btnDoctorView.addActionListener(listener);
+    }
 
+    public String getBoxDoctor() {
+        return (String) boxDoctors.getSelectedItem();
+    }
+
+    public void setBoxDoctors(String Doctors) {
+        this.boxDoctors.addItem(Doctors);
+    }
+
+    
     public String getTxtInfo() {
         return txtInfo.getText();
     }
@@ -322,6 +345,15 @@ public class PatientUI extends javax.swing.JFrame {
     public void setTxtInfo(String txtInfo) {
         this.txtInfo.setText(txtInfo);
     }
+
+    public String getBoxViewDoctors() {
+        return (String) boxViewDoctors.getSelectedItem();
+    }
+
+    public void setBoxViewDoctors(String boxViewDoctors) {
+        this.boxViewDoctors.addItem(boxViewDoctors);
+    }
+    
     
      
 
@@ -330,8 +362,10 @@ public class PatientUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> boxDoctors;
     private javax.swing.JComboBox<String> boxHistory;
     private javax.swing.JComboBox<String> boxPrescription;
+    private javax.swing.JComboBox<String> boxViewDoctors;
     private javax.swing.JButton btnAccountTerminate;
     private javax.swing.JButton btnAppointment;
+    private javax.swing.JButton btnDoctorView;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnPrescription;
     private javax.swing.JButton btnSubmitDate;

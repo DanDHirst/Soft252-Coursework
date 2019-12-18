@@ -7,11 +7,10 @@ package userscontroller;
 
 import UsersUI.PatientUI;
 import appointmentmodels.Appointment;
+import doctormodels.DoctorFeedback;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
 import modelStore.Models;
-import patientmodels.Patient;
 import prescriptionmodels.Medicine;
 import prescriptionmodels.Prescription;
 import usermodels.User;
@@ -32,35 +31,39 @@ public class PatientUIController {
         this.PatientView.setBtnPatientTerminate(new PatientUIController.PatientTerminateListener());
         this.PatientView.setBtnPatientViewAppointment(new PatientUIController.PatientViewAppointment() );
         this.PatientView.setBtnPatientViewPrescription(new PatientUIController.PatientViewPrescription());
+        this.PatientView.setBtnPatientViewDoctor(new PatientUIController.PatientViewDoctors());
         setPatientAppointmentBox(UserID);
         setPatientPrescriptionBox(UserID);
-        //load and add appointments to the patient
+        setPatientDoctorBox();
+       
         
     }
     private void setPatientAppointmentBox(String UserID){
-        // search for patient 
+        
         
         for (Appointment ap : modelStore.appointmentStore.getAppointments()) {
              if(ap.getPatientID().equals(UserID)){
                  PatientView.setBoxAppointment(ap.getStartTime().toString());
              }
         }
-        //loop through appointment
-        
-        //set appointment
+
     }
     private void setPatientPrescriptionBox(String UserID){
-        // search for patient 
-        
+                
         for (Prescription pr : modelStore.prescriptionStore.getPrescriptions()) {
-            System.out.println(pr.getDatePrescriped().toString());
              if(pr.getPatient().equals(UserID)){
                  PatientView.setBoxPrescription(pr.getDatePrescriped().toString());
              }
         }
-        //loop through appointment
+
+    }
+    private void setPatientDoctorBox(){
         
-        //set appointment
+        for (User dr : modelStore.doctorStore.getUsers()) {
+             PatientView.setBoxViewDoctors(dr.getUsername());
+             PatientView.setBoxDoctors(dr.getUsername());
+        }
+
     }
 //    private void setPatientHistoryBox(String UserID){
 //        // search for patient 
@@ -143,6 +146,25 @@ public class PatientUIController {
                  
              }
         }
+        }
+        
+    }
+    class PatientViewDoctors implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String doctor = PatientView.getBoxViewDoctors();
+            float averageRating = 0;
+            PatientView.setTxtInfo("Doctor: " + doctor);
+            for(DoctorFeedback feedback : modelStore.doctorFeedbackStore.getDoctorsFeedback()){
+                if (feedback.getDoctorID().equals(doctor)) {
+                    PatientView.addTxtInfo("\nRating: " + feedback.getRating() + "\nComments: " + feedback.getFeedbackNotes());
+                    averageRating += feedback.getRating();
+                }
+                
+            }
+            averageRating = averageRating / modelStore.doctorFeedbackStore.getDoctorsFeedback().size();
+            PatientView.addTxtInfo("\nAverage Rating: " + averageRating);
         }
         
     }

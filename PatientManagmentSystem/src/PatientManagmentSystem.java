@@ -4,6 +4,8 @@ import adminmodels.AdministratorStorage;
 import appointmentmodels.Appointment;
 import appointmentmodels.AppointmentStorage;
 import appointmentmodels.PendingAppointments;
+import doctormodels.Doctor;
+import doctormodels.DoctorFeedback;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
 import java.time.LocalDateTime;
@@ -47,6 +49,8 @@ public class PatientManagmentSystem {
         patientStore.addUser(patient3);
 
         DoctorStorage doctorStore = new DoctorStorage();
+        Doctor james = new Doctor("John", "password", "John","steve","a location");
+        doctorStore.addUser(james);
         Administrator admin1 = new Administrator("person123", "password", "firstname", "surname","25 a place");
         AdministratorStorage adminStore = new AdministratorStorage();
         adminStore.addUser(admin1);
@@ -58,10 +62,17 @@ public class PatientManagmentSystem {
         Prescription pre = new Prescription("person123","doctroman","",now);
         pre.addMedicine(med);
         prescriptionStore.addPrescription(pre);
+        
         DoctorFeedbackStorage doctorFeedbackStore = new DoctorFeedbackStorage();
+        DoctorFeedback feedback1 = new DoctorFeedback("John",4,"good doctor but is very busy");
+        doctorFeedbackStore.addDoctorFeedback(feedback1);
+        DoctorFeedback feedback2 = new DoctorFeedback("John",3,"good doctor but is very busy");
+        doctorFeedbackStore.addDoctorFeedback(feedback2);
+        
         AppointmentStorage appointmentStore = new AppointmentStorage();
         Appointment app = new Appointment(now,"doctoMan","person123");
         appointmentStore.addAppointment(app);
+        
         PendingAppointments pendingAppointmentsStore = new PendingAppointments();
         PendingPatientAccounts pendingAccountsStore = new PendingPatientAccounts();
         PendingTerminatePatientAccounts pendingTerminateAccountsStore = new PendingTerminatePatientAccounts();
