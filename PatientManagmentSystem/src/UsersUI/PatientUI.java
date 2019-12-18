@@ -7,6 +7,7 @@ package UsersUI;
 
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -36,7 +37,7 @@ public class PatientUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         boxAppointment = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtInfo = new javax.swing.JTextArea();
         boxPrescription = new javax.swing.JComboBox<>();
         boxHistory = new javax.swing.JComboBox<>();
         txtStartDate = new javax.swing.JTextField();
@@ -71,9 +72,9 @@ public class PatientUI extends javax.swing.JFrame {
 
         jLabel1.setText("Patient ID");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtInfo.setColumns(20);
+        txtInfo.setRows(5);
+        jScrollPane1.setViewportView(txtInfo);
 
         txtStartDate.setText("    ");
 
@@ -304,6 +305,18 @@ public class PatientUI extends javax.swing.JFrame {
     public void setBtnPatientTerminate(ActionListener listener){
         this.btnAccountTerminate.addActionListener(listener);
     }
+    public void setBtnPatientViewAppointment(ActionListener listener){
+        this.btnAppointment.addActionListener(listener);
+    }
+
+    public String getTxtInfo() {
+        return txtInfo.getText();
+    }
+
+    public void setTxtInfo(String txtInfo) {
+        this.txtInfo.setText(txtInfo);
+    }
+    
      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -328,9 +341,9 @@ public class PatientUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField txtEndDate;
+    private javax.swing.JTextArea txtInfo;
     private javax.swing.JTextPane txtPatientID;
     private javax.swing.JTextField txtStartDate;
     // End of variables declaration//GEN-END:variables

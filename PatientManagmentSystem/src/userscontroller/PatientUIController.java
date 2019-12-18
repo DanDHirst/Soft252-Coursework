@@ -29,6 +29,7 @@ public class PatientUIController {
         PatientView.setVisible(true);
         PatientView.setPatientID(UserID);
         this.PatientView.setBtnPatientTerminate(new PatientUIController.PatientTerminateListener());
+        this.PatientView.setBtnPatientViewAppointment(new PatientUIController.PatientViewAppointment() );
         setPatientAppointmentBox(UserID);
         setPatientPrescriptionBox(UserID);
         //load and add appointments to the patient
@@ -92,13 +93,33 @@ public class PatientUIController {
                     modelStore.pendingTerminateStore.addUser(p);
                     }
                 }
-            }
-            
-             
-                
-                
-                
-            
+            }  
+        }  
+    }
+    class PatientViewAppointment implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           String AppointmentDate =  PatientView.getBoxAppointment();
+            System.out.println(AppointmentDate);
+           for (Appointment ap : modelStore.appointmentStore.getAppointments()) {
+             if(ap.getPatientID().equals(PatientView.getPatientID())){
+                 System.out.println(ap.getStartTime().toString());
+                 System.out.println(ap.getStartTime().toString().equals(AppointmentDate));
+                 if (ap.getStartTime().toString().equals(AppointmentDate)) {
+                     String AppointmentStartTime = Integer.toString(ap.getStartTime().getHour()) + ":"+Integer.toString(ap.getStartTime().getMinute());
+                     String day = Integer.toString(ap.getStartTime().getDayOfMonth());
+                     String month = Integer.toString(ap.getStartTime().getMonthValue());
+                     String year = Integer.toString(ap.getStartTime().getYear());
+                     String AppointmentDay = day + "/" + month + "/" + year;
+                     PatientView.setTxtInfo("Appointment start time: " + AppointmentStartTime + "\n"
+                             + "Appointment Date: " + AppointmentDay
+                             + "\nDoctor ID: " + ap.getDoctorID() + "\n"+
+                             "Reason: " + ap.getReason());
+                 }
+                 
+             }
+        }
         }
         
     }
