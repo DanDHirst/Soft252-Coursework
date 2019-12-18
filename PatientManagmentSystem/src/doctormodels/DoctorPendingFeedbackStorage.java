@@ -11,10 +11,10 @@ import java.util.ArrayList;
  *
  * @author dan
  */
-public class DoctorFeedbackStorage implements IDoctorFeedbackStorage{
+public class DoctorPendingFeedbackStorage implements IDoctorFeedbackStorage{
     private ArrayList<DoctorFeedback> doctorsFeedback = new ArrayList<>();
 
-    public DoctorFeedbackStorage() {
+    public DoctorPendingFeedbackStorage() {
     }
     
     @Override
@@ -38,6 +38,4 @@ public class DoctorFeedbackStorage implements IDoctorFeedbackStorage{
     public ArrayList<DoctorFeedback> getDoctorsFeedback() {
         return doctorsFeedback;
     }
-    
-    
 }

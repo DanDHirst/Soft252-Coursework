@@ -53,12 +53,14 @@ public class PatientUI extends javax.swing.JFrame {
         boxDoctors = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtFeedback = new javax.swing.JTextArea();
         btnAppointment = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         btnPrescription = new javax.swing.JButton();
         boxViewDoctors = new javax.swing.JComboBox<>();
         btnDoctorView = new javax.swing.JButton();
+        boxRating = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,7 +94,7 @@ public class PatientUI extends javax.swing.JFrame {
 
         jLabel5.setText("Enter the range of dates");
 
-        btnSubmitFeedback.setText("sumbit");
+        btnSubmitFeedback.setText("submit");
 
         jLabel8.setText("Doctor feedback");
 
@@ -100,9 +102,9 @@ public class PatientUI extends javax.swing.JFrame {
 
         jLabel10.setText("Select doctor");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        txtFeedback.setColumns(20);
+        txtFeedback.setRows(5);
+        jScrollPane3.setViewportView(txtFeedback);
 
         btnAppointment.setText("view Appointment");
 
@@ -111,6 +113,10 @@ public class PatientUI extends javax.swing.JFrame {
         btnPrescription.setText("view Prescription");
 
         btnDoctorView.setText("View Doctors Ratings");
+
+        boxRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        jLabel11.setText("select rating");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,15 +157,19 @@ public class PatientUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addComponent(btnSubmitFeedback))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(boxDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(boxDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(boxRating, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -191,19 +201,7 @@ public class PatientUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSubmitDate)
-                        .addGap(77, 77, 77)
-                        .addComponent(btnAccountTerminate)
-                        .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,10 +233,29 @@ public class PatientUI extends javax.swing.JFrame {
                             .addComponent(boxDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boxRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(3, 3, 3)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSubmitDate)
+                        .addGap(77, 77, 77)
+                        .addComponent(btnAccountTerminate)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(49, 49, 49)
                         .addComponent(btnSubmitFeedback)
-                        .addGap(107, 107, 107))))
+                        .addGap(64, 64, 64))))
         );
 
         pack();
@@ -362,6 +379,7 @@ public class PatientUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> boxDoctors;
     private javax.swing.JComboBox<String> boxHistory;
     private javax.swing.JComboBox<String> boxPrescription;
+    private javax.swing.JComboBox<String> boxRating;
     private javax.swing.JComboBox<String> boxViewDoctors;
     private javax.swing.JButton btnAccountTerminate;
     private javax.swing.JButton btnAppointment;
@@ -372,6 +390,7 @@ public class PatientUI extends javax.swing.JFrame {
     private javax.swing.JButton btnSubmitFeedback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -381,8 +400,8 @@ public class PatientUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField txtEndDate;
+    private javax.swing.JTextArea txtFeedback;
     private javax.swing.JTextArea txtInfo;
     private javax.swing.JTextPane txtPatientID;
     private javax.swing.JTextField txtStartDate;

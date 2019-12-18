@@ -9,13 +9,13 @@ import adminmodels.AdministratorStorage;
 import appointmentmodels.AppointmentStorage;
 import appointmentmodels.PendingAppointments;
 import doctormodels.DoctorFeedbackStorage;
+import doctormodels.DoctorPendingFeedbackStorage;
 import doctormodels.DoctorStorage;
 import patientmodels.PatientStorage;
 import patientmodels.PendingPatientAccounts;
 import patientmodels.PendingTerminatePatientAccounts;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
-import userchoiceview.UserRoleChoice;
 
 /**
  *
@@ -30,31 +30,23 @@ public class Models {
     
     public PrescriptionStorage prescriptionStore;
     public DoctorFeedbackStorage doctorFeedbackStore;
+    public DoctorPendingFeedbackStorage doctorPendingFeedbackStore;
     public AppointmentStorage appointmentStore;
     public PendingAppointments pendingAppointmentsStore;
     public PendingPatientAccounts pendingAccountsStore;
     public PendingTerminatePatientAccounts pendingTerminateStore;
+    
 
-    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingPatientAccounts pendingAccountsStore, PendingTerminatePatientAccounts pendingTerminateStore) {
+   
+
+    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, DoctorPendingFeedbackStorage doctorPendingFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingTerminatePatientAccounts pendingTerminateAccountsStore, PendingPatientAccounts pendingAccountsStore) {
         this.patientStore = patientStore;
         this.doctorStore = doctorStore;
         this.adminStore = adminStore;
         this.secretaryStore = secretaryStore;
         this.prescriptionStore = prescriptionStore;
         this.doctorFeedbackStore = doctorFeedbackStore;
-        this.appointmentStore = appointmentStore;
-        this.pendingAppointmentsStore = pendingAppointmentsStore;
-        this.pendingAccountsStore = pendingAccountsStore;
-        this.pendingTerminateStore = pendingTerminateStore;
-    }
-
-    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingTerminatePatientAccounts pendingTerminateAccountsStore, PendingPatientAccounts pendingAccountsStore) {
-        this.patientStore = patientStore;
-        this.doctorStore = doctorStore;
-        this.adminStore = adminStore;
-        this.secretaryStore = secretaryStore;
-        this.prescriptionStore = prescriptionStore;
-        this.doctorFeedbackStore = doctorFeedbackStore;
+        this.doctorPendingFeedbackStore = doctorPendingFeedbackStore;
         this.appointmentStore = appointmentStore;
         this.pendingAppointmentsStore = pendingAppointmentsStore;
         this.pendingAccountsStore = pendingAccountsStore;

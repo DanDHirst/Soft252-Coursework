@@ -7,6 +7,7 @@ import appointmentmodels.PendingAppointments;
 import doctormodels.Doctor;
 import doctormodels.DoctorFeedback;
 import doctormodels.DoctorFeedbackStorage;
+import doctormodels.DoctorPendingFeedbackStorage;
 import doctormodels.DoctorStorage;
 import java.time.LocalDateTime;
 import modelStore.Models;
@@ -69,6 +70,8 @@ public class PatientManagmentSystem {
         DoctorFeedback feedback2 = new DoctorFeedback("John",3,"good doctor but is very busy");
         doctorFeedbackStore.addDoctorFeedback(feedback2);
         
+        DoctorPendingFeedbackStorage doctorPendingFeedbackStore = new DoctorPendingFeedbackStorage();
+        
         AppointmentStorage appointmentStore = new AppointmentStorage();
         Appointment app = new Appointment(now,"doctoMan","person123");
         appointmentStore.addAppointment(app);
@@ -78,7 +81,7 @@ public class PatientManagmentSystem {
         PendingTerminatePatientAccounts pendingTerminateAccountsStore = new PendingTerminatePatientAccounts();
         
         Models modelStore = new Models(patientStore, doctorStore , adminStore 
-                ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore 
+                ,secretaryStore, prescriptionStore, doctorFeedbackStore,doctorPendingFeedbackStore,appointmentStore 
                 ,pendingAppointmentsStore, pendingTerminateAccountsStore, pendingAccountsStore);
         
         UserRoleChoiceController theController = new UserRoleChoiceController(modelStore);
