@@ -1,15 +1,19 @@
 
 import adminmodels.Administrator;
 import adminmodels.AdministratorStorage;
+import appointmentmodels.Appointment;
 import appointmentmodels.AppointmentStorage;
 import appointmentmodels.PendingAppointments;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorStorage;
+import java.time.LocalDateTime;
 import modelStore.Models;
 import patientmodels.Patient;
 import patientmodels.PatientStorage;
 import patientmodels.PendingPatientAccounts;
 import patientmodels.PendingTerminatePatientAccounts;
+import prescriptionmodels.Medicine;
+import prescriptionmodels.Prescription;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
 import userchoicecontroller.UserRoleChoiceController;
@@ -49,11 +53,19 @@ public class PatientManagmentSystem {
         SecretaryStorage secretaryStore = new SecretaryStorage();
 
         PrescriptionStorage prescriptionStore = new PrescriptionStorage();
+        LocalDateTime now = LocalDateTime.now();
+        Medicine med = new Medicine("paracemtol", 20 , "2 a day");
+        Prescription pre = new Prescription("person123","doctroman","",now);
+        pre.addMedicine(med);
+        prescriptionStore.addPrescription(pre);
         DoctorFeedbackStorage doctorFeedbackStore = new DoctorFeedbackStorage();
         AppointmentStorage appointmentStore = new AppointmentStorage();
+        Appointment app = new Appointment(now,"doctoMan","person123");
+        appointmentStore.addAppointment(app);
         PendingAppointments pendingAppointmentsStore = new PendingAppointments();
         PendingPatientAccounts pendingAccountsStore = new PendingPatientAccounts();
         PendingTerminatePatientAccounts pendingTerminateAccountsStore = new PendingTerminatePatientAccounts();
+        
         Models modelStore = new Models(patientStore, doctorStore , adminStore 
                 ,secretaryStore, prescriptionStore, doctorFeedbackStore,appointmentStore 
                 ,pendingAppointmentsStore, pendingTerminateAccountsStore, pendingAccountsStore);

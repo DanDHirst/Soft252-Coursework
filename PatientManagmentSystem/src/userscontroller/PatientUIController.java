@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import modelStore.Models;
 import patientmodels.Patient;
+import prescriptionmodels.Medicine;
 import prescriptionmodels.Prescription;
 import usermodels.User;
 
@@ -30,6 +31,7 @@ public class PatientUIController {
         PatientView.setPatientID(UserID);
         this.PatientView.setBtnPatientTerminate(new PatientUIController.PatientTerminateListener());
         this.PatientView.setBtnPatientViewAppointment(new PatientUIController.PatientViewAppointment() );
+        this.PatientView.setBtnPatientViewPrescription(new PatientUIController.PatientViewPrescription());
         setPatientAppointmentBox(UserID);
         setPatientPrescriptionBox(UserID);
         //load and add appointments to the patient
@@ -37,9 +39,7 @@ public class PatientUIController {
     }
     private void setPatientAppointmentBox(String UserID){
         // search for patient 
-        LocalDateTime now = LocalDateTime.now();
-        Appointment app = new Appointment(now,"doctoMan","person123");
-        modelStore.appointmentStore.addAppointment(app);
+        
         for (Appointment ap : modelStore.appointmentStore.getAppointments()) {
              if(ap.getPatientID().equals(UserID)){
                  PatientView.setBoxAppointment(ap.getStartTime().toString());
@@ -51,10 +51,7 @@ public class PatientUIController {
     }
     private void setPatientPrescriptionBox(String UserID){
         // search for patient 
-        LocalDateTime now = LocalDateTime.now();
-        Prescription pre = new Prescription("person123","doctroman","",now);
-        modelStore.prescriptionStore.addPrescription(pre);
-        System.out.println(modelStore.prescriptionStore.getPrescriptions());
+        
         for (Prescription pr : modelStore.prescriptionStore.getPrescriptions()) {
             System.out.println(pr.getDatePrescriped().toString());
              if(pr.getPatient().equals(UserID)){
@@ -101,11 +98,8 @@ public class PatientUIController {
         @Override
         public void actionPerformed(ActionEvent e) {
            String AppointmentDate =  PatientView.getBoxAppointment();
-            System.out.println(AppointmentDate);
            for (Appointment ap : modelStore.appointmentStore.getAppointments()) {
              if(ap.getPatientID().equals(PatientView.getPatientID())){
-                 System.out.println(ap.getStartTime().toString());
-                 System.out.println(ap.getStartTime().toString().equals(AppointmentDate));
                  if (ap.getStartTime().toString().equals(AppointmentDate)) {
                      String AppointmentStartTime = Integer.toString(ap.getStartTime().getHour()) + ":"+Integer.toString(ap.getStartTime().getMinute());
                      String day = Integer.toString(ap.getStartTime().getDayOfMonth());
@@ -116,6 +110,35 @@ public class PatientUIController {
                              + "Appointment Date: " + AppointmentDay
                              + "\nDoctor ID: " + ap.getDoctorID() + "\n"+
                              "Reason: " + ap.getReason());
+                 }
+                 
+             }
+        }
+        }
+        
+    }
+    class PatientViewPrescription implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           String PrescriptionDate =  PatientView.getBoxPrescription();
+           for (Prescription pr : modelStore.prescriptionStore.getPrescriptions()) {
+             if(pr.getPatient().equals(PatientView.getPatientID())){
+                 if (pr.getDatePrescriped().toString().equals(PrescriptionDate)) {
+                     String PrescriptionStartTime = Integer.toString(pr.getDatePrescriped().getHour()) + ":"+Integer.toString(pr.getDatePrescriped().getMinute());
+                     String day = Integer.toString(pr.getDatePrescriped().getDayOfMonth());
+                     String month = Integer.toString(pr.getDatePrescriped().getMonthValue());
+                     String year = Integer.toString(pr.getDatePrescriped().getYear());
+                     String PrescriptionDay = day + "/" + month + "/" + year;
+                     PatientView.setTxtInfo("Prescription start time: " + PrescriptionStartTime + "\n"
+                             + "Prescription Date: " + PrescriptionDay
+                             + "\nDoctor ID: " + pr.getDoctor() + "\n"+
+                             "Reason: " + pr.getNotes());
+                     for (Medicine meds : pr.getMedicines()) {
+                         PatientView.addTxtInfo("\nMedicine name: " + meds.getName() +
+                                 "\nMedicine dosage: " + meds.getDosage() +
+                                 "\nMedicine Quantity: " + meds.getQuantity());
+                     }
                  }
                  
              }

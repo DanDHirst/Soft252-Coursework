@@ -308,11 +308,17 @@ public class PatientUI extends javax.swing.JFrame {
     public void setBtnPatientViewAppointment(ActionListener listener){
         this.btnAppointment.addActionListener(listener);
     }
+    public void setBtnPatientViewPrescription(ActionListener listener){
+        this.btnPrescription.addActionListener(listener);
+    }
 
     public String getTxtInfo() {
         return txtInfo.getText();
     }
-
+    
+    public void addTxtInfo(String txtInfo){
+        this.txtInfo.append(txtInfo);
+    }
     public void setTxtInfo(String txtInfo) {
         this.txtInfo.setText(txtInfo);
     }
