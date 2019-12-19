@@ -10,6 +10,8 @@ import appointmentmodels.Appointment;
 import doctormodels.DoctorFeedback;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.util.Date;
 import modelStore.Models;
 import prescriptionmodels.Medicine;
 import prescriptionmodels.Prescription;
@@ -33,9 +35,10 @@ public class PatientUIController {
         this.PatientView.setBtnPatientViewPrescription(new PatientUIController.PatientViewPrescription());
         this.PatientView.setBtnPatientViewDoctor(new PatientUIController.PatientViewDoctors());
         this.PatientView.setBtnSaveFeedback(new PatientUIController.PatientSaveFeedback());
+        this.PatientView.setBtnSubmitAppointment(new PatientUIController.PatientRequestAppointment());
         setPatientAppointmentBox(UserID);
         setPatientPrescriptionBox(UserID);
-        setPatientDoctorBox();
+        setDoctorBoxes();
        
         
     }
@@ -58,11 +61,12 @@ public class PatientUIController {
         }
 
     }
-    private void setPatientDoctorBox(){
+    private void setDoctorBoxes(){
         
         for (User dr : modelStore.doctorStore.getUsers()) {
              PatientView.setBoxViewDoctors(dr.getUsername());
              PatientView.setBoxDoctors(dr.getUsername());
+             PatientView.setBoxDoctorsAppoitment(dr.getUsername());
         }
 
     }
@@ -182,6 +186,33 @@ public class PatientUIController {
             
             PatientView.setTxtFeedback("");
 //            System.out.println(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(0).getFeedbackNotes());
+        }
+        
+    }
+    class PatientRequestAppointment implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Date start = PatientView.getDateStart();
+            String startDate = Integer.toString(start.getYear()+1900)+ "-" 
+                    + Integer.toString( start.getMonth()) + "-" 
+                    + Integer.toString(start.getDate()) + "T" + PatientView.getBoxStartHour()
+                    + ":" + PatientView.getTxtMinStart() + ":" + "00";
+            Date end = PatientView.getDateEnd();
+            String endDate = Integer.toString(end.getYear()+1900)+ "-" 
+                    + Integer.toString( end.getMonth()) + "-" 
+                    + Integer.toString(end.getDate()) + "T" + PatientView.getBoxEndHour()
+                    + ":" + PatientView.getTxtMinEnd() + ":" + "00";
+            
+            
+            LocalDateTime datetimeStart = LocalDateTime.parse(startDate);
+            LocalDateTime dateTimeEnd = LocalDateTime.parse(endDate);
+            String doctor = PatientView.getBoxDoctorAppointment();
+            String patientID = PatientView.getPatientID();
+            
+            Appointment ap = new Appointment(datetimeStart, dateTimeEnd, doctor, patientID);
+            modelStore.pendingAppointmentsStore.addAppointment(ap);
+            
         }
         
     }
