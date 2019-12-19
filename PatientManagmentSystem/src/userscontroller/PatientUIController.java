@@ -193,15 +193,17 @@ public class PatientUIController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Date start = PatientView.getDateStart();
+           
+            
+            Date start = PatientView.getDateStart(); 
             String startDate = Integer.toString(start.getYear()+1900)+ "-" 
-                    + Integer.toString( start.getMonth()) + "-" 
-                    + Integer.toString(start.getDate()) + "T" + PatientView.getBoxStartHour()
+                    + checkDateMonth(start) + "-" 
+                    + checkDateDay(start) + "T" + PatientView.getBoxStartHour()
                     + ":" + PatientView.getTxtMinStart() + ":" + "00";
             Date end = PatientView.getDateEnd();
             String endDate = Integer.toString(end.getYear()+1900)+ "-" 
-                    + Integer.toString( end.getMonth()) + "-" 
-                    + Integer.toString(end.getDate()) + "T" + PatientView.getBoxEndHour()
+                    + checkDateMonth(end) + "-" 
+                    + checkDateDay(end) + "T" + PatientView.getBoxEndHour()
                     + ":" + PatientView.getTxtMinEnd() + ":" + "00";
             
             
@@ -212,7 +214,26 @@ public class PatientUIController {
             
             Appointment ap = new Appointment(datetimeStart, dateTimeEnd, doctor, patientID);
             modelStore.pendingAppointmentsStore.addAppointment(ap);
+            System.out.println(modelStore.pendingAppointmentsStore.getAppointments().get(0).getStartTime());
             
+        }
+        public String checkDateDay(Date aDate){ // prevents from crashing if date is less than 10
+            if (aDate.getDate() < 10) {
+                String newDate = "0" + Integer.toString(aDate.getDate());
+                
+                return newDate;
+            }
+            return Integer.toString(aDate.getDate());
+                      
+        }
+        public String checkDateMonth(Date aDate){ // prevents from crashing if month is less than 10
+            if (aDate.getMonth() < 10) {
+                String newDate = "0" + Integer.toString(aDate.getMonth());
+                
+                return newDate;
+            }
+            return Integer.toString(aDate.getMonth());
+                      
         }
         
     }

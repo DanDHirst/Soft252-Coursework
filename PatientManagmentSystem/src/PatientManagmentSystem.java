@@ -60,7 +60,7 @@ public class PatientManagmentSystem {
         PrescriptionStorage prescriptionStore = new PrescriptionStorage();
         LocalDateTime now = LocalDateTime.now();
         Medicine med = new Medicine("paracemtol", 20 , "2 a day");
-        Prescription pre = new Prescription("person123","doctroman","",now);
+        Prescription pre = new Prescription("person123","John","",now);
         pre.addMedicine(med);
         prescriptionStore.addPrescription(pre);
         
@@ -73,7 +73,7 @@ public class PatientManagmentSystem {
         DoctorPendingFeedbackStorage doctorPendingFeedbackStore = new DoctorPendingFeedbackStorage();
         
         AppointmentStorage appointmentStore = new AppointmentStorage();
-        Appointment app = new Appointment(now,"doctoMan","person123");
+        Appointment app = new Appointment(now,"John","person123");
         appointmentStore.addAppointment(app);
         
         PendingAppointments pendingAppointmentsStore = new PendingAppointments();
