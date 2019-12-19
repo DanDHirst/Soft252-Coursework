@@ -32,6 +32,7 @@ public class PatientUIController {
         this.PatientView.setBtnPatientViewAppointment(new PatientUIController.PatientViewAppointment() );
         this.PatientView.setBtnPatientViewPrescription(new PatientUIController.PatientViewPrescription());
         this.PatientView.setBtnPatientViewDoctor(new PatientUIController.PatientViewDoctors());
+        this.PatientView.setBtnSaveFeedback(new PatientUIController.PatientSaveFeedback());
         setPatientAppointmentBox(UserID);
         setPatientPrescriptionBox(UserID);
         setPatientDoctorBox();
@@ -165,6 +166,22 @@ public class PatientUIController {
             }
             averageRating = averageRating / modelStore.doctorFeedbackStore.getDoctorsFeedback().size();
             PatientView.addTxtInfo("\nAverage Rating: " + averageRating);
+        }
+        
+    }
+    class PatientSaveFeedback implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int rating = Integer.parseInt(PatientView.getBoxRating());
+            String feedback = PatientView.getTxtFeedback();
+            String doctor = PatientView.getBoxDoctor();
+            
+            DoctorFeedback drFeedback = new DoctorFeedback(doctor,rating,feedback);
+            modelStore.doctorPendingFeedbackStore.addDoctorFeedback(drFeedback);
+            
+            PatientView.setTxtFeedback("");
+//            System.out.println(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(0).getFeedbackNotes());
         }
         
     }

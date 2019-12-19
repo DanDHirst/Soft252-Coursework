@@ -342,6 +342,9 @@ public class PatientUI extends javax.swing.JFrame {
     public void setBtnPatientViewDoctor(ActionListener listener){
         this.btnDoctorView.addActionListener(listener);
     }
+    public void setBtnSaveFeedback(ActionListener listener){
+        this.btnSubmitFeedback.addActionListener(listener);
+    }
 
     public String getBoxDoctor() {
         return (String) boxDoctors.getSelectedItem();
@@ -370,6 +373,20 @@ public class PatientUI extends javax.swing.JFrame {
     public void setBoxViewDoctors(String boxViewDoctors) {
         this.boxViewDoctors.addItem(boxViewDoctors);
     }
+
+    public String getBoxRating() {
+        return (String) boxRating.getSelectedItem();
+    }
+
+    public String getTxtFeedback() {
+        return txtFeedback.getText();
+    }
+
+    public void setTxtFeedback(String txtFeedback) {
+        this.txtFeedback.setText(txtFeedback);
+    }
+    
+    
     
     
      
