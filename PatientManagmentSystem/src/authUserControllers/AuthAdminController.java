@@ -5,6 +5,7 @@
  */
 package authUserControllers;
 
+import adminmodels.Administrator;
 import authusersview.AuthAdminUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,15 +17,18 @@ import userscontroller.AdminUIController;
  *
  * @author dhirst1
  */
-public class AuthAdminController {
+public class AuthAdminController extends AuthHandler {
     public AuthAdminUI AuthAdminView;
     public Models modelStore;
     
     public AuthAdminController(Models modelStore) {
+        CreateAccount acc = new CreateAccount();
+        setStrategy(acc);
         this.modelStore = modelStore;
         AuthAdminView = new AuthAdminUI();    
         AuthAdminView.setVisible(true);
         this.AuthAdminView.setBtnAdminLoginListner(new AuthAdminController.AdminAuthRedirectListener());
+        this.AuthAdminView.setBtnAdminCreateAccountListener(new AuthAdminController.AdminCreateAccount());
     }
     class AdminAuthRedirectListener implements ActionListener{
 
@@ -48,6 +52,22 @@ public class AuthAdminController {
                 }
             }
             return null;
+        }
+        
+    }
+    class AdminCreateAccount implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String username = AuthAdminView.getTxtUsernameReg();
+            String password = AuthAdminView.getTxtPasswordReg();
+            String firstname = AuthAdminView.getTxtFirstnameReg();
+            String surname = AuthAdminView.getTxtSurnameReg();
+            String address = AuthAdminView.getTxtAddressReg();
+            
+            Administrator admin = new Administrator(username,password,firstname,surname,address);
+            modelStore.adminStore.addUser(admin);
+            AuthAdminView.setTxtResponseReg("Account create Sucessfully");
         }
         
     }
