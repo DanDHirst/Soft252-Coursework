@@ -5,10 +5,24 @@
  */
 package authUserControllers;
 
+import modelStore.Models;
+import usermodels.User;
+
 /**
  *
  * @author dhirst1
  */
 public class AuthHandler {
+    private CreateAccountStrategy createAccount;
+
+    public AuthHandler() {
+        
+    }
+    public void setStrategy(CreateAccountStrategy createAccount){
+        this.createAccount = createAccount;
+    }
     
+    public Models createAccount(Models models,User user){
+        return createAccount.CreateAccount(models, user);
+    }
 }
