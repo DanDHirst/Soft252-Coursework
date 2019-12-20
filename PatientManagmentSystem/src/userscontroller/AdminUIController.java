@@ -8,6 +8,7 @@ package userscontroller;
 import UsersUI.AdminUI;
 import adminmodels.Administrator;
 import doctormodels.Doctor;
+import doctormodels.DoctorFeedback;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.event.ListSelectionEvent;
@@ -34,6 +35,7 @@ public class AdminUIController {
         this.AdminView.btnRemoveUser(new AdminUIController.RemoveUser());
         this.AdminView.listDoctorClick(new AdminUIController.ShowDoctorUser());
         this.AdminView.listSecretaryClick(new AdminUIController.ShowSecretaryUser());
+        this.AdminView.listDoctorRatingClick(new AdminUIController.ShowFeedbackAndRatings());
         setDoctorsList();
         setSecretaryList();
     }
@@ -157,5 +159,36 @@ public class AdminUIController {
             AdminView.selectSecretaryRad();
         }
 
+    }
+    class ShowFeedbackAndRatings implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            //showing ratings
+            String doctor = AdminView.getListRatingDoctor();
+            float averageRating = 0;
+            AdminView.setTxtInfo("Doctor: " + doctor);
+            for(DoctorFeedback feedback : modelStore.doctorFeedbackStore.getDoctorsFeedback()){
+                if (feedback.getDoctorID().equals(doctor)) {
+                    AdminView.addTxtInfo("\nRating: " + feedback.getRating() + "\nComments: " + feedback.getFeedbackNotes());
+                    averageRating += feedback.getRating();
+                }
+                
+            }
+            averageRating = averageRating / modelStore.doctorFeedbackStore.getDoctorsFeedback().size();
+            AdminView.addTxtInfo("\nAverage Rating: " + averageRating);
+            
+            //showing feedback
+            AdminView.setTxtFeedback("Doctor: " + doctor);
+            for(DoctorFeedback feedback : modelStore.doctorPendingFeedbackStore.getDoctorsFeedback()){
+                if (feedback.getDoctorID().equals(doctor)) {
+                    AdminView.addTxtFeedback("\nRating: " + feedback.getRating() + "\nComments: " + feedback.getFeedbackNotes());
+                   
+                }
+                
+            }
+            
+        }
+        
     }
 }
