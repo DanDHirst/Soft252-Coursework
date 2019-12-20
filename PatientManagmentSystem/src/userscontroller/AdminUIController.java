@@ -6,7 +6,6 @@
 package userscontroller;
 
 import UsersUI.AdminUI;
-import adminmodels.Administrator;
 import doctormodels.Doctor;
 import doctormodels.DoctorFeedback;
 import java.awt.event.ActionEvent;
@@ -31,13 +30,19 @@ public class AdminUIController {
         AdminView = new AdminUI();
         AdminView.setVisible(true);
         AdminView.setTxtAdminID(UserID);
+        setUpOnClicks();
+        setDoctorsList();
+        setSecretaryList();
+    }
+    
+    public void setUpOnClicks(){
         this.AdminView.btnAddUser(new AdminUIController.AddUser());
         this.AdminView.btnRemoveUser(new AdminUIController.RemoveUser());
         this.AdminView.listDoctorClick(new AdminUIController.ShowDoctorUser());
         this.AdminView.listSecretaryClick(new AdminUIController.ShowSecretaryUser());
         this.AdminView.listDoctorRatingClick(new AdminUIController.ShowFeedbackAndRatings());
-        setDoctorsList();
-        setSecretaryList();
+        this.AdminView.listDoctorFeedbackClick(new AdminUIController.ShowFeedbackForDoctor());
+        this.AdminView.btnSubmitFeedback(new AdminUIController.SubmitFeedback());
     }
 
     public void setDoctorsList() {
@@ -179,16 +184,60 @@ public class AdminUIController {
             AdminView.addTxtInfo("\nAverage Rating: " + averageRating);
             
             //showing feedback
-            AdminView.setTxtFeedback("Doctor: " + doctor);
-            for(DoctorFeedback feedback : modelStore.doctorPendingFeedbackStore.getDoctorsFeedback()){
-                if (feedback.getDoctorID().equals(doctor)) {
-                    AdminView.addTxtFeedback("\nRating: " + feedback.getRating() + "\nComments: " + feedback.getFeedbackNotes());
-                   
+            int lengthofFeedback = modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().size();
+            String[] feedback = new String[lengthofFeedback];
+            for (int i = 0; i < lengthofFeedback; i++) {
+                if (modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(i).getDoctorID().equals(doctor)) {
+                    feedback[i] = Integer.toString(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(i).getRatingID());
+                }
+                
+            }
+            AdminView.setListFeedback(feedback);
+            
+        }
+        
+        
+    }
+    class ShowFeedbackForDoctor implements ListSelectionListener{
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int ratingID = Integer.parseInt(AdminView.getListFeedback());
+                
+                for (DoctorFeedback feed : modelStore.doctorPendingFeedbackStore.getDoctorsFeedback()) {
+                    if (feed.getRatingID() == ratingID) {
+                        AdminView.setSlideRating(feed.getRating());
+                        AdminView.setTxtFeedback(feed.getFeedbackNotes());
+                    }                                                     
                 }
                 
             }
             
+    }
+    class SubmitFeedback implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String doctor = AdminView.getListRatingDoctor();
+            int ratingID = Integer.parseInt(AdminView.getListFeedback());
+            int rating = AdminView.getSlideRating();
+            String message = AdminView.getTxtFeedback();
+            //add to the feedback model
+            DoctorFeedback feedback = new DoctorFeedback(doctor,rating,message,ratingID);
+            modelStore.doctorFeedbackStore.addDoctorFeedback(feedback);
+            //remove from pending feedback
+            for (DoctorFeedback feed : modelStore.doctorPendingFeedbackStore.getDoctorsFeedback()) {
+                    if (feed.getRatingID() == ratingID) {
+                        modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().remove(feed);
+                        break;
+                    }                                                     
+            }
+            //refresh all the assets on screen
+            AdminView.clearAllforFeedback();
+            setDoctorsList();
+            
         }
         
     }
+    
 }

@@ -74,12 +74,17 @@ public class PatientManagmentSystem {
         prescriptionStore.addPrescription(pre);
         
         DoctorFeedbackStorage doctorFeedbackStore = new DoctorFeedbackStorage();
-        DoctorFeedback feedback1 = new DoctorFeedback("John",4,"good doctor but is very busy");
+        DoctorFeedback feedback1 = new DoctorFeedback("John",4,"good doctor but is very busy",1);
         doctorFeedbackStore.addDoctorFeedback(feedback1);
-        DoctorFeedback feedback2 = new DoctorFeedback("John",3,"good doctor but is very busy");
+        DoctorFeedback feedback2 = new DoctorFeedback("John",3,"good doctor but is very busy",2);
         doctorFeedbackStore.addDoctorFeedback(feedback2);
         
         DoctorPendingFeedbackStorage doctorPendingFeedbackStore = new DoctorPendingFeedbackStorage();
+        DoctorFeedback feedback3 = new DoctorFeedback("John",1,"bad doctor and is very busy",1);
+        DoctorFeedback feedback4 = new DoctorFeedback("John",5,"good doctor but is very busys",2);
+        doctorPendingFeedbackStore.addDoctorFeedback(feedback3);
+        doctorPendingFeedbackStore.addDoctorFeedback(feedback4);
+        
         
         AppointmentStorage appointmentStore = new AppointmentStorage();
         Appointment app = new Appointment(now,"John","person123");

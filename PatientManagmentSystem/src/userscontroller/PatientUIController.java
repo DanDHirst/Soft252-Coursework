@@ -180,8 +180,9 @@ public class PatientUIController {
             int rating = Integer.parseInt(PatientView.getBoxRating());
             String feedback = PatientView.getTxtFeedback();
             String doctor = PatientView.getBoxDoctor();
+            int ratingID = modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().size();
             
-            DoctorFeedback drFeedback = new DoctorFeedback(doctor,rating,feedback);
+            DoctorFeedback drFeedback = new DoctorFeedback(doctor,rating,feedback,ratingID);
             modelStore.doctorPendingFeedbackStore.addDoctorFeedback(drFeedback);
             
             PatientView.setTxtFeedback("");
