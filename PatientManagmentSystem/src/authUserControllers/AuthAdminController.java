@@ -36,7 +36,7 @@ public class AuthAdminController extends AuthHandler {
         public void actionPerformed(ActionEvent arg0) {
             String UserID = checkLogin(AuthAdminView.getUsername(),AuthAdminView.getPassword());
             if( UserID != null){
-                AdminUIController AuthController= new AdminUIController();   
+                AdminUIController AuthController= new AdminUIController(modelStore, UserID);   
                 AuthAdminView.setVisible(false);
             }
             else{

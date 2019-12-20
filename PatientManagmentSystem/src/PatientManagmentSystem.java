@@ -18,6 +18,7 @@ import patientmodels.PendingTerminatePatientAccounts;
 import prescriptionmodels.Medicine;
 import prescriptionmodels.Prescription;
 import prescriptionmodels.PrescriptionStorage;
+import secretarymodels.Secretary;
 import secretarymodels.SecretaryStorage;
 import userchoicecontroller.UserRoleChoiceController;
 
@@ -51,11 +52,19 @@ public class PatientManagmentSystem {
 
         DoctorStorage doctorStore = new DoctorStorage();
         Doctor james = new Doctor("John", "password", "John","steve","a location");
+        Doctor sam = new Doctor("sam", "password", "John","steve","a location");
         doctorStore.addUser(james);
+        doctorStore.addUser(sam);
         Administrator admin1 = new Administrator("person123", "password", "firstname", "surname","25 a place");
         AdministratorStorage adminStore = new AdministratorStorage();
         adminStore.addUser(admin1);
+        
+        Secretary sec1 = new Secretary("james", "password", "james","steve","a location");
+        Secretary sec2 = new Secretary("sam", "password", "sam","steve","a location");
         SecretaryStorage secretaryStore = new SecretaryStorage();
+        secretaryStore.addUser(sec1);
+        secretaryStore.addUser(sec2);
+                
 
         PrescriptionStorage prescriptionStore = new PrescriptionStorage();
         LocalDateTime now = LocalDateTime.now();
