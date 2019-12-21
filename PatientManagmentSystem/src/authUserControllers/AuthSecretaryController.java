@@ -35,7 +35,7 @@ public class AuthSecretaryController {
             
             String UserID = checkLogin(AuthSecretaryView.getUsername(),AuthSecretaryView.getPassword());
             if( UserID != null){
-                SecretaryUIController AuthController= new SecretaryUIController();   
+                SecretaryUIController AuthController= new SecretaryUIController(modelStore,UserID);   
                 AuthSecretaryView.setVisible(false);
             }
             else{

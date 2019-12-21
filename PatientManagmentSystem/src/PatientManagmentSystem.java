@@ -92,6 +92,11 @@ public class PatientManagmentSystem {
         
         PendingAppointments pendingAppointmentsStore = new PendingAppointments();
         PendingPatientAccounts pendingAccountsStore = new PendingPatientAccounts();
+        Patient patient4  = new Patient(22,"male","steve", "password", "firstname", "surname","25 a place");
+        Patient patient5  = new Patient(22,"male","John", "password", "firstname", "surname","25 a place");
+        pendingAccountsStore.addUser(patient4);
+        pendingAccountsStore.addUser(patient5);
+        
         PendingTerminatePatientAccounts pendingTerminateAccountsStore = new PendingTerminatePatientAccounts();
         
         Models modelStore = new Models(patientStore, doctorStore , adminStore 

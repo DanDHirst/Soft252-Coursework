@@ -5,6 +5,10 @@
  */
 package UsersUI;
 
+import java.awt.event.ActionListener;
+import javax.swing.JTextPane;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author dhirst1
@@ -27,21 +31,233 @@ public class SecretaryUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        txtApproveUsername = new javax.swing.JTextField();
+        txtApprovePassword = new javax.swing.JTextField();
+        txtApproveSurname = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtApproveFirstname = new javax.swing.JTextField();
+        txtApproveAddress = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        btnApprovePatient = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listApprovePatient = new javax.swing.JList<>();
+        jLabel6 = new javax.swing.JLabel();
+        txtApproveGender = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtApproveAge = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtSecretaryID = new javax.swing.JTextPane();
+        lbPatientID = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Approve user Accounts"));
+
+        jLabel1.setText("Username");
+
+        jLabel2.setText("Password");
+
+        jLabel3.setText("Firstname");
+
+        jLabel4.setText("Surname");
+
+        txtApproveAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApproveAddressActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Address");
+
+        btnApprovePatient.setText("Approve");
+        btnApprovePatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApprovePatientActionPerformed(evt);
+            }
+        });
+
+        listApprovePatient.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listApprovePatient.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listApprovePatient.setToolTipText("");
+        jScrollPane3.setViewportView(listApprovePatient);
+
+        jLabel6.setText("Click to view user");
+
+        txtApproveGender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApproveGenderActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Gender");
+
+        txtApproveAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApproveAgeActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Age");
+
+        jLabel9.setText("Make sure fields are correct and click approve");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(btnApprovePatient))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtApproveSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(15, 15, 15))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel3)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(txtApproveFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel2)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(txtApprovePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(11, 11, 11))
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jLabel1)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(txtApproveUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtApproveAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtApproveGender, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 14, Short.MAX_VALUE)
+                                        .addComponent(jLabel8)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtApproveAge, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtApproveUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtApprovePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtApproveFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtApproveSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtApproveAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtApproveGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtApproveAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnApprovePatient)
+                .addGap(19, 19, 19))
+        );
+
+        jScrollPane2.setViewportView(txtSecretaryID);
+
+        lbPatientID.setText("Secretary ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(386, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbPatientID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPatientID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtApproveAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApproveAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApproveAddressActionPerformed
+
+    private void btnApprovePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovePatientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnApprovePatientActionPerformed
+
+    private void txtApproveGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApproveGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApproveGenderActionPerformed
+
+    private void txtApproveAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApproveAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApproveAgeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,6 +294,114 @@ public class SecretaryUI extends javax.swing.JFrame {
         });
     }
 
+    
+    public String getTxtSecretaryID() {
+        return txtSecretaryID.getText();
+    }
+
+    public void setTxtSecretaryID(String txtSecretaryID) {
+        this.txtSecretaryID.setText(txtSecretaryID);
+    }
+    
+    
+    //Approve Patient
+    public void btnApprovePatient(ActionListener listener){
+        this.btnApprovePatient.addActionListener(listener);
+    }
+    public void listApprovePatientListener(ListSelectionListener listener){
+        this.listApprovePatient.addListSelectionListener(listener);
+    }
+
+    public String getListApprovePatient() {
+        return listApprovePatient.getSelectedValue();
+    }
+
+    public void setListApprovePatient(String[] listApprovePatient) {
+        this.listApprovePatient.setListData(listApprovePatient);
+    }
+
+    public String getTxtApproveAddress() {
+        return txtApproveAddress.getText();
+    }
+
+    public void setTxtApproveAddress(String txtApproveAddress) {
+        this.txtApproveAddress.setText(txtApproveAddress);
+    }
+
+    public String getTxtApproveAge() {
+        return txtApproveAge.getText();
+    }
+
+    public void setTxtApproveAge(String txtApproveAge) {
+        this.txtApproveAge.setText(txtApproveAge);
+    }
+
+    public String getTxtApproveFirstname() {
+        return txtApproveFirstname.getText();
+    }
+
+    public void setTxtApproveFirstname(String txtApproveFirstname) {
+        this.txtApproveFirstname.setText(txtApproveFirstname);
+    }
+
+    public String getTxtApproveGender() {
+        return txtApproveGender.getText();
+    }
+
+    public void setTxtApproveGender(String txtApproveGender) {
+        this.txtApproveGender.setText(txtApproveGender);
+    }
+
+    public String getTxtApprovePassword() {
+        return txtApprovePassword.getText();
+    }
+
+    public void setTxtApprovePassword(String txtApprovePassword) {
+        this.txtApprovePassword.setText(txtApprovePassword);
+    }
+
+    public String getTxtApproveSurname() {
+        return txtApproveSurname.getText();
+    }
+
+    public void setTxtApproveSurname(String txtApproveSurname) {
+        this.txtApproveSurname.setText(txtApproveSurname);
+    }
+
+    public String getTxtApproveUsername() {
+        return txtApproveUsername.getText();
+    }
+
+    public void setTxtApproveUsername(String txtApproveUsername) {
+        this.txtApproveUsername.setText(txtApproveUsername);
+    }
+    
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApprovePatient;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lbPatientID;
+    private javax.swing.JList<String> listApprovePatient;
+    private javax.swing.JTextField txtApproveAddress;
+    private javax.swing.JTextField txtApproveAge;
+    private javax.swing.JTextField txtApproveFirstname;
+    private javax.swing.JTextField txtApproveGender;
+    private javax.swing.JTextField txtApprovePassword;
+    private javax.swing.JTextField txtApproveSurname;
+    private javax.swing.JTextField txtApproveUsername;
+    private javax.swing.JTextPane txtSecretaryID;
     // End of variables declaration//GEN-END:variables
 }
