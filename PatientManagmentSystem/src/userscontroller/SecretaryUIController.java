@@ -36,11 +36,16 @@ public class SecretaryUIController {
     private void setUpOnClicks(){
         SecretaryView.listApprovePatientListener(new SecretaryUIController.ShowPendingPatient());
         this.SecretaryView.btnApprovePatient(new SecretaryUIController.ApprovePatient());
+        this.SecretaryView.btnRemovePatient(new SecretaryUIController.RemovePatient());
+        this.SecretaryView.listPatientListener(new SecretaryUIController.showUsernamePatient());
+        this.SecretaryView.listTermiatePatientListener(new SecretaryUIController.showUsernameTerminatePatient());
     }
 
     private void setUpUsers() {
         //set up pending Patients
         setUpPendingPatientList();
+        setUpPatients();
+        setUpPatientsTerminate();
     }
     private void setUpPendingPatientList(){
         int pendingPLength = modelStore.pendingAccountsStore.getUsers().size();
@@ -51,6 +56,24 @@ public class SecretaryUIController {
         }
         SecretaryView.setListApprovePatient(pendingPList);
          
+    }
+    private void setUpPatients(){
+        int pLength = modelStore.patientStore.getUsers().size();
+        String[] pList = new String[pLength];
+        for (int i = 0; i < pLength; i++) {
+            pList[i] = modelStore.patientStore.getUsers().get(i).getUsername();
+           
+        }
+        SecretaryView.setListPatients(pList);
+    }
+    private void setUpPatientsTerminate(){
+        int pLength = modelStore.pendingTerminateStore.getUsers().size();
+        String[] tPList = new String[pLength];
+        for (int i = 0; i < pLength; i++) {
+            tPList[i] = modelStore.pendingTerminateStore.getUsers().get(i).getUsername();
+           
+        }
+        SecretaryView.setListPatientTerminate(tPList);
     }
     private void clearPendingPatientFields(){
         SecretaryView.setTxtApproveUsername("");
@@ -109,11 +132,65 @@ public class SecretaryUIController {
             }
             setUpPendingPatientList();
             clearPendingPatientFields();
+            setUpUsers();
+            
             
             
         }
         
     }
+    class RemovePatient implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String patientID = SecretaryView.getTxtRemoveUsername();
+            for (User pat : modelStore.patientStore.getUsers()) {
+                if (pat.getUsername().equals(patientID)) {
+                    modelStore.patientStore.removeUser(pat);
+                    modelStore.pendingTerminateStore.removeUser(pat);
+                }
+            }
+            setUpUsers();
+            SecretaryView.setTxtRemoveUsername("");
+            
+            
+        }
+        
+    }
+    class showUsernamePatient implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            
+            String patientID = SecretaryView.getListPatients();
+            
+            for (User pat : modelStore.patientStore.getUsers()) {
+                if (pat.getUsername().equals(patientID)) {
+                    
+                    SecretaryView.setTxtRemoveUsername(patientID);
+                    SecretaryView.deselectPatientTerminateList();
+                }
+            }
+        }
+        
+    }
+    class showUsernameTerminatePatient implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+           
+           String patientID = SecretaryView.getListPatientTerminate();
+            for (User pat : modelStore.patientStore.getUsers()) {
+                if (pat.getUsername().equals(patientID)) {
+                    
+                    SecretaryView.setTxtRemoveUsername(patientID);
+                    SecretaryView.deselectPatientList();
+                }
+            }
+        }
+        
+    }
+    
     
     
 }

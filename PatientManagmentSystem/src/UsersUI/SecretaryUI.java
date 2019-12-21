@@ -6,6 +6,9 @@
 package UsersUI;
 
 import java.awt.event.ActionListener;
+import javax.swing.JList;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.event.ListSelectionListener;
 
@@ -35,7 +38,6 @@ public class SecretaryUI extends javax.swing.JFrame {
         txtApproveUsername = new javax.swing.JTextField();
         txtApprovePassword = new javax.swing.JTextField();
         txtApproveSurname = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -54,12 +56,22 @@ public class SecretaryUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtSecretaryID = new javax.swing.JTextPane();
         lbPatientID = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnRemovePatient = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listPatients = new javax.swing.JList<>();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        listPatientTerminate = new javax.swing.JList<>();
+        jLabel16 = new javax.swing.JLabel();
+        txtRemoveUsername = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Approve user Accounts"));
-
-        jLabel1.setText("Username");
 
         jLabel2.setText("Password");
 
@@ -83,7 +95,7 @@ public class SecretaryUI extends javax.swing.JFrame {
         });
 
         listApprovePatient.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "None" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -150,8 +162,7 @@ public class SecretaryUI extends javax.swing.JFrame {
                                                         .addComponent(txtApprovePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(11, 11, 11))
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel1)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addGap(58, 58, 58)
                                                         .addComponent(txtApproveUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel5)
@@ -162,7 +173,7 @@ public class SecretaryUI extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(txtApproveGender, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 14, Short.MAX_VALUE)
+                                        .addGap(0, 46, Short.MAX_VALUE)
                                         .addComponent(jLabel8)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtApproveAge, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
@@ -177,9 +188,7 @@ public class SecretaryUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtApproveUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtApproveUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtApprovePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +213,7 @@ public class SecretaryUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtApproveAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnApprovePatient)
@@ -215,6 +224,107 @@ public class SecretaryUI extends javax.swing.JFrame {
 
         lbPatientID.setText("Secretary ID");
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Remove Patients"));
+
+        btnRemovePatient.setText("Remove");
+        btnRemovePatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemovePatientActionPerformed(evt);
+            }
+        });
+
+        listPatients.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "None" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listPatients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listPatients.setToolTipText("");
+        jScrollPane4.setViewportView(listPatients);
+
+        jLabel15.setText("Patients that request account termination");
+
+        jLabel18.setText("Make sure username is correct and click remove");
+
+        listPatientTerminate.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "None" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listPatientTerminate.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listPatientTerminate.setToolTipText("");
+        jScrollPane5.setViewportView(listPatientTerminate);
+
+        jLabel16.setText("All Patients");
+
+        jLabel1.setText("Username");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(112, 112, 112)
+                            .addComponent(btnRemovePatient))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtRemoveUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(53, 53, 53)
+                            .addComponent(jLabel18))))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRemoveUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemovePatient)
+                .addGap(19, 19, 19))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Create Appointment"));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 344, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 379, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,7 +332,11 @@ public class SecretaryUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lbPatientID)
@@ -235,9 +349,16 @@ public class SecretaryUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPatientID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41))))
         );
 
         pack();
@@ -258,6 +379,10 @@ public class SecretaryUI extends javax.swing.JFrame {
     private void txtApproveAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApproveAgeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApproveAgeActionPerformed
+
+    private void btnRemovePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemovePatientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemovePatientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,12 +501,60 @@ public class SecretaryUI extends javax.swing.JFrame {
         this.txtApproveUsername.setText(txtApproveUsername);
     }
     
+    //remove patient
+    public void btnRemovePatient(ActionListener listener){
+        this.btnRemovePatient.addActionListener(listener);
+    }
+    public void listPatientListener(ListSelectionListener listener){
+        this.listPatients.addListSelectionListener(listener);
+    }
+    public void listTermiatePatientListener(ListSelectionListener listener){
+        this.listPatientTerminate.addListSelectionListener(listener);
+    }
+    
+    public String getListPatientTerminate() {
+        return listPatientTerminate.getSelectedValue();
+    }
+
+    public void setListPatientTerminate(String[] listPatientTerminate) {
+        this.listPatientTerminate.setListData(listPatientTerminate);
+    }
+
+    public String getListPatients() {
+        return listPatients.getSelectedValue();
+    }
+
+    public void setListPatients(String[] listPatients) {
+        this.listPatients.setListData(listPatients);
+    }
+
+    public String getTxtRemoveUsername() {
+        return txtRemoveUsername.getText();
+    }
+
+    public void setTxtRemoveUsername(String txtRemoveUsername) {
+        this.txtRemoveUsername.setText(txtRemoveUsername);
+    }
+    
+    public void deselectPatientList(){
+        this.listPatients.clearSelection();
+    }
+    public void deselectPatientTerminateList(){
+        this.listPatientTerminate.clearSelection();
+    }
+
+    
+    
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprovePatient;
+    private javax.swing.JButton btnRemovePatient;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -391,10 +564,16 @@ public class SecretaryUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lbPatientID;
     private javax.swing.JList<String> listApprovePatient;
+    private javax.swing.JList<String> listPatientTerminate;
+    private javax.swing.JList<String> listPatients;
     private javax.swing.JTextField txtApproveAddress;
     private javax.swing.JTextField txtApproveAge;
     private javax.swing.JTextField txtApproveFirstname;
@@ -402,6 +581,7 @@ public class SecretaryUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtApprovePassword;
     private javax.swing.JTextField txtApproveSurname;
     private javax.swing.JTextField txtApproveUsername;
+    private javax.swing.JTextField txtRemoveUsername;
     private javax.swing.JTextPane txtSecretaryID;
     // End of variables declaration//GEN-END:variables
 }

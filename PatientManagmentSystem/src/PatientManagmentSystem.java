@@ -41,8 +41,8 @@ public class PatientManagmentSystem {
     public static void main(String[] args) {
         // TODO code application logic here
         Patient patient1 = new Patient(20,"male","person123", "password", "firstname", "surname","25 a place");
-        Patient patient2 = new Patient(21,"male","person123", "password", "firstname", "surname","25 a place");
-        Patient patient3  = new Patient(22,"male","person123", "password", "firstname", "surname","25 a place");
+        Patient patient2 = new Patient(21,"male","Josh", "password", "firstname", "surname","25 a place");
+        Patient patient3  = new Patient(22,"male","Ryan", "password", "firstname", "surname","25 a place");
         
         PatientStorage patientStore = new PatientStorage();
         
@@ -87,7 +87,7 @@ public class PatientManagmentSystem {
         
         
         AppointmentStorage appointmentStore = new AppointmentStorage();
-        Appointment app = new Appointment(now,"John","person123");
+        Appointment app = new Appointment(now,now.plusMinutes(20),"John","person123");
         appointmentStore.addAppointment(app);
         
         PendingAppointments pendingAppointmentsStore = new PendingAppointments();
@@ -98,6 +98,8 @@ public class PatientManagmentSystem {
         pendingAccountsStore.addUser(patient5);
         
         PendingTerminatePatientAccounts pendingTerminateAccountsStore = new PendingTerminatePatientAccounts();
+        pendingTerminateAccountsStore.addUser(patient1);
+        
         
         Models modelStore = new Models(patientStore, doctorStore , adminStore 
                 ,secretaryStore, prescriptionStore, doctorFeedbackStore,doctorPendingFeedbackStore,appointmentStore 
