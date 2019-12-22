@@ -14,6 +14,7 @@ import doctormodels.DoctorStorage;
 import patientmodels.PatientStorage;
 import patientmodels.PendingPatientAccounts;
 import patientmodels.PendingTerminatePatientAccounts;
+import prescriptionmodels.MedicineStore;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.SecretaryStorage;
 
@@ -27,7 +28,7 @@ public class Models {
     public DoctorStorage doctorStore;
     public AdministratorStorage adminStore;
     public SecretaryStorage secretaryStore;
-    
+    public MedicineStore medicineStore;
     public PrescriptionStorage prescriptionStore;
     public DoctorFeedbackStorage doctorFeedbackStore;
     public DoctorPendingFeedbackStorage doctorPendingFeedbackStore;
@@ -39,94 +40,27 @@ public class Models {
 
    
 
-    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, DoctorPendingFeedbackStorage doctorPendingFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingTerminatePatientAccounts pendingTerminateAccountsStore, PendingPatientAccounts pendingAccountsStore) {
+    
+
+    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, MedicineStore medicineStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, DoctorPendingFeedbackStorage doctorPendingFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingPatientAccounts pendingAccountsStore, PendingTerminatePatientAccounts pendingTerminateStore) {
         this.patientStore = patientStore;
         this.doctorStore = doctorStore;
         this.adminStore = adminStore;
         this.secretaryStore = secretaryStore;
+        this.medicineStore = medicineStore;
         this.prescriptionStore = prescriptionStore;
         this.doctorFeedbackStore = doctorFeedbackStore;
         this.doctorPendingFeedbackStore = doctorPendingFeedbackStore;
         this.appointmentStore = appointmentStore;
         this.pendingAppointmentsStore = pendingAppointmentsStore;
         this.pendingAccountsStore = pendingAccountsStore;
-        this.pendingTerminateStore = pendingTerminateAccountsStore;
+        this.pendingTerminateStore = pendingTerminateStore;
     }
 
     
     
-
-    public PatientStorage getPatientStore() {
-        return patientStore;
-    }
-
-    public void setPatientStore(PatientStorage patientStore) {
-        this.patientStore = patientStore;
-    }
-
-    public DoctorStorage getDoctorStore() {
-        return doctorStore;
-    }
-
-    public void setDoctorStore(DoctorStorage doctorStore) {
-        this.doctorStore = doctorStore;
-    }
-
-    public AdministratorStorage getAdminStore() {
-        return adminStore;
-    }
-
-    public void setAdminStore(AdministratorStorage adminStore) {
-        this.adminStore = adminStore;
-    }
-
-    public SecretaryStorage getSecretaryStore() {
-        return secretaryStore;
-    }
-
-    public void setSecretaryStore(SecretaryStorage secretaryStore) {
-        this.secretaryStore = secretaryStore;
-    }
-
-    public PrescriptionStorage getPrescriptionStore() {
-        return prescriptionStore;
-    }
-
-    public void setPrescriptionStore(PrescriptionStorage prescriptionStore) {
-        this.prescriptionStore = prescriptionStore;
-    }
-
-    public DoctorFeedbackStorage getDoctorFeedbackStore() {
-        return doctorFeedbackStore;
-    }
-
-    public void setDoctorFeedbackStore(DoctorFeedbackStorage doctorFeedbackStore) {
-        this.doctorFeedbackStore = doctorFeedbackStore;
-    }
-
-    public AppointmentStorage getAppointmentStore() {
-        return appointmentStore;
-    }
-
-    public void setAppointmentStore(AppointmentStorage appointmentStore) {
-        this.appointmentStore = appointmentStore;
-    }
-
-    public PendingAppointments getPendingAppointmentsStore() {
-        return pendingAppointmentsStore;
-    }
-
-    public void setPendingAppointmentsStore(PendingAppointments pendingAppointmentsStore) {
-        this.pendingAppointmentsStore = pendingAppointmentsStore;
-    }
-
-    public PendingPatientAccounts getPendingAccountsStore() {
-        return pendingAccountsStore;
-    }
-
-    public void setPendingAccountsStore(PendingPatientAccounts pendingAccountsStore) {
-        this.pendingAccountsStore = pendingAccountsStore;
-    }
     
+
+  
     
 }

@@ -16,6 +16,7 @@ import patientmodels.PatientStorage;
 import patientmodels.PendingPatientAccounts;
 import patientmodels.PendingTerminatePatientAccounts;
 import prescriptionmodels.Medicine;
+import prescriptionmodels.MedicineStore;
 import prescriptionmodels.Prescription;
 import prescriptionmodels.PrescriptionStorage;
 import secretarymodels.Secretary;
@@ -69,9 +70,12 @@ public class PatientManagmentSystem {
         PrescriptionStorage prescriptionStore = new PrescriptionStorage();
         LocalDateTime now = LocalDateTime.now();
         Medicine med = new Medicine("paracemtol", 20 , "2 a day");
-        Prescription pre = new Prescription("person123","John","",now);
-        pre.addMedicine(med);
+        Prescription pre = new Prescription( 0 ,"person123","John","",now,med);
+//        pre.addMedicine(med);
         prescriptionStore.addPrescription(pre);
+        
+        MedicineStore medicineStore = new MedicineStore();
+        medicineStore.addMedicine(med);
         
         DoctorFeedbackStorage doctorFeedbackStore = new DoctorFeedbackStorage();
         DoctorFeedback feedback1 = new DoctorFeedback("John",4,"good doctor but is very busy",1);
@@ -109,8 +113,8 @@ public class PatientManagmentSystem {
         
         
         Models modelStore = new Models(patientStore, doctorStore , adminStore 
-                ,secretaryStore, prescriptionStore, doctorFeedbackStore,doctorPendingFeedbackStore,appointmentStore 
-                ,pendingAppointmentsStore, pendingTerminateAccountsStore, pendingAccountsStore);
+                ,secretaryStore,medicineStore ,prescriptionStore, doctorFeedbackStore,doctorPendingFeedbackStore,appointmentStore 
+                ,pendingAppointmentsStore, pendingAccountsStore,pendingTerminateAccountsStore);
         
         UserRoleChoiceController theController = new UserRoleChoiceController(modelStore);
         

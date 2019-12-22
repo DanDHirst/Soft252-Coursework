@@ -142,11 +142,11 @@ public class PatientUIController {
                              + "Prescription Date: " + PrescriptionDay
                              + "\nDoctor ID: " + pr.getDoctor() + "\n"+
                              "Reason: " + pr.getNotes());
-                     for (Medicine meds : pr.getMedicines()) {
-                         PatientView.addTxtInfo("\nMedicine name: " + meds.getName() +
-                                 "\nMedicine dosage: " + meds.getDosage() +
-                                 "\nMedicine Quantity: " + meds.getQuantity());
-                     }
+                     
+                         PatientView.addTxtInfo("\nMedicine name: " + pr.getMedicine().getName() +
+                                 "\nMedicine dosage: " + pr.getMedicine().getDosage() +
+                                 "\nMedicine Quantity: " + pr.getMedicine().getQuantity());
+                     
                  }
                  
              }

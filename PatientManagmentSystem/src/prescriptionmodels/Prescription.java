@@ -15,11 +15,13 @@ import java.util.ArrayList;
  * @author dhirst1
  */
 public class Prescription {
+    private int prescriptionID;
     private String patientID;
     private String doctorID;
     private String notes;
     private LocalDateTime datePrescriped; 
-    ArrayList<Medicine> medicines = new ArrayList<>();
+    Medicine medicine;
+    private boolean Completed = false;
 
     public Prescription(String patient, String doctor, String notes) {
         this.patientID = patient;
@@ -27,12 +29,17 @@ public class Prescription {
         this.notes = notes;
     }
 
-    public Prescription(String patientID, String doctorID, String notes, LocalDateTime datePrescriped) {
+
+
+    public Prescription(int prescriptionID, String patientID, String doctorID, String notes, LocalDateTime datePrescriped, Medicine medicine) {
+        this.prescriptionID = prescriptionID;
         this.patientID = patientID;
         this.doctorID = doctorID;
         this.notes = notes;
         this.datePrescriped = datePrescriped;
+        this.medicine = medicine;
     }
+    
 
     public LocalDateTime getDatePrescriped() {
         return datePrescriped;
@@ -67,12 +74,32 @@ public class Prescription {
         this.notes = notes;
     }
 
-    public ArrayList<Medicine> getMedicines() {
-        return medicines;
+    public Medicine getMedicine() {
+        return medicine;
     }
-    public void addMedicine(Medicine medicine){
-        this.medicines.add(medicine);
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
+    
+    public void completePrescription(){
+        this.Completed = true;
+    }
+
+    public int getPrescriptionID() {
+        return prescriptionID;
+    }
+
+    public void setPrescriptionID(int prescriptionID) {
+        this.prescriptionID = prescriptionID;
+    }
+
+    public boolean isCompleted() {
+        return Completed;
+    }
+        
+
+    
     
     
 }

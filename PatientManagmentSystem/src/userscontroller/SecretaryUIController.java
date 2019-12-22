@@ -5,17 +5,18 @@
  */
 package userscontroller;
 
-import UsersUI.AdminUI;
 import UsersUI.SecretaryUI;
 import appointmentmodels.Appointment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelStore.Models;
 import patientmodels.Patient;
+import prescriptionmodels.Prescription;
 import usermodels.User;
 
 /**
@@ -45,7 +46,10 @@ public class SecretaryUIController {
         this.SecretaryView.listPatientListener(new SecretaryUIController.showUsernamePatient());
         this.SecretaryView.listTermiatePatientListener(new SecretaryUIController.showUsernameTerminatePatient());
         this.SecretaryView.listPendingAppointmentsonClick(new SecretaryUIController.ShowPendingAppointment());
-        this.SecretaryView.btnCreateAppointmentListener(new SecretaryUIController.CreateAppointment() );
+        this.SecretaryView.btnCreateAppointmentListener(new SecretaryUIController.CreateAppointment());
+        this.SecretaryView.listMedicinePatientonClick(new SecretaryUIController.ShowPatientPrescription());
+        this.SecretaryView.listPrescriptionPatientonClick(new SecretaryUIController.ShowPatientPrescriptionInfo());
+        this.SecretaryView.btnGiveMed(new SecretaryUIController.GiveMedicine());
     }
 
     private void setUpUsers() {
@@ -72,6 +76,7 @@ public class SecretaryUIController {
            
         }
         SecretaryView.setListPatients(pList);
+        SecretaryView.setListMedicinePatient(pList);
     }
     private void setUpPatientsTerminate(){
         int pLength = modelStore.pendingTerminateStore.getUsers().size();
@@ -314,9 +319,64 @@ public class SecretaryUIController {
                 }
             }
         }
+       
         
     }
     
+    class ShowPatientPrescription implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            String username = SecretaryView.getListMedicinePatient();
+            // loop though all prescriptions
+            int pLength = modelStore.prescriptionStore.getPrescriptions().size();
+            String[] PList = new String[pLength];
+            for (int i = 0; i < pLength; i++) {
+                if (modelStore.prescriptionStore.getPrescriptions().get(i).getPatient().equals(username) 
+                        && modelStore.prescriptionStore.getPrescriptions().get(i).isCompleted() == false) {
+                    PList[i] = Integer.toString(modelStore.prescriptionStore.getPrescriptions().get(i).getPrescriptionID());
+                }
+
+            }
+            SecretaryView.setListPrescriptionPatient(PList);
+            
+        }
+        
+    }
+    class ShowPatientPrescriptionInfo implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            String username = SecretaryView.getListMedicinePatient();
+            int prescriptionID = Integer.parseInt(SecretaryView.getListPrescriptionPatient());
+            //loop though the prescriptions finding if user and pre id is the same
+            for(Prescription pre : modelStore.prescriptionStore.getPrescriptions()){
+                if (pre.getPatient().equals(username) && pre.getPrescriptionID() == prescriptionID) {
+                    SecretaryView.setTxtPrescriptionID(Integer.toString(pre.getPrescriptionID()));
+                    SecretaryView.setTxtPreDate(pre.getDatePrescriped().format(DateTimeFormatter.ISO_DATE));
+                    SecretaryView.setTxtPreDoctorID(pre.getDoctor());
+                    SecretaryView.setTxtPreMedDosage(pre.getMedicine().getDosage());
+                    SecretaryView.setTxtPreMedName(pre.getMedicine().getName());
+                    SecretaryView.setTxtPreMedQty(Integer.toString(pre.getMedicine().getQuantity()));
+                    SecretaryView.setTxtPreNotes(pre.getNotes());
+                    SecretaryView.setTxtPrePatientID(pre.getPatient());
+                }
+            }
+            
+            
+        }
+        
+    }
+    class GiveMedicine implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("give medicine");
+            //check if medicine is in stock
+            
+        }
+        
+    }
     
     
 }
