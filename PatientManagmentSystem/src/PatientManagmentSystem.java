@@ -74,8 +74,9 @@ public class PatientManagmentSystem {
 //        pre.addMedicine(med);
         prescriptionStore.addPrescription(pre);
         
+        Medicine med1 = new Medicine("paracemtol", 19 , "2 a day");
         MedicineStore medicineStore = new MedicineStore();
-        medicineStore.addMedicine(med);
+        medicineStore.addMedicine(med1);
         
         DoctorFeedbackStorage doctorFeedbackStore = new DoctorFeedbackStorage();
         DoctorFeedback feedback1 = new DoctorFeedback("John",4,"good doctor but is very busy",1);

@@ -16,6 +16,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelStore.Models;
 import patientmodels.Patient;
+import prescriptionmodels.Medicine;
 import prescriptionmodels.Prescription;
 import usermodels.User;
 
@@ -117,7 +118,16 @@ public class SecretaryUIController {
         SecretaryView.setTxtRequestDoctor("");
         SecretaryView.setTxtPatientApp("");
     }
-    
+    private void clearPrescriptionInfo(){
+        SecretaryView.setTxtPrescriptionID("");
+        SecretaryView.setTxtPreDate("");
+        SecretaryView.setTxtPreDoctorID("");
+        SecretaryView.setTxtPreMedDosage("");
+        SecretaryView.setTxtPreMedName("");
+        SecretaryView.setTxtPreMedQty("");
+        SecretaryView.setTxtPreNotes("");
+        SecretaryView.setTxtPrePatientID("");
+    }
     class ShowPendingPatient implements ListSelectionListener{
 
         @Override
@@ -348,20 +358,23 @@ public class SecretaryUIController {
         @Override
         public void valueChanged(ListSelectionEvent e) {
             String username = SecretaryView.getListMedicinePatient();
-            int prescriptionID = Integer.parseInt(SecretaryView.getListPrescriptionPatient());
+            if (SecretaryView.getListPrescriptionPatient() != null) {
+                int prescriptionID = Integer.parseInt(SecretaryView.getListPrescriptionPatient());
             //loop though the prescriptions finding if user and pre id is the same
-            for(Prescription pre : modelStore.prescriptionStore.getPrescriptions()){
-                if (pre.getPatient().equals(username) && pre.getPrescriptionID() == prescriptionID) {
-                    SecretaryView.setTxtPrescriptionID(Integer.toString(pre.getPrescriptionID()));
-                    SecretaryView.setTxtPreDate(pre.getDatePrescriped().format(DateTimeFormatter.ISO_DATE));
-                    SecretaryView.setTxtPreDoctorID(pre.getDoctor());
-                    SecretaryView.setTxtPreMedDosage(pre.getMedicine().getDosage());
-                    SecretaryView.setTxtPreMedName(pre.getMedicine().getName());
-                    SecretaryView.setTxtPreMedQty(Integer.toString(pre.getMedicine().getQuantity()));
-                    SecretaryView.setTxtPreNotes(pre.getNotes());
-                    SecretaryView.setTxtPrePatientID(pre.getPatient());
+                for(Prescription pre : modelStore.prescriptionStore.getPrescriptions()){
+                    if (pre.getPatient().equals(username) && pre.getPrescriptionID() == prescriptionID) {
+                        SecretaryView.setTxtPrescriptionID(Integer.toString(pre.getPrescriptionID()));
+                        SecretaryView.setTxtPreDate(pre.getDatePrescriped().format(DateTimeFormatter.ISO_DATE));
+                        SecretaryView.setTxtPreDoctorID(pre.getDoctor());
+                        SecretaryView.setTxtPreMedDosage(pre.getMedicine().getDosage());
+                        SecretaryView.setTxtPreMedName(pre.getMedicine().getName());
+                        SecretaryView.setTxtPreMedQty(Integer.toString(pre.getMedicine().getQuantity()));
+                        SecretaryView.setTxtPreNotes(pre.getNotes());
+                        SecretaryView.setTxtPrePatientID(pre.getPatient());
+                    }
                 }
             }
+            
             
             
         }
@@ -371,8 +384,41 @@ public class SecretaryUIController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("give medicine");
+            int prescID = Integer.parseInt(SecretaryView.getTxtPrescriptionID());
+            String patientID = SecretaryView.getTxtPrePatientID();
+            String doctorID = SecretaryView.getTxtPreDoctorID();
+            String medicine = SecretaryView.getTxtPreMedName();
+            int medQty = Integer.parseInt(SecretaryView.getTxtPreMedQty());
+            String medDose = SecretaryView.getTxtPreMedDosage();
+            
             //check if medicine is in stock
+            for (Medicine med : modelStore.medicineStore.getMedicine()) {
+                if (med.getName().equals(medicine)) {
+                    if (med.getQuantity() >= medQty) {
+                        med.setQuantity(med.getQuantity() - medQty);
+                        SecretaryView.setTxtPreResponse("Prescription validated");
+                        for (Prescription pre : modelStore.prescriptionStore.getPrescriptions())
+                        {
+                            if(pre.getPrescriptionID() == prescID ){
+                                pre.completePrescription();
+                            }
+                            
+                        }
+                        SecretaryView.deselectPresscriptionID();
+                        SecretaryView.deselectPrePatient();
+                        clearPrescriptionInfo();
+                        setUpPatients();
+                        
+                    }
+                    else{
+                        SecretaryView.setTxtPreResponse("Medicine not enough stock");
+                    }
+                }
+                else{
+                    SecretaryView.setTxtPreResponse("Medicine not in medicine store");
+                }
+                
+            }
             
         }
         

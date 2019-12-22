@@ -1289,6 +1289,12 @@ public class SecretaryUI extends javax.swing.JFrame {
     public void setTxtPrescriptionID(String txtPrescriptionID) {
         this.txtPrescriptionID.setText(txtPrescriptionID);
     }
+    public void deselectPresscriptionID(){
+        this.listPatientPrescription.clearSelection();
+    }
+    public void deselectPrePatient(){
+        this.listPatientMedicine.clearSelection();
+    }
     
     
     
