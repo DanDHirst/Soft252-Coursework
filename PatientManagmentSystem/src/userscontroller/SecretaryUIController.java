@@ -7,8 +7,11 @@ package userscontroller;
 
 import UsersUI.AdminUI;
 import UsersUI.SecretaryUI;
+import appointmentmodels.Appointment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.util.Date;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelStore.Models;
@@ -30,6 +33,8 @@ public class SecretaryUIController {
         SecretaryView.setTxtSecretaryID(UserID);
         setUpOnClicks();
         setUpUsers();
+        setUpPendingAppointments();
+        setUpDoctorAppointment();
         
         
     }
@@ -39,6 +44,8 @@ public class SecretaryUIController {
         this.SecretaryView.btnRemovePatient(new SecretaryUIController.RemovePatient());
         this.SecretaryView.listPatientListener(new SecretaryUIController.showUsernamePatient());
         this.SecretaryView.listTermiatePatientListener(new SecretaryUIController.showUsernameTerminatePatient());
+        this.SecretaryView.listPendingAppointmentsonClick(new SecretaryUIController.ShowPendingAppointment());
+        this.SecretaryView.btnCreateAppointmentListener(new SecretaryUIController.CreateAppointment() );
     }
 
     private void setUpUsers() {
@@ -75,6 +82,20 @@ public class SecretaryUIController {
         }
         SecretaryView.setListPatientTerminate(tPList);
     }
+    private void setUpPendingAppointments(){
+        int aLength = modelStore.pendingAppointmentsStore.getAppointments().size();
+        String[] appList = new String[aLength];
+        for (int i = 0; i < aLength; i++) {
+            appList[i] = Integer.toString(modelStore.pendingAppointmentsStore.getAppointments().get(i).getAppointmentID());
+           
+        }
+        SecretaryView.setListPendingAppointments(appList);
+    }
+    private void setUpDoctorAppointment(){
+        for (User dr : modelStore.doctorStore.getUsers()) {
+             SecretaryView.addBoxDoctor(dr.getUsername());
+        }
+    }
     private void clearPendingPatientFields(){
         SecretaryView.setTxtApproveUsername("");
         SecretaryView.setTxtApproveFirstname("");
@@ -83,6 +104,13 @@ public class SecretaryUIController {
         SecretaryView.setTxtApproveAddress("");
         SecretaryView.setTxtApproveGender("");
         SecretaryView.setTxtApproveAge("");
+    }
+    private void clearAppointmentInfo(){
+        SecretaryView.setTxtAppointmentID("");
+        SecretaryView.setTxtUserStart("");
+        SecretaryView.setTxtUserEnd("");
+        SecretaryView.setTxtRequestDoctor("");
+        SecretaryView.setTxtPatientApp("");
     }
     
     class ShowPendingPatient implements ListSelectionListener{
@@ -185,6 +213,104 @@ public class SecretaryUIController {
                     
                     SecretaryView.setTxtRemoveUsername(patientID);
                     SecretaryView.deselectPatientList();
+                }
+            }
+        }
+        
+    }
+    class ShowPendingAppointment implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            if(SecretaryView.getListPendingAppointments() != null){
+                
+                int appointmentID = Integer.parseInt(SecretaryView.getListPendingAppointments());
+                //loop thorugh all of the pending appointmenst for the info needed
+                for(Appointment ap : modelStore.pendingAppointmentsStore.getAppointments()){
+                    if (appointmentID == ap.getAppointmentID()) {
+                        SecretaryView.setTxtAppointmentID(Integer.toString(ap.getAppointmentID()));
+                        SecretaryView.setTxtUserStart(ap.getStartTime().toString());
+                        SecretaryView.setTxtUserEnd(ap.getEndTime().toString());
+                        SecretaryView.setTxtRequestDoctor(ap.getDoctorID());
+                        SecretaryView.setTxtPatientApp(ap.getPatientID());
+                    }
+                }
+            }
+            
+            
+        }
+        
+    }
+    class CreateAppointment implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           Date start = SecretaryView.getDateStart(); 
+            String startDate = Integer.toString(start.getYear()+1900)+ "-" 
+                    + checkDateMonth(start) + "-" 
+                    + checkDateDay(start) + "T" + SecretaryView.getBoxStartHour()
+                    + ":" + SecretaryView.getTxtMinStart() + ":" + "00";
+            Date end = SecretaryView.getDateStart();
+            String endDate = Integer.toString(end.getYear()+1900)+ "-" 
+                    + checkDateMonth(end) + "-" 
+                    + checkDateDay(end) + "T" + SecretaryView.getBoxEndHour()
+                    + ":" + SecretaryView.getTxtMinEnd() + ":" + "00";
+            
+            
+            LocalDateTime datetimeStart = LocalDateTime.parse(startDate);
+            LocalDateTime dateTimeEnd = LocalDateTime.parse(endDate);
+            String doctor = SecretaryView.getBoxDoctor();
+            String patientID = SecretaryView.getTxtPatientApp();
+            Appointment ap = new Appointment(modelStore.appointmentStore.getAppointments().size(),datetimeStart, dateTimeEnd, doctor, patientID);
+            boolean isInList = false;
+            for (Appointment tempAp : modelStore.appointmentStore.getAppointments()) {
+                if (tempAp.getDoctorID().equals(doctor)){
+                    if ((datetimeStart.isBefore(tempAp.getStartTime()) || datetimeStart.isAfter(tempAp.getEndTime())) 
+                            && (dateTimeEnd.isBefore(tempAp.getStartTime())|| dateTimeEnd.isAfter(tempAp.getEndTime()))) {  
+                    }
+                    else{
+                       isInList = true;
+                    }
+                }
+            }
+            if (isInList) {
+                SecretaryView.setTxtAppResponse("The doctor is busy at those times");
+            }
+            else{
+                modelStore.appointmentStore.addAppointment(ap);
+                SecretaryView.setTxtAppResponse("Appointment made");
+                removePendingAppointment(Integer.parseInt(SecretaryView.getTxtAppointmentID()));
+                SecretaryView.deselectPendingAppointment();
+                setUpPendingAppointments();
+                clearAppointmentInfo();
+                
+            }
+            
+            
+        }
+        public String checkDateDay(Date aDate){ // prevents from crashing if date is less than 10
+            if (aDate.getDate() < 10) {
+                String newDate = "0" + Integer.toString(aDate.getDate());
+                
+                return newDate;
+            }
+            return Integer.toString(aDate.getDate());
+                      
+        }
+        public String checkDateMonth(Date aDate){ // prevents from crashing if month is less than 10
+            if (aDate.getMonth() < 10) {
+                String newDate = "0" + Integer.toString(aDate.getMonth());
+                
+                return newDate;
+            }
+            return Integer.toString(aDate.getMonth());
+                      
+        }
+        public void removePendingAppointment(int appointment){
+            for(Appointment app : modelStore.pendingAppointmentsStore.getAppointments()){
+                if (app.getAppointmentID() == appointment) {
+                    modelStore.pendingAppointmentsStore.removeAppointment(app);
+                    break;
                 }
             }
         }

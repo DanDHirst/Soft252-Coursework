@@ -184,7 +184,6 @@ public class PatientUIController {
             
             DoctorFeedback drFeedback = new DoctorFeedback(doctor,rating,feedback,ratingID);
             modelStore.doctorPendingFeedbackStore.addDoctorFeedback(drFeedback);
-            
             PatientView.setTxtFeedback("");
 //            System.out.println(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(0).getFeedbackNotes());
         }
@@ -213,9 +212,8 @@ public class PatientUIController {
             String doctor = PatientView.getBoxDoctorAppointment();
             String patientID = PatientView.getPatientID();
             
-            Appointment ap = new Appointment(datetimeStart, dateTimeEnd, doctor, patientID);
+            Appointment ap = new Appointment(modelStore.pendingAppointmentsStore.getAppointments().size(),datetimeStart, dateTimeEnd, doctor, patientID);
             modelStore.pendingAppointmentsStore.addAppointment(ap);
-            System.out.println(modelStore.pendingAppointmentsStore.getAppointments().get(0).getStartTime());
             
         }
         public String checkDateDay(Date aDate){ // prevents from crashing if date is less than 10

@@ -87,10 +87,17 @@ public class PatientManagmentSystem {
         
         
         AppointmentStorage appointmentStore = new AppointmentStorage();
-        Appointment app = new Appointment(now,now.plusMinutes(20),"John","person123");
+        Appointment app = new Appointment(0,now,now.plusMinutes(20),"John","person123");
+        Appointment app4 = new Appointment(1,now,now.minusHours(11),"John","person123");
         appointmentStore.addAppointment(app);
+        appointmentStore.addAppointment(app4);
         
         PendingAppointments pendingAppointmentsStore = new PendingAppointments();
+        Appointment app1 = new Appointment(0,now,now.plusMinutes(20),"John","person123");
+        Appointment app2 = new Appointment(1,now,now.plusMinutes(20).plusDays(5),"sam","person123");
+        pendingAppointmentsStore.addAppointment(app1);
+        pendingAppointmentsStore.addAppointment(app2);
+        
         PendingPatientAccounts pendingAccountsStore = new PendingPatientAccounts();
         Patient patient4  = new Patient(22,"male","steve", "password", "firstname", "surname","25 a place");
         Patient patient5  = new Patient(22,"male","John", "password", "firstname", "surname","25 a place");
