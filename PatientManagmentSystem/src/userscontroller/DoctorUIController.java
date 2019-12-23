@@ -9,10 +9,13 @@ import UsersUI.DoctorUI;
 import appointmentmodels.Appointment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelStore.Models;
+import prescriptionmodels.Medicine;
+import prescriptionmodels.Prescription;
 
 /**
  *
@@ -37,6 +40,8 @@ public class DoctorUIController {
         this.DoctorView.btnCompleteAppointment(new DoctorUIController.CompleteAppointment());
         this.DoctorView.listHistoryPatientOnChange(new DoctorUIController.showHistoryAppointments());
         this.DoctorView.listHistoryAppointmentsOnChange(new DoctorUIController.showHistoryAppointmentInfo());
+        this.DoctorView.listPatientPrescribeOnChange(new DoctorUIController.SelectPatientPrescibe());
+        this.DoctorView.btnPrescribeMedicine(new DoctorUIController.savePrescription());
     }
     private void setUpAppointment(){
         int appointLength = modelStore.appointmentStore.getAppointments().size();
@@ -58,6 +63,7 @@ public class DoctorUIController {
            
         }
         DoctorView.setListHistoryPatient(pList);
+        DoctorView.setListPatientPrescribe(pList);
     }
     private void clearAppointmentInfo(){
         DoctorView.setTxtAppointmentID("");
@@ -66,6 +72,12 @@ public class DoctorUIController {
         DoctorView.setTxtAppointmentPatient("");
         DoctorView.setTxtAppointmentReason("");
         DoctorView.setTxtAppointmentNotes("");
+    }
+    private void clearPrescriptionInfo(){
+        DoctorView.setTxtPrescribeMedDose("");
+        DoctorView.setTxtPrescribeMedName("");
+        DoctorView.setTxtPrescribeMedQty("");
+        DoctorView.setTxtPrescribeNotes("");
     }
     
     class ShowAppointment implements ListSelectionListener{
@@ -151,4 +163,37 @@ public class DoctorUIController {
         }
         
     }
+    class SelectPatientPrescibe implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            String patientID = DoctorView.getListPatientPrescribe();
+            DoctorView.setTxtPrescribePatient(patientID);
+            
+        }
+        
+        
+    }
+    class savePrescription implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String patientID = DoctorView.getTxtPrescribePatient();
+            String doctorID = DoctorView.getTxtDoctorID();
+            String medName = DoctorView.getTxtPrescribeMedName();
+            String medQty = DoctorView.getTxtPrescribeMedQty();
+            String medDose = DoctorView.getTxtPrescribeMedDose();
+            String notes = DoctorView.getTxtPrescribeNotes();
+            LocalDateTime now = LocalDateTime.now();
+            int prescriptionID = modelStore.prescriptionStore.getPrescriptions().size();
+            Medicine med = new Medicine(medName, Integer.parseInt(medQty),medDose );
+            
+            Prescription newPresc = new Prescription(prescriptionID, patientID, doctorID, notes,
+            now,med);
+            modelStore.prescriptionStore.addPrescription(newPresc);
+            clearPrescriptionInfo();
+        }
+        
+    }
+            
 }
