@@ -37,6 +37,7 @@ public class SecretaryUIController {
         setUpUsers();
         setUpPendingAppointments();
         setUpDoctorAppointment();
+        setUpMedStock();
         
         
     }
@@ -51,6 +52,8 @@ public class SecretaryUIController {
         this.SecretaryView.listMedicinePatientonClick(new SecretaryUIController.ShowPatientPrescription());
         this.SecretaryView.listPrescriptionPatientonClick(new SecretaryUIController.ShowPatientPrescriptionInfo());
         this.SecretaryView.btnGiveMed(new SecretaryUIController.GiveMedicine());
+        this.SecretaryView.btnAddMedicine(new SecretaryUIController.AddMedicine());
+        this.SecretaryView.ListMedicineStock(new SecretaryUIController.ViewMedicine());
     }
 
     private void setUpUsers() {
@@ -101,6 +104,15 @@ public class SecretaryUIController {
         for (User dr : modelStore.doctorStore.getUsers()) {
              SecretaryView.addBoxDoctor(dr.getUsername());
         }
+    }
+    private void setUpMedStock(){
+        int medLength = modelStore.medicineStore.getMedicine().size();
+        String[] medList = new String[medLength];
+        for (int i = 0; i < medLength; i++) {
+            medList[i] = (modelStore.medicineStore.getMedicine().get(i).getName());
+           
+        }
+        SecretaryView.setListMedicineStock(medList);
     }
     private void clearPendingPatientFields(){
         SecretaryView.setTxtApproveUsername("");
@@ -420,6 +432,47 @@ public class SecretaryUIController {
                 
             }
             
+        }
+        
+    }
+    class AddMedicine implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String medicine = SecretaryView.getTxtOrderMed();
+            int quantity = Integer.parseInt(SecretaryView.getTxtOrderMedQty());
+            
+            Boolean isInList = false;
+            for (Medicine med : modelStore.medicineStore.getMedicine()) {
+                if (med.getName().equals(medicine)) {
+                    isInList = true;
+                    med.setQuantity(med.getQuantity() + quantity);
+                }
+            }
+            if (isInList == false) {
+                Medicine newMed = new Medicine(medicine,quantity);
+                modelStore.medicineStore.addMedicine(newMed);
+                SecretaryView.setTxtOrderResponse("Medicine has been added ");
+            }
+            else{
+                SecretaryView.setTxtOrderResponse("Medicine Quantity has been added");
+            }
+            setUpMedStock();
+        }
+        
+    }
+    class ViewMedicine implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            String medName = SecretaryView.getListMedicineStock();
+            
+            for (Medicine med : modelStore.medicineStore.getMedicine()) {
+                if (med.getName().equals(medName)) {
+                    SecretaryView.setTxtOrderMed(medName);
+                    SecretaryView.setTxtOrderMedQty(Integer.toString(med.getQuantity()));
+                }
+            }
         }
         
     }

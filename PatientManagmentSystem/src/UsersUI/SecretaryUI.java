@@ -107,8 +107,6 @@ public class SecretaryUI extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listPatientPrescription = new javax.swing.JList<>();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        listPatientMedicine = new javax.swing.JList<>();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         txtPrescriptionID = new javax.swing.JTextField();
@@ -131,6 +129,18 @@ public class SecretaryUI extends javax.swing.JFrame {
         btnGiveMedicine = new javax.swing.JButton();
         txtPreResponse = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        listPatientMedicine = new javax.swing.JList<>();
+        jPanel7 = new javax.swing.JPanel();
+        txtOrderMed = new javax.swing.JTextField();
+        txtOrderMedQty = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        btnAddMedicine = new javax.swing.JButton();
+        jLabel41 = new javax.swing.JLabel();
+        txtOrderResponse = new javax.swing.JTextField();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        listMedicineStock = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -625,13 +635,6 @@ public class SecretaryUI extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(listPatientPrescription);
 
-        listPatientMedicine.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane7.setViewportView(listPatientMedicine);
-
         jLabel28.setText("Click to view user");
 
         jLabel29.setText("Click to view prescription");
@@ -667,6 +670,13 @@ public class SecretaryUI extends javax.swing.JFrame {
         });
 
         jLabel38.setText("Response");
+
+        listPatientMedicine.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane9.setViewportView(listPatientMedicine);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -741,9 +751,9 @@ public class SecretaryUI extends javax.swing.JFrame {
                 .addGap(37, 37, 37))
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(310, Short.MAX_VALUE)))
+                    .addGap(30, 30, 30)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(345, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -799,9 +809,88 @@ public class SecretaryUI extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(249, Short.MAX_VALUE)))
+                    .addGap(31, 31, 31)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(239, Short.MAX_VALUE)))
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Add Medicine stock"));
+
+        jLabel39.setText("Medicine name");
+
+        jLabel40.setText("Medicine quantity");
+
+        btnAddMedicine.setText("Add medicine");
+
+        jLabel41.setText("Response");
+
+        txtOrderResponse.setEditable(false);
+        txtOrderResponse.setForeground(new java.awt.Color(255, 0, 0));
+        txtOrderResponse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrderResponseActionPerformed(evt);
+            }
+        });
+
+        listMedicineStock.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane7.setViewportView(listMedicineStock);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabel41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtOrderResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel39)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtOrderMed, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel40)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtOrderMedQty, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnAddMedicine)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtOrderResponse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtOrderMed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel39))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtOrderMedQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40))
+                        .addGap(50, 50, 50)
+                        .addComponent(btnAddMedicine))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -810,7 +899,9 @@ public class SecretaryUI extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -818,7 +909,9 @@ public class SecretaryUI extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -826,14 +919,14 @@ public class SecretaryUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -921,6 +1014,10 @@ public class SecretaryUI extends javax.swing.JFrame {
     private void txtPreResponseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPreResponseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPreResponseActionPerformed
+
+    private void txtOrderResponseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderResponseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrderResponseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1296,14 +1393,48 @@ public class SecretaryUI extends javax.swing.JFrame {
         this.listPatientMedicine.clearSelection();
     }
     
-    
-    
-    
-    
-    
+    public void btnAddMedicine(ActionListener listener){
+        this.btnAddMedicine.addActionListener(listener);
+    }
 
+    public String getTxtOrderMed() {
+        return txtOrderMed.getText();
+    }
+
+    public void setTxtOrderMed(String txtOrderMed) {
+        this.txtOrderMed.setText(txtOrderMed);
+    }
+
+    public String getTxtOrderMedQty() {
+        return txtOrderMedQty.getText();
+    }
+
+    public void setTxtOrderMedQty(String txtOrderMedQty) {
+        this.txtOrderMedQty.setText(txtOrderMedQty);
+    }
+
+    public String getTxtOrderResponse() {
+        return txtOrderResponse.getText();
+    }
+
+    public void setTxtOrderResponse(String txtOrderResponse) {
+        this.txtOrderResponse.setText(txtOrderResponse);
+    }
     
+    public String getListMedicineStock() {
+        return this.listMedicineStock.getSelectedValue();
+    }
+
+    public void setListMedicineStock(String[] ListMedicineStock) {
+        this.listMedicineStock.setListData(ListMedicineStock);
+    }
     
+    public void ListMedicineStock(ListSelectionListener listener){
+        this.listMedicineStock.addListSelectionListener(listener);
+    }
+    public void deselectMedStock(){
+        this.listMedicineStock.clearSelection();
+    }
     
     
 
@@ -1311,6 +1442,7 @@ public class SecretaryUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> boxDoctor;
     private javax.swing.JComboBox<String> boxEndHour;
     private javax.swing.JComboBox<String> boxStartHour;
+    private javax.swing.JButton btnAddMedicine;
     private javax.swing.JButton btnApprovePatient;
     private javax.swing.JButton btnCreateAppointment;
     private javax.swing.JButton btnGiveMedicine;
@@ -1348,7 +1480,10 @@ public class SecretaryUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1360,6 +1495,7 @@ public class SecretaryUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1368,8 +1504,10 @@ public class SecretaryUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lbPatientID;
     private javax.swing.JList<String> listApprovePatient;
+    private javax.swing.JList<String> listMedicineStock;
     private javax.swing.JList<String> listPatientMedicine;
     private javax.swing.JList<String> listPatientPrescription;
     private javax.swing.JList<String> listPatientTerminate;
@@ -1386,6 +1524,9 @@ public class SecretaryUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtApproveUsername;
     private javax.swing.JTextField txtMinEnd;
     private javax.swing.JTextField txtMinStart;
+    private javax.swing.JTextField txtOrderMed;
+    private javax.swing.JTextField txtOrderMedQty;
+    private javax.swing.JTextField txtOrderResponse;
     private javax.swing.JTextField txtPatientApp;
     private javax.swing.JTextField txtPreDate;
     private javax.swing.JTextField txtPreDoctorID;

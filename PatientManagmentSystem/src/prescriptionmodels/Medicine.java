@@ -20,6 +20,12 @@ public class Medicine {
         this.dosage = dosage;
     }
 
+    public Medicine(String name, int quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
+    
+
     public String getName() {
         return name;
     }
