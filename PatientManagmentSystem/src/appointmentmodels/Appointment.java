@@ -20,6 +20,8 @@ public class Appointment {
     private String doctorID;
     private String patientID;
     private String reason;
+    private String notes;
+    private boolean completed = false;
 
     
 
@@ -98,6 +100,23 @@ public class Appointment {
     public void setAppointmentID(int AppointmentID) {
         this.AppointmentID = AppointmentID;
     }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+    
     
     
 }

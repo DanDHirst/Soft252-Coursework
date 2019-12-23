@@ -33,7 +33,7 @@ public class AuthDoctorController {
         public void actionPerformed(ActionEvent arg0) {
             String UserID = checkLogin(AuthDoctorView.getUsername(),AuthDoctorView.getPassword());
             if( UserID != null){
-                DoctorUIController AuthController= new DoctorUIController();   
+                DoctorUIController AuthController= new DoctorUIController(modelStore,UserID);   
                 AuthDoctorView.setVisible(false);
             }
             else{
