@@ -29,11 +29,14 @@ public class DoctorUIController {
         DoctorView.setTxtDoctorID(UserID);
         setUpOnClicks();
         setUpAppointment();
+        setUpPatients();
     }
     
     private void setUpOnClicks(){
         this.DoctorView.listAppointmentsOnChange(new DoctorUIController.ShowAppointment());
         this.DoctorView.btnCompleteAppointment(new DoctorUIController.CompleteAppointment());
+        this.DoctorView.listHistoryPatientOnChange(new DoctorUIController.showHistoryAppointments());
+        this.DoctorView.listHistoryAppointmentsOnChange(new DoctorUIController.showHistoryAppointmentInfo());
     }
     private void setUpAppointment(){
         int appointLength = modelStore.appointmentStore.getAppointments().size();
@@ -46,6 +49,15 @@ public class DoctorUIController {
         }
         
         this.DoctorView.setListAppointments(appointments);
+    }
+    private void setUpPatients(){
+        int pLength = modelStore.patientStore.getUsers().size();
+        String[] pList = new String[pLength];
+        for (int i = 0; i < pLength; i++) {
+            pList[i] = modelStore.patientStore.getUsers().get(i).getUsername();
+           
+        }
+        DoctorView.setListHistoryPatient(pList);
     }
     private void clearAppointmentInfo(){
         DoctorView.setTxtAppointmentID("");
@@ -94,6 +106,48 @@ public class DoctorUIController {
             DoctorView.deselectAppointment();
             clearAppointmentInfo();
             setUpAppointment();
+        }
+        
+    }
+    class showHistoryAppointments implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            String patientID = DoctorView.getListHistoryPatient();
+            int pLength = modelStore.appointmentStore.getAppointments().size();
+            String[] pList = new String[pLength];
+            for (int i = 0; i < pLength; i++) {
+                if(modelStore.appointmentStore.getAppointments().get(i).getPatientID().equals(patientID) && modelStore.appointmentStore.getAppointments().get(i).isCompleted()){
+                    pList[i] = Integer.toString(modelStore.appointmentStore.getAppointments().get(i).getAppointmentID());
+                }  
+            }
+            DoctorView.setListHistoryAppointments(pList);
+                    
+        }
+        
+    }
+    class showHistoryAppointmentInfo implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            if (DoctorView.getListHistoryAppointments() != null) {
+                int appID = Integer.parseInt(DoctorView.getListHistoryAppointments());
+            for(Appointment app : modelStore.appointmentStore.getAppointments()){
+                if (app.getAppointmentID() == appID) {
+                    DoctorView.setHistoryTxtAppointmentID(Integer.toString(app.getAppointmentID()));
+                    DoctorView.setHistoryTxtAppointmentDate(app.getStartTime().format(DateTimeFormatter.ISO_DATE));
+                    DoctorView.setTxtHistoryAppointmentTime(app.getStartTime().format(DateTimeFormatter.ISO_LOCAL_TIME)+ " - " + app.getEndTime().format(DateTimeFormatter.ISO_TIME));
+                    DoctorView.setTxtHistoryAppointmentPatient(app.getPatientID());
+                    DoctorView.setTxtHistoryAppointmentReason(app.getReason());
+                    DoctorView.setTxtHistoryAppointmentNotes(app.getNotes());
+                }
+                
+            }
+            }
+            
+            
+            
+                    
         }
         
     }

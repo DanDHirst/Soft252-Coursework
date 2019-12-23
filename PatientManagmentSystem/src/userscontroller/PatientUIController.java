@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.Date;
 import modelStore.Models;
-import prescriptionmodels.Medicine;
 import prescriptionmodels.Prescription;
 import usermodels.User;
 
