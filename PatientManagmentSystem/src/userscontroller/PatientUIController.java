@@ -36,9 +36,11 @@ public class PatientUIController {
         this.PatientView.setBtnPatientViewDoctor(new PatientUIController.PatientViewDoctors());
         this.PatientView.setBtnSaveFeedback(new PatientUIController.PatientSaveFeedback());
         this.PatientView.setBtnSubmitAppointment(new PatientUIController.PatientRequestAppointment());
+        this.PatientView.setBtnPatientHistory(new PatientUIController.PatientHistoryShow());
         setPatientAppointmentBox(UserID);
         setPatientPrescriptionBox(UserID);
         setDoctorBoxes();
+        setPatientHistoryBox(UserID);
        
         
     }
@@ -46,7 +48,7 @@ public class PatientUIController {
         
         
         for (Appointment ap : modelStore.appointmentStore.getAppointments()) {
-             if(ap.getPatientID().equals(UserID)){
+             if(ap.getPatientID().equals(UserID) && ap.isCompleted() == false){
                  PatientView.setBoxAppointment(ap.getStartTime().toString());
              }
         }
@@ -70,20 +72,19 @@ public class PatientUIController {
         }
 
     }
-//    private void setPatientHistoryBox(String UserID){
-//        // search for patient 
-//        
-//        
-//        for (Appointment ap : modelStore.appointmentStore.getAppointments()) {
-//            System.out.println(ap.getPatientID());
-//             if(ap.getPatientID().equals(UserID)){
-//                 PatientView.setBoxAppointment(ap.getStartTime().toString());
-//             }
-//        }
-//        //loop through appointment
-//        
-//        //set appointment
-//    }
+    private void setPatientHistoryBox(String UserID){
+        // search for patient 
+        
+        
+        for (Appointment ap : modelStore.appointmentStore.getAppointments()) {
+             if(ap.getPatientID().equals(UserID) && ap.isCompleted()){
+                 PatientView.setBoxHistory(ap.getStartTime().toString());
+             }
+        }
+        //loop through appointment
+        
+        //set appointment
+    }
     class PatientTerminateListener implements ActionListener{
 
         @Override
@@ -233,6 +234,30 @@ public class PatientUIController {
             }
             return Integer.toString(aDate.getMonth());
                       
+        }
+        
+    }
+    class PatientHistoryShow implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String AppointmentDate =  PatientView.getBoxAppointment();
+           for (Appointment ap : modelStore.appointmentStore.getAppointments()) {
+             if(ap.getPatientID().equals(PatientView.getPatientID())){
+                 if (ap.getStartTime().toString().equals(AppointmentDate)) {
+                     String AppointmentStartTime = Integer.toString(ap.getStartTime().getHour()) + ":"+Integer.toString(ap.getStartTime().getMinute());
+                     String day = Integer.toString(ap.getStartTime().getDayOfMonth());
+                     String month = Integer.toString(ap.getStartTime().getMonthValue());
+                     String year = Integer.toString(ap.getStartTime().getYear());
+                     String AppointmentDay = day + "/" + month + "/" + year;
+                     PatientView.setTxtInfo("Appointment start time: " + AppointmentStartTime + "\n"
+                             + "Appointment Date: " + AppointmentDay
+                             + "\nDoctor ID: " + ap.getDoctorID() + "\n"+
+                             "Reason: " + ap.getReason());
+                 }
+                 
+             }
+        }
         }
         
     }

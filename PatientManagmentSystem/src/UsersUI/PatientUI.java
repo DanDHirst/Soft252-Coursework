@@ -414,6 +414,9 @@ public class PatientUI extends javax.swing.JFrame {
     public void setBtnSubmitAppointment(ActionListener listener){
         this.btnSubmitDate.addActionListener(listener);
     }
+    public void setBtnPatientHistory(ActionListener listener){
+        this.btnHistory.addActionListener(listener);
+    }
     
 
     public String getBoxDoctor() {

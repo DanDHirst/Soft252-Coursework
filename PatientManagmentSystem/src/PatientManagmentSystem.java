@@ -94,6 +94,7 @@ public class PatientManagmentSystem {
         AppointmentStorage appointmentStore = new AppointmentStorage();
         Appointment app = new Appointment(0,now,now.plusMinutes(20),"John","person123");
         Appointment app4 = new Appointment(1,now,now.minusHours(11),"John","person123");
+        app.setCompleted(true);
         appointmentStore.addAppointment(app);
         appointmentStore.addAppointment(app4);
         
