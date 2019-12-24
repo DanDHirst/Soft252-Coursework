@@ -19,6 +19,7 @@ import prescriptionmodels.Medicine;
 import prescriptionmodels.MedicineStore;
 import prescriptionmodels.Prescription;
 import prescriptionmodels.PrescriptionStorage;
+import prescriptionmodels.RequestMedicineStore;
 import secretarymodels.Secretary;
 import secretarymodels.SecretaryStorage;
 import userchoicecontroller.UserRoleChoiceController;
@@ -113,10 +114,14 @@ public class PatientManagmentSystem {
         PendingTerminatePatientAccounts pendingTerminateAccountsStore = new PendingTerminatePatientAccounts();
         pendingTerminateAccountsStore.addUser(patient1);
         
+        RequestMedicineStore requestMedicineStore = new RequestMedicineStore();
+        Medicine med2 = new Medicine("sleep tablets", 20 );
+        requestMedicineStore.addMedicine(med2);
+        
         
         Models modelStore = new Models(patientStore, doctorStore , adminStore 
                 ,secretaryStore,medicineStore ,prescriptionStore, doctorFeedbackStore,doctorPendingFeedbackStore,appointmentStore 
-                ,pendingAppointmentsStore, pendingAccountsStore,pendingTerminateAccountsStore);
+                ,pendingAppointmentsStore, pendingAccountsStore,pendingTerminateAccountsStore,requestMedicineStore);
         
         UserRoleChoiceController theController = new UserRoleChoiceController(modelStore);
         

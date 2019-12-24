@@ -42,6 +42,7 @@ public class DoctorUIController {
         this.DoctorView.listHistoryAppointmentsOnChange(new DoctorUIController.showHistoryAppointmentInfo());
         this.DoctorView.listPatientPrescribeOnChange(new DoctorUIController.SelectPatientPrescibe());
         this.DoctorView.btnPrescribeMedicine(new DoctorUIController.savePrescription());
+        this.DoctorView.btnRequestMedicine(new DoctorUIController.RequestMedicine());
     }
     private void setUpAppointment(){
         int appointLength = modelStore.appointmentStore.getAppointments().size();
@@ -78,6 +79,10 @@ public class DoctorUIController {
         DoctorView.setTxtPrescribeMedName("");
         DoctorView.setTxtPrescribeMedQty("");
         DoctorView.setTxtPrescribeNotes("");
+    }
+    private void clearRequestMedicine(){
+        DoctorView.setTxtRequestMedName("");
+        DoctorView.setTxtRequestMedQty("");
     }
     
     class ShowAppointment implements ListSelectionListener{
@@ -192,6 +197,19 @@ public class DoctorUIController {
             now,med);
             modelStore.prescriptionStore.addPrescription(newPresc);
             clearPrescriptionInfo();
+        }
+        
+    }
+    class RequestMedicine implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String medName = DoctorView.getTxtRequestMedName();
+            int medQty = Integer.parseInt(DoctorView.getTxtRequestMedQty());
+            
+            Medicine med = new Medicine(medName, medQty);
+            modelStore.requestMedicineStore.addMedicine(med);
+            clearRequestMedicine();
         }
         
     }

@@ -5,17 +5,16 @@
  */
 package prescriptionmodels;
 
-import appointmentmodels.Appointment;
 import java.util.ArrayList;
 
 /**
  *
  * @author dan
  */
-public class MedicineStore implements IMedicineStorage{
+public class RequestMedicineStore implements IMedicineStorage {
     ArrayList<Medicine> medicines = new ArrayList<>();
 
-    public MedicineStore() {
+    public RequestMedicineStore() {
     }
 
     @Override

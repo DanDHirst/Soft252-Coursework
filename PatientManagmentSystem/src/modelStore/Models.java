@@ -16,6 +16,7 @@ import patientmodels.PendingPatientAccounts;
 import patientmodels.PendingTerminatePatientAccounts;
 import prescriptionmodels.MedicineStore;
 import prescriptionmodels.PrescriptionStorage;
+import prescriptionmodels.RequestMedicineStore;
 import secretarymodels.SecretaryStorage;
 
 /**
@@ -36,13 +37,14 @@ public class Models {
     public PendingAppointments pendingAppointmentsStore;
     public PendingPatientAccounts pendingAccountsStore;
     public PendingTerminatePatientAccounts pendingTerminateStore;
+    public RequestMedicineStore requestMedicineStore;
     
 
    
 
     
 
-    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, MedicineStore medicineStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, DoctorPendingFeedbackStorage doctorPendingFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingPatientAccounts pendingAccountsStore, PendingTerminatePatientAccounts pendingTerminateStore) {
+    public Models(PatientStorage patientStore, DoctorStorage doctorStore, AdministratorStorage adminStore, SecretaryStorage secretaryStore, MedicineStore medicineStore, PrescriptionStorage prescriptionStore, DoctorFeedbackStorage doctorFeedbackStore, DoctorPendingFeedbackStorage doctorPendingFeedbackStore, AppointmentStorage appointmentStore, PendingAppointments pendingAppointmentsStore, PendingPatientAccounts pendingAccountsStore, PendingTerminatePatientAccounts pendingTerminateStore, RequestMedicineStore requestMedicineStore) {
         this.patientStore = patientStore;
         this.doctorStore = doctorStore;
         this.adminStore = adminStore;
@@ -55,6 +57,7 @@ public class Models {
         this.pendingAppointmentsStore = pendingAppointmentsStore;
         this.pendingAccountsStore = pendingAccountsStore;
         this.pendingTerminateStore = pendingTerminateStore;
+        this.requestMedicineStore = requestMedicineStore;
     }
 
     

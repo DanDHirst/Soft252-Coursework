@@ -54,6 +54,7 @@ public class SecretaryUIController {
         this.SecretaryView.btnGiveMed(new SecretaryUIController.GiveMedicine());
         this.SecretaryView.btnAddMedicine(new SecretaryUIController.AddMedicine());
         this.SecretaryView.ListMedicineStock(new SecretaryUIController.ViewMedicine());
+        this.SecretaryView.ListMedicineRequestedStock(new SecretaryUIController.ViewRequestedMedicine());
     }
 
     private void setUpUsers() {
@@ -113,6 +114,18 @@ public class SecretaryUIController {
            
         }
         SecretaryView.setListMedicineStock(medList);
+        setUpRequestedMedStock();
+        
+        
+    }
+    private void setUpRequestedMedStock(){
+        int medRequestedLength = modelStore.requestMedicineStore.getMedicine().size();
+        String[] medRequestedList = new String[medRequestedLength];
+        for (int i = 0; i < medRequestedLength; i++) {
+            medRequestedList[i] = (modelStore.requestMedicineStore.getMedicine().get(i).getName());
+           
+        }
+        SecretaryView.setListMedicineRequestedStock(medRequestedList);
     }
     private void clearPendingPatientFields(){
         SecretaryView.setTxtApproveUsername("");
@@ -420,6 +433,7 @@ public class SecretaryUIController {
                         SecretaryView.deselectPrePatient();
                         clearPrescriptionInfo();
                         setUpPatients();
+                        break;
                         
                     }
                     else{
@@ -441,6 +455,7 @@ public class SecretaryUIController {
         public void actionPerformed(ActionEvent e) {
             String medicine = SecretaryView.getTxtOrderMed();
             int quantity = Integer.parseInt(SecretaryView.getTxtOrderMedQty());
+            Medicine newMed = new Medicine(medicine,quantity);
             
             Boolean isInList = false;
             for (Medicine med : modelStore.medicineStore.getMedicine()) {
@@ -450,14 +465,27 @@ public class SecretaryUIController {
                 }
             }
             if (isInList == false) {
-                Medicine newMed = new Medicine(medicine,quantity);
+                
                 modelStore.medicineStore.addMedicine(newMed);
                 SecretaryView.setTxtOrderResponse("Medicine has been added ");
             }
             else{
                 SecretaryView.setTxtOrderResponse("Medicine Quantity has been added");
             }
+//            System.out.println(medicine.equals(SecretaryView.getListMedicineRequestedStock()));
+//            if (medicine.equals(SecretaryView.getListMedicineRequestedStock())) {
+//                System.out.println("True");
+//                modelStore.requestMedicineStore.removeMedicine(newMed);
+//                System.out.println(modelStore.requestMedicineStore.getMedicine());
+//            }
+            for(Medicine tempMeds : modelStore.requestMedicineStore.getMedicine()){
+                if (tempMeds.getName().equals(SecretaryView.getListMedicineRequestedStock())){
+                    modelStore.requestMedicineStore.removeMedicine(tempMeds);
+                    break;
+                }
+            }
             setUpMedStock();
+            
         }
         
     }
@@ -465,6 +493,8 @@ public class SecretaryUIController {
 
         @Override
         public void valueChanged(ListSelectionEvent e) {
+            SecretaryView.deselectMedRequestedStock();
+            
             String medName = SecretaryView.getListMedicineStock();
             
             for (Medicine med : modelStore.medicineStore.getMedicine()) {
@@ -473,6 +503,25 @@ public class SecretaryUIController {
                     SecretaryView.setTxtOrderMedQty(Integer.toString(med.getQuantity()));
                 }
             }
+        }
+        
+    }
+    class ViewRequestedMedicine implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            SecretaryView.deselectMedStock();
+            if (SecretaryView.getListMedicineRequestedStock() != null ) {
+                String medName = SecretaryView.getListMedicineRequestedStock();
+            for (Medicine med : modelStore.requestMedicineStore.getMedicine()) {
+                if (med.getName().equals(medName)) {
+                    SecretaryView.setTxtOrderMed(medName);
+                    SecretaryView.setTxtOrderMedQty(Integer.toString(med.getQuantity()));
+                    
+                }
+            }
+            }
+            
         }
         
     }
