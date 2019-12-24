@@ -5,6 +5,7 @@
  */
 package authUserControllers;
 
+import Serializer.WriteFile;
 import adminmodels.Administrator;
 import authusersview.AuthAdminUI;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ import userscontroller.AdminUIController;
 public class AuthAdminController extends AuthHandler {
     public AuthAdminUI AuthAdminView;
     public Models modelStore;
+    public WriteFile file = new WriteFile();
     
     public AuthAdminController(Models modelStore) {
         CreateAccount acc = new CreateAccount();
@@ -68,6 +70,7 @@ public class AuthAdminController extends AuthHandler {
             Administrator admin = new Administrator(username,password,firstname,surname,address);
             modelStore.adminStore.addUser(admin);
             AuthAdminView.setTxtResponseReg("Account create Sucessfully");
+            file.executeAction(modelStore);
         }
         
     }

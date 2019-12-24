@@ -5,6 +5,7 @@
  */
 package authUserControllers;
 
+import Serializer.WriteFile;
 import authusersview.AuthPatientUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,7 @@ import userscontroller.PatientUIController;
 public class AuthPatientController extends AuthHandler {
     public AuthPatientUI AuthPatientView;
     public Models modelStore;
+    public WriteFile file = new WriteFile();
 
     public AuthPatientController( Models modelStore) {
         RequestAccount acc = new RequestAccount();
@@ -74,6 +76,7 @@ public class AuthPatientController extends AuthHandler {
             Patient tempPatient = new Patient(age,gender,username,password,firstname
             ,surname,address);
             modelStore = createAccount(modelStore,tempPatient);
+            file.executeAction(modelStore);
         }
         
     }
