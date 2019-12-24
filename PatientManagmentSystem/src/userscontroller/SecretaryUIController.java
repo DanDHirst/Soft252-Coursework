@@ -5,6 +5,7 @@
  */
 package userscontroller;
 
+import Serializer.WriteFile;
 import UsersUI.SecretaryUI;
 import appointmentmodels.Appointment;
 import java.awt.event.ActionEvent;
@@ -27,6 +28,7 @@ import usermodels.User;
 public class SecretaryUIController {
     public SecretaryUI SecretaryView;
     public Models modelStore;
+    public WriteFile file = new WriteFile();
 
     public SecretaryUIController(Models modelStore, String UserID) {
         this.modelStore = modelStore;
@@ -41,6 +43,9 @@ public class SecretaryUIController {
         
         
     }
+    public void saveData(){
+        file.executeAction(modelStore);
+    } 
     private void setUpOnClicks(){
         SecretaryView.listApprovePatientListener(new SecretaryUIController.ShowPendingPatient());
         this.SecretaryView.btnApprovePatient(new SecretaryUIController.ApprovePatient());
@@ -201,6 +206,7 @@ public class SecretaryUIController {
             setUpPendingPatientList();
             clearPendingPatientFields();
             setUpUsers();
+            saveData();
             
             
             
@@ -220,6 +226,7 @@ public class SecretaryUIController {
             }
             setUpUsers();
             SecretaryView.setTxtRemoveUsername("");
+            saveData();
             
             
         }
@@ -239,6 +246,7 @@ public class SecretaryUIController {
                     SecretaryView.deselectPatientTerminateList();
                 }
             }
+            saveData();
         }
         
     }
@@ -325,6 +333,7 @@ public class SecretaryUIController {
                 clearAppointmentInfo();
                 
             }
+            saveData();
             
             
         }
@@ -353,6 +362,7 @@ public class SecretaryUIController {
                     break;
                 }
             }
+            saveData();
         }
        
         
@@ -374,6 +384,7 @@ public class SecretaryUIController {
 
             }
             SecretaryView.setListPrescriptionPatient(PList);
+            saveData();
             
         }
         
@@ -445,6 +456,7 @@ public class SecretaryUIController {
                 }
                 
             }
+            saveData();
             
         }
         
@@ -485,6 +497,7 @@ public class SecretaryUIController {
                 }
             }
             setUpMedStock();
+            saveData();
             
         }
         
@@ -503,6 +516,7 @@ public class SecretaryUIController {
                     SecretaryView.setTxtOrderMedQty(Integer.toString(med.getQuantity()));
                 }
             }
+            saveData();
         }
         
     }
@@ -521,6 +535,7 @@ public class SecretaryUIController {
                 }
             }
             }
+            saveData();
             
         }
         

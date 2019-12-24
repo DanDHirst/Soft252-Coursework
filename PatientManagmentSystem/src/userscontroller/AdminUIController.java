@@ -5,6 +5,7 @@
  */
 package userscontroller;
 
+import Serializer.WriteFile;
 import UsersUI.AdminUI;
 import doctormodels.Doctor;
 import doctormodels.DoctorFeedback;
@@ -24,6 +25,7 @@ public class AdminUIController {
 
     public AdminUI AdminView;
     public Models modelStore;
+    public WriteFile file = new WriteFile();
 
     public AdminUIController(Models modelStore, String UserID) {
         this.modelStore = modelStore;
@@ -64,7 +66,9 @@ public class AdminUIController {
         }
         AdminView.setListSecretary(secretaries);
     }
-
+    public void saveData(){
+        file.executeAction(modelStore);
+    } 
     class AddUser implements ActionListener {
 
         @Override
@@ -89,6 +93,8 @@ public class AdminUIController {
             setSecretaryList();
             AdminView.deselectSecretary();
             AdminView.deselectDoctor();
+            saveData();
+            
         }
 
     }
@@ -120,6 +126,7 @@ public class AdminUIController {
             setSecretaryList();
             AdminView.deselectSecretary();
             AdminView.deselectDoctor();
+            saveData();
         }
 
     }
@@ -141,6 +148,7 @@ public class AdminUIController {
                 }
             }
             AdminView.selectDoctorRad();
+            saveData();
         }
 
     }
@@ -162,6 +170,7 @@ public class AdminUIController {
                 }
             }
             AdminView.selectSecretaryRad();
+            saveData();
         }
 
     }
@@ -193,6 +202,7 @@ public class AdminUIController {
                 
             }
             AdminView.setListFeedback(feedback);
+            saveData();
             
         }
         
@@ -202,7 +212,8 @@ public class AdminUIController {
 
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                int ratingID = Integer.parseInt(AdminView.getListFeedback());
+                if (AdminView.getListFeedback() != null) {
+                    int ratingID = Integer.parseInt(AdminView.getListFeedback());
                 
                 for (DoctorFeedback feed : modelStore.doctorPendingFeedbackStore.getDoctorsFeedback()) {
                     if (feed.getRatingID() == ratingID) {
@@ -210,6 +221,9 @@ public class AdminUIController {
                         AdminView.setTxtFeedback(feed.getFeedbackNotes());
                     }                                                     
                 }
+                saveData();
+                }
+                
                 
             }
             
@@ -235,6 +249,7 @@ public class AdminUIController {
             //refresh all the assets on screen
             AdminView.clearAllforFeedback();
             setDoctorsList();
+            saveData();
             
         }
         

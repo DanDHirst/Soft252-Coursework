@@ -5,6 +5,7 @@
  */
 package userscontroller;
 
+import Serializer.WriteFile;
 import UsersUI.DoctorUI;
 import appointmentmodels.Appointment;
 import java.awt.event.ActionEvent;
@@ -24,6 +25,7 @@ import prescriptionmodels.Prescription;
 public class DoctorUIController {
     public Models modelStore;
     public DoctorUI DoctorView;
+    public WriteFile file = new WriteFile();
 
     public DoctorUIController(Models modelStore, String UserID) {
         this.modelStore = modelStore;
@@ -34,7 +36,9 @@ public class DoctorUIController {
         setUpAppointment();
         setUpPatients();
     }
-    
+    public void saveData(){
+        file.executeAction(modelStore);
+    } 
     private void setUpOnClicks(){
         this.DoctorView.listAppointmentsOnChange(new DoctorUIController.ShowAppointment());
         this.DoctorView.btnCompleteAppointment(new DoctorUIController.CompleteAppointment());
@@ -123,6 +127,7 @@ public class DoctorUIController {
             DoctorView.deselectAppointment();
             clearAppointmentInfo();
             setUpAppointment();
+            saveData();
         }
         
     }
@@ -139,6 +144,7 @@ public class DoctorUIController {
                 }  
             }
             DoctorView.setListHistoryAppointments(pList);
+            saveData();
                     
         }
         
@@ -160,6 +166,7 @@ public class DoctorUIController {
                 }
                 
             }
+            saveData();
             }
             
             
@@ -197,6 +204,7 @@ public class DoctorUIController {
             now,med);
             modelStore.prescriptionStore.addPrescription(newPresc);
             clearPrescriptionInfo();
+            saveData();
         }
         
     }
@@ -210,6 +218,7 @@ public class DoctorUIController {
             Medicine med = new Medicine(medName, medQty);
             modelStore.requestMedicineStore.addMedicine(med);
             clearRequestMedicine();
+            saveData();
         }
         
     }

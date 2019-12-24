@@ -6,26 +6,48 @@
 package Serializer;
 
 import com.google.gson.Gson;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelStore.Models;
 
 /**
  *
  * @author danhi
  */
-public class WriteFile {
-    public  static void write(Models modelStore){
-        Gson gson = new Gson();
-            try {
-            String jsonString = gson.toJson(modelStore);
+public class WriteFile extends TemplateFileManagement{
+    FileWriter file;
+    
 
-            FileWriter file = new FileWriter("test.json");
-            file.write(jsonString);
+    @Override
+    protected void closeFile() {
+        try {
             file.close();
-        } catch (IOException e) {
-            System.out.println("exception " + e.getMessage());
-            e.printStackTrace();
-        } 
+        } catch (IOException ex) {
+            Logger.getLogger(WriteFile.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+
+    @Override
+    protected void openFile() {
+        try {
+            this.file = new FileWriter("Data.json");
+        } catch (IOException ex) {
+            Logger.getLogger(WriteFile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    protected void modifyFile() {
+        try {
+            Gson gson = new Gson();
+            String jsonString = gson.toJson(modelStore);
+            file.write(jsonString);
+        } catch (IOException ex) {
+            Logger.getLogger(WriteFile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

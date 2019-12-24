@@ -50,7 +50,7 @@ public class AuthPatientController extends AuthHandler {
             }
         }
         public String checkLogin(String Username,String Password){
-
+            System.out.println(modelStore.patientStore.getUsers());
             for (User p : modelStore.patientStore.getUsers()){
                 if(p.getUsername().equals(Username) && p.getPassword().equals(Password)){
                     return p.getUsername();

@@ -24,6 +24,7 @@ import usermodels.User;
 public class PatientUIController {
     public PatientUI PatientView;
     public Models modelStore;
+    public WriteFile file = new WriteFile();
     
     public PatientUIController(Models modelStore, String UserID) {
         this.modelStore = modelStore;
@@ -44,6 +45,9 @@ public class PatientUIController {
        
         
     }
+    public void saveData(){
+        file.executeAction(modelStore);
+    } 
     private void setPatientAppointmentBox(String UserID){
         
         
@@ -99,6 +103,7 @@ public class PatientUIController {
                     modelStore.pendingTerminateStore.addUser(p);
                     }
                 }
+                saveData();
             }  
         }  
     }
@@ -171,6 +176,7 @@ public class PatientUIController {
             }
             averageRating = averageRating / modelStore.doctorFeedbackStore.getDoctorsFeedback().size();
             PatientView.addTxtInfo("\nAverage Rating: " + averageRating);
+            saveData();
         }
         
     }
@@ -186,8 +192,8 @@ public class PatientUIController {
             DoctorFeedback drFeedback = new DoctorFeedback(doctor,rating,feedback,ratingID);
             modelStore.doctorPendingFeedbackStore.addDoctorFeedback(drFeedback);
             PatientView.setTxtFeedback("");
+            saveData();
 //            System.out.println(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(0).getFeedbackNotes());
-            WriteFile.write(modelStore);
         }
         
     }
@@ -216,6 +222,7 @@ public class PatientUIController {
             
             Appointment ap = new Appointment(modelStore.pendingAppointmentsStore.getAppointments().size(),datetimeStart, dateTimeEnd, doctor, patientID);
             modelStore.pendingAppointmentsStore.addAppointment(ap);
+            saveData();
             
         }
         public String checkDateDay(Date aDate){ // prevents from crashing if date is less than 10
