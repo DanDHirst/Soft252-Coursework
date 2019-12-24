@@ -5,11 +5,13 @@
  */
 package doctormodels;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dan
  */
-public class DoctorFeedback {
+public class DoctorFeedback implements Serializable{
     private int ratingID;
     private String doctorID;
     private int rating;

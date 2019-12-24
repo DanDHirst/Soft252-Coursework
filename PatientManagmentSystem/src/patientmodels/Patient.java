@@ -5,13 +5,14 @@
  */
 package patientmodels;
 
+import java.io.Serializable;
 import usermodels.User;
 
 /**
  *
  * @author dhirst1
  */
-public class Patient extends User implements PatientInfo{
+public class Patient extends User implements PatientInfo , Serializable{
     private int age;
     private String sex;
     

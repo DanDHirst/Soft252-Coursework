@@ -11,6 +11,7 @@ import appointmentmodels.PendingAppointments;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorPendingFeedbackStorage;
 import doctormodels.DoctorStorage;
+import java.io.Serializable;
 import patientmodels.PatientStorage;
 import patientmodels.PendingPatientAccounts;
 import patientmodels.PendingTerminatePatientAccounts;
@@ -23,7 +24,7 @@ import secretarymodels.SecretaryStorage;
  *
  * @author dan
  */
-public class Models {
+public class Models implements Serializable{
     //User models
     public PatientStorage patientStore;
     public DoctorStorage doctorStore;

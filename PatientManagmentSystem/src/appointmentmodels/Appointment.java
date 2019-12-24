@@ -7,13 +7,14 @@ package appointmentmodels;
  */
 
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  *
  * @author dhirst1
  */
-public class Appointment {
+public class Appointment implements Serializable{
     private int AppointmentID;
     private LocalDateTime startTime;
     private LocalDateTime endTime;

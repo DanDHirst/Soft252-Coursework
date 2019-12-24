@@ -5,14 +5,14 @@
  */
 package prescriptionmodels;
 
-import appointmentmodels.Appointment;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author dan
  */
-public class MedicineStore implements IMedicineStorage{
+public class MedicineStore implements IMedicineStorage , Serializable{
     ArrayList<Medicine> medicines = new ArrayList<>();
 
     public MedicineStore() {

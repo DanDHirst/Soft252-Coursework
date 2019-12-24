@@ -5,13 +5,14 @@
  */
 package appointmentmodels;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author dan
  */
-public class PendingAppointments implements AppointmentManagement{
+public class PendingAppointments implements AppointmentManagement , Serializable{
     ArrayList<Appointment> appointments= new ArrayList<>();
 
     public PendingAppointments() {

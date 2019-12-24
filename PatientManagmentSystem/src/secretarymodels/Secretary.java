@@ -5,13 +5,14 @@
  */
 package secretarymodels;
 
+import java.io.Serializable;
 import usermodels.User;
 
 /**
  *
  * @author dhirst1
  */
-public class Secretary extends User{
+public class Secretary extends User implements Serializable{
 
     public Secretary(String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);

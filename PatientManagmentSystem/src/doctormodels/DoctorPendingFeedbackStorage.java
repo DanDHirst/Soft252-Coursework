@@ -5,13 +5,14 @@
  */
 package doctormodels;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author dan
  */
-public class DoctorPendingFeedbackStorage implements IDoctorFeedbackStorage{
+public class DoctorPendingFeedbackStorage implements IDoctorFeedbackStorage , Serializable{
     private ArrayList<DoctorFeedback> doctorsFeedback = new ArrayList<>();
 
     public DoctorPendingFeedbackStorage() {

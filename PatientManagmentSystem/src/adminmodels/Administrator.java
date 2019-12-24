@@ -5,6 +5,7 @@
  */
 package adminmodels;
 
+import java.io.Serializable;
 import usermodels.User;
 
 /**

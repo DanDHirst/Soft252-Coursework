@@ -5,11 +5,13 @@
  */
 package prescriptionmodels;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dhirst1
  */
-public class Medicine {
+public class Medicine implements Serializable {
     private String name;
     private int quantity;
     private String dosage;

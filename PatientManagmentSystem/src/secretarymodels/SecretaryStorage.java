@@ -5,6 +5,7 @@
  */
 package secretarymodels;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import usermodels.User;
 import usermodels.UserManagement;
@@ -13,7 +14,7 @@ import usermodels.UserManagement;
  *
  * @author dan
  */
-public class SecretaryStorage implements UserManagement {
+public class SecretaryStorage implements UserManagement , Serializable{
     ArrayList<User> secretaries = new ArrayList<>();
 
     public SecretaryStorage() {

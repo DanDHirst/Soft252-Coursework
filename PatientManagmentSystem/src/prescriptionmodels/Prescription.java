@@ -5,16 +5,14 @@
  */
 package prescriptionmodels;
 
-import patientmodels.Patient;
-import doctormodels.Doctor;
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  *
  * @author dhirst1
  */
-public class Prescription {
+public class Prescription implements Serializable{
     private int prescriptionID;
     private String patientID;
     private String doctorID;

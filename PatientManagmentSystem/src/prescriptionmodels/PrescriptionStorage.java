@@ -5,13 +5,14 @@
  */
 package prescriptionmodels;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author dan
  */
-public class PrescriptionStorage {
+public class PrescriptionStorage implements Serializable{
     ArrayList<Prescription> prescriptions= new ArrayList<>();
 
     public PrescriptionStorage() {

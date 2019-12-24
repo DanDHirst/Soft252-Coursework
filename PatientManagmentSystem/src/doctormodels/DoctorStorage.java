@@ -5,6 +5,7 @@
  */
 package doctormodels;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import usermodels.User;
 import usermodels.UserManagement;
@@ -13,7 +14,7 @@ import usermodels.UserManagement;
  *
  * @author dan
  */
-public class DoctorStorage implements UserManagement {
+public class DoctorStorage implements UserManagement , Serializable{
     ArrayList<User> doctors = new ArrayList<>();
 
     public DoctorStorage() {

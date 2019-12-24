@@ -6,14 +6,17 @@
 package doctormodels;
 
 
+import java.io.Serializable;
 import usermodels.User;
-import java.util.ArrayList;
 
 /**
  *
  * @author dhirst1
  */
-public class Doctor extends User {
+public class Doctor extends User implements Serializable {
+        public Doctor(){
+            super();
+        }
        public Doctor(String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
     }

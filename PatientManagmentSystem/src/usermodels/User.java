@@ -5,17 +5,22 @@
  */
 package usermodels;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dhirst1
  */
-public abstract class User {
+public abstract class User  implements Serializable{
     protected String userID;
     protected String password;
     protected String firstName;
     protected String surname;
     protected String address;
-
+    public User(){
+        
+    }
+    
     public User(String username, String password, String firstName, String surname, String address) {
         this.userID = username;
         this.password = password;
