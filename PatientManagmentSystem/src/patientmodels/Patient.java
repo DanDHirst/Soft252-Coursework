@@ -16,6 +16,9 @@ public class Patient extends User implements PatientInfo , Serializable{
     private int age;
     private String sex;
     
+    public Patient(){
+        
+    }
     public Patient(int age, String sex, String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
         this.age = age;

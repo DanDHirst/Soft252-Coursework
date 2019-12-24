@@ -14,6 +14,9 @@ import usermodels.User;
  */
 public class Administrator extends User {
 
+    public Administrator(){
+    }
+    
     public Administrator(String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
     }

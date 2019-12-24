@@ -1,4 +1,5 @@
 
+import Serializer.WriteFile;
 import adminmodels.Administrator;
 import adminmodels.AdministratorStorage;
 import appointmentmodels.Appointment;
@@ -10,8 +11,10 @@ import doctormodels.DoctorFeedback;
 import doctormodels.DoctorFeedbackStorage;
 import doctormodels.DoctorPendingFeedbackStorage;
 import doctormodels.DoctorStorage;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.time.LocalDateTime;
 import modelStore.Models;
 import patientmodels.Patient;
@@ -128,24 +131,25 @@ public class PatientManagmentSystem {
                     ,secretaryStore,medicineStore ,prescriptionStore, doctorFeedbackStore,doctorPendingFeedbackStore,appointmentStore
                     ,pendingAppointmentsStore, pendingAccountsStore,pendingTerminateAccountsStore,requestMedicineStore);
 
+            
+           Models store = null;
             Gson gson = new Gson();
-            try {
-            String jsonString = gson.toJson(modelStore);
+            try (Reader reader = new FileReader("test.json")) {
 
-            FileWriter file = new FileWriter("test.json");
-            file.write(jsonString);
-            file.close();
+            // Convert JSON File to Java Object
+             store = gson.fromJson(reader, Models.class);
+			
+			// print staff 
+            System.out.println(store);
+
         } catch (IOException e) {
-            System.out.println("exception " + e.getMessage());
             e.printStackTrace();
-        } 
-           Models store = gson.fromJson("test.json", Models.class);
-           System.out.println(store);
+        }	
             
             
         
             
-        UserRoleChoiceController theController = new UserRoleChoiceController(modelStore);
+        UserRoleChoiceController theController = new UserRoleChoiceController(store);
     }
     
     

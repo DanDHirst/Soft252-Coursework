@@ -5,6 +5,7 @@
  */
 package userscontroller;
 
+import Serializer.WriteFile;
 import UsersUI.PatientUI;
 import appointmentmodels.Appointment;
 import doctormodels.DoctorFeedback;
@@ -186,6 +187,7 @@ public class PatientUIController {
             modelStore.doctorPendingFeedbackStore.addDoctorFeedback(drFeedback);
             PatientView.setTxtFeedback("");
 //            System.out.println(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(0).getFeedbackNotes());
+            WriteFile.write(modelStore);
         }
         
     }

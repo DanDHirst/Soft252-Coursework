@@ -14,9 +14,9 @@ import usermodels.User;
  * @author dhirst1
  */
 public class Doctor extends User implements Serializable {
-        public Doctor(){
-            super();
-        }
+    public Doctor(){
+        
+    }
        public Doctor(String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
     }

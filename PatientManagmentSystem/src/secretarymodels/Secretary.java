@@ -14,6 +14,10 @@ import usermodels.User;
  */
 public class Secretary extends User implements Serializable{
 
+    public Secretary(){
+        
+    }
+
     public Secretary(String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
     }
