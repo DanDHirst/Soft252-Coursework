@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author dan
  */
-public class PendingAppointments implements AppointmentManagement , Serializable{
+public class PendingAppointments implements IAppointmentManagement , Serializable{
     ArrayList<Appointment> appointments= new ArrayList<>();
 
     public PendingAppointments() {

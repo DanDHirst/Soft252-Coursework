@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author dan
  */
-public class AppointmentStorage implements AppointmentManagement , Serializable {
+public class AppointmentStorage implements IAppointmentManagement , Serializable {
     ArrayList<Appointment> appointments= new ArrayList<>();
 
     public AppointmentStorage() {

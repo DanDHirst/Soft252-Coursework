@@ -8,13 +8,13 @@ package doctormodels;
 import java.io.Serializable;
 import java.util.ArrayList;
 import usermodels.User;
-import usermodels.UserManagement;
+import usermodels.IUserManagement;
 
 /**
  *
  * @author dan
  */
-public class DoctorStorage implements UserManagement , Serializable{
+public class DoctorStorage implements IUserManagement , Serializable{
     ArrayList<User> doctors = new ArrayList<>();
 
     public DoctorStorage() {

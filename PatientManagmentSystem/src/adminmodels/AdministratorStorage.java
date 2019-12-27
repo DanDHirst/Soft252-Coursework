@@ -8,13 +8,13 @@ package adminmodels;
 import java.io.Serializable;
 import java.util.ArrayList;
 import usermodels.User;
-import usermodels.UserManagement;
+import usermodels.IUserManagement;
 
 /**
  *
  * @author dan
  */
-public class AdministratorStorage  implements UserManagement   {
+public class AdministratorStorage  implements IUserManagement   {
     ArrayList<User> admins = new ArrayList<>();
 
     public AdministratorStorage() {

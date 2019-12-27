@@ -8,13 +8,13 @@ package patientmodels;
 import java.io.Serializable;
 import java.util.ArrayList;
 import usermodels.User;
-import usermodels.UserManagement;
+import usermodels.IUserManagement;
 
 /**
  *
  * @author dan
  */
-public class PendingPatientAccounts implements UserManagement , Serializable{
+public class PendingPatientAccounts implements IUserManagement , Serializable{
     ArrayList<Patient> patients= new ArrayList<>();
     public PendingPatientAccounts() {
     }

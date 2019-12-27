@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author dhirst1
  */
-public interface AppointmentManagement {
+public interface IAppointmentManagement {
    public void addAppointment(Appointment appointment);
    public void removeAppointment(Appointment appointment);
    public Appointment findAppointment(Appointment appointment);

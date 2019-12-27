@@ -8,13 +8,13 @@ package secretarymodels;
 import java.io.Serializable;
 import java.util.ArrayList;
 import usermodels.User;
-import usermodels.UserManagement;
+import usermodels.IUserManagement;
 
 /**
  *
  * @author dan
  */
-public class SecretaryStorage implements UserManagement , Serializable{
+public class SecretaryStorage implements IUserManagement , Serializable{
     ArrayList<User> secretaries = new ArrayList<>();
 
     public SecretaryStorage() {
