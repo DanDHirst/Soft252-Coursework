@@ -13,12 +13,12 @@ import usermodels.User;
  * @author dhirst1
  */
 public class AuthHandler {
-    private ICreateAccountStrategy createAccount;
+    private CreateAccountStrategy createAccount;
 
     public AuthHandler() {
         
     }
-    public void setStrategy(ICreateAccountStrategy createAccount){
+    public void setStrategy(CreateAccountStrategy createAccount){
         this.createAccount = createAccount;
     }
     
