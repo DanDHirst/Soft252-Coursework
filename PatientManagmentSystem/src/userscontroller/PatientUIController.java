@@ -219,8 +219,9 @@ public class PatientUIController {
             LocalDateTime dateTimeEnd = LocalDateTime.parse(endDate);
             String doctor = PatientView.getBoxDoctorAppointment();
             String patientID = PatientView.getPatientID();
-            
-            Appointment ap = new Appointment(modelStore.pendingAppointmentsStore.getAppointments().size(),datetimeStart, dateTimeEnd, doctor, patientID);
+            int SizeOfAppoitments = modelStore.appointmentStore.getAppointments().size() -1;
+            int getAppointmentID = modelStore.appointmentStore.getAppointments().get(SizeOfAppoitments).getAppointmentID() +1;
+            Appointment ap = new Appointment(getAppointmentID,datetimeStart, dateTimeEnd, doctor, patientID);
             modelStore.pendingAppointmentsStore.addAppointment(ap);
             saveData();
             

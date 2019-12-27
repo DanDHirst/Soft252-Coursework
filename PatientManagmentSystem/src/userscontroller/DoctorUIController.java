@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelStore.Models;
@@ -47,6 +48,7 @@ public class DoctorUIController {
         this.DoctorView.listPatientPrescribeOnChange(new DoctorUIController.SelectPatientPrescibe());
         this.DoctorView.btnPrescribeMedicine(new DoctorUIController.savePrescription());
         this.DoctorView.btnRequestMedicine(new DoctorUIController.RequestMedicine());
+        this.DoctorView.btnSubmitAppointment(new DoctorUIController.DoctorRequestAppointment());
     }
     private void setUpAppointment(){
         int appointLength = modelStore.appointmentStore.getAppointments().size();
@@ -223,4 +225,54 @@ public class DoctorUIController {
         
     }
             
+    class DoctorRequestAppointment implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           
+            
+            Date start = DoctorView.getDateStart(); 
+            String startDate = Integer.toString(start.getYear()+1900)+ "-" 
+                    + checkDateMonth(start) + "-" 
+                    + checkDateDay(start) + "T" + DoctorView.getBoxStartHour()
+                    + ":" + DoctorView.getTxtMinStart() + ":" + "00";
+            Date end = DoctorView.getDateEnd();
+            String endDate = Integer.toString(end.getYear()+1900)+ "-" 
+                    + checkDateMonth(end) + "-" 
+                    + checkDateDay(end) + "T" + DoctorView.getBoxEndHour()
+                    + ":" + DoctorView.getTxtMinEnd() + ":" + "00";
+            
+            
+            LocalDateTime datetimeStart = LocalDateTime.parse(startDate);
+            LocalDateTime dateTimeEnd = LocalDateTime.parse(endDate);
+            String doctor = DoctorView.getTxtDoctorID();
+            String patientID = DoctorView.getBoxPatient();
+            
+            int SizeOfAppoitments = modelStore.appointmentStore.getAppointments().size() -1;
+            int getAppointmentID = modelStore.appointmentStore.getAppointments().get(SizeOfAppoitments).getAppointmentID() +1;
+            Appointment ap = new Appointment(getAppointmentID,datetimeStart, dateTimeEnd, doctor, patientID);
+            modelStore.pendingAppointmentsStore.addAppointment(ap);
+            saveData();
+            
+        }
+        public String checkDateDay(Date aDate){ // prevents from crashing if date is less than 10
+            if (aDate.getDate() < 10) {
+                String newDate = "0" + Integer.toString(aDate.getDate());
+                
+                return newDate;
+            }
+            return Integer.toString(aDate.getDate());
+                      
+        }
+        public String checkDateMonth(Date aDate){ // prevents from crashing if month is less than 10
+            if (aDate.getMonth() < 10) {
+                String newDate = "0" + Integer.toString(aDate.getMonth());
+                
+                return newDate;
+            }
+            return Integer.toString(aDate.getMonth());
+                      
+        }
+        
+    }
 }

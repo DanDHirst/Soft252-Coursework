@@ -309,7 +309,9 @@ public class SecretaryUIController {
             LocalDateTime dateTimeEnd = LocalDateTime.parse(endDate);
             String doctor = SecretaryView.getBoxDoctor();
             String patientID = SecretaryView.getTxtPatientApp();
-            Appointment ap = new Appointment(modelStore.appointmentStore.getAppointments().size(),datetimeStart, dateTimeEnd, doctor, patientID);
+            int SizeOfAppoitments = modelStore.appointmentStore.getAppointments().size() -1;
+            int getAppointmentID = modelStore.appointmentStore.getAppointments().get(SizeOfAppoitments).getAppointmentID() +1;
+            Appointment ap = new Appointment(getAppointmentID,datetimeStart, dateTimeEnd, doctor, patientID);
             boolean isInList = false;
             for (Appointment tempAp : modelStore.appointmentStore.getAppointments()) {
                 if (tempAp.getDoctorID().equals(doctor)){
