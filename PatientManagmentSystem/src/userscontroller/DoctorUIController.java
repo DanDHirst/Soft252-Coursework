@@ -18,6 +18,7 @@ import javax.swing.event.ListSelectionListener;
 import modelStore.Models;
 import prescriptionmodels.Medicine;
 import prescriptionmodels.Prescription;
+import usermodels.User;
 
 /**
  *
@@ -71,6 +72,10 @@ public class DoctorUIController {
         }
         DoctorView.setListHistoryPatient(pList);
         DoctorView.setListPatientPrescribe(pList);
+        for (User pat : modelStore.patientStore.getUsers()) {
+            DoctorView.setBoxPatient(pat.getUsername());
+        }
+        
     }
     private void clearAppointmentInfo(){
         DoctorView.setTxtAppointmentID("");
