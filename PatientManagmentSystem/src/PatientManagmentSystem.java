@@ -1,5 +1,6 @@
 
 import Serializer.ReadFile;
+import Serializer.WriteFile;
 import adminmodels.Administrator;
 import adminmodels.AdministratorStorage;
 import appointmentmodels.Appointment;
@@ -144,12 +145,12 @@ public class PatientManagmentSystem {
 //
 //
 //
-//            Models modelStore = new Models(patientStore, doctorStore , adminStore
-//                    ,secretaryStore,medicineStore ,prescriptionStore, doctorFeedbackStore,doctorPendingFeedbackStore,appointmentStore
-//                    ,pendingAppointmentsStore, pendingAccountsStore,pendingTerminateAccountsStore,requestMedicineStore);
-//
-//           WriteFile files = new WriteFile();
-//           files.executeAction(modelStore);
+            Models modelStore = new Models(patientStore, doctorStore , adminStore
+                    ,secretaryStore,medicineStore ,prescriptionStore, doctorFeedbackStore,doctorPendingFeedbackStore,appointmentStore
+                    ,pendingAppointmentsStore, pendingAccountsStore,pendingTerminateAccountsStore,requestMedicineStore);
+
+           WriteFile files = new WriteFile();
+           files.executeAction(modelStore);
            Models temp = null;         
            ReadFile file = new ReadFile();
            Models store = file.executeAction(temp);

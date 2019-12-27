@@ -221,7 +221,12 @@ public class SecretaryUIController {
             for (User pat : modelStore.patientStore.getUsers()) {
                 if (pat.getUsername().equals(patientID)) {
                     modelStore.patientStore.removeUser(pat);
-                    modelStore.pendingTerminateStore.removeUser(pat);
+                    for(User patRemove : modelStore.pendingTerminateStore.getUsers()){
+                        if (patRemove.getUsername().equals(pat.getUsername())) {
+                            modelStore.pendingTerminateStore.removeUser(patRemove);
+                        }
+                    }
+                    
                 }
             }
             setUpUsers();
