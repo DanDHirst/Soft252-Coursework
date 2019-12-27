@@ -77,6 +77,7 @@ public class AuthPatientController extends AuthHandler {
             ,surname,address);
             modelStore = createAccount(modelStore,tempPatient);
             file.executeAction(modelStore);
+            AuthPatientView.setTxtResponseReg("Created Account");
         }
         
     }

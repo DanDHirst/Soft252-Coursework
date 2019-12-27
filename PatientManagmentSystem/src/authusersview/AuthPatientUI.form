@@ -109,17 +109,11 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtPassword">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="password"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtUsername">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="person123"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameActionPerformed"/>
           </Events>
@@ -257,17 +251,11 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtPasswordReg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="password"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordRegActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtUsernameReg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="person123"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUsernameRegActionPerformed"/>
           </Events>
@@ -293,17 +281,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFirstnameReg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="First Name"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFirstnameRegActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSurnameReg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="LastName"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSurnameRegActionPerformed"/>
           </Events>
@@ -319,9 +301,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGenderReg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Gender"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGenderRegActionPerformed"/>
           </Events>
@@ -332,9 +311,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAddressReg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="address"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddressRegActionPerformed"/>
           </Events>
@@ -345,9 +321,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAgeReg">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Age"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAgeRegActionPerformed"/>
           </Events>

@@ -12,7 +12,7 @@ import usermodels.User;
  *
  * @author dan
  */
-public class CreateAccount implements CreateAccountStrategy {
+public class CreateAccount implements ICreateAccountStrategy {
 
     @Override
     public Models CreateAccount(Models models, User user) {

@@ -53,14 +53,12 @@ public class AuthAdminUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtPasswordReg.setText("password");
         txtPasswordReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordRegActionPerformed(evt);
             }
         });
 
-        txtUsernameReg.setText("person123");
         txtUsernameReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameRegActionPerformed(evt);
@@ -75,14 +73,12 @@ public class AuthAdminUI extends javax.swing.JFrame {
 
         jLabel4.setText("Username");
 
-        txtFirstnameReg.setText("First Name");
         txtFirstnameReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstnameRegActionPerformed(evt);
             }
         });
 
-        txtSurnameReg.setText("LastName");
         txtSurnameReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSurnameRegActionPerformed(evt);
@@ -93,7 +89,6 @@ public class AuthAdminUI extends javax.swing.JFrame {
 
         jLabel6.setText("Last name");
 
-        txtAddressReg.setText("address");
         txtAddressReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAddressRegActionPerformed(evt);
@@ -171,14 +166,12 @@ public class AuthAdminUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtPassword.setText("password");
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
 
-        txtUsername.setText("person123");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);

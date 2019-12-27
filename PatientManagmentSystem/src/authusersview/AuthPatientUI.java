@@ -57,14 +57,12 @@ public class AuthPatientUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtPassword.setText("password");
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
 
-        txtUsername.setText("person123");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
@@ -122,14 +120,12 @@ public class AuthPatientUI extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        txtPasswordReg.setText("password");
         txtPasswordReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordRegActionPerformed(evt);
             }
         });
 
-        txtUsernameReg.setText("person123");
         txtUsernameReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameRegActionPerformed(evt);
@@ -144,14 +140,12 @@ public class AuthPatientUI extends javax.swing.JFrame {
 
         jLabel4.setText("Username");
 
-        txtFirstnameReg.setText("First Name");
         txtFirstnameReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFirstnameRegActionPerformed(evt);
             }
         });
 
-        txtSurnameReg.setText("LastName");
         txtSurnameReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSurnameRegActionPerformed(evt);
@@ -162,7 +156,6 @@ public class AuthPatientUI extends javax.swing.JFrame {
 
         jLabel6.setText("Last name");
 
-        txtGenderReg.setText("Gender");
         txtGenderReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGenderRegActionPerformed(evt);
@@ -171,7 +164,6 @@ public class AuthPatientUI extends javax.swing.JFrame {
 
         jLabel7.setText("Gender");
 
-        txtAddressReg.setText("address");
         txtAddressReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAddressRegActionPerformed(evt);
@@ -180,7 +172,6 @@ public class AuthPatientUI extends javax.swing.JFrame {
 
         jLabel8.setText("Address");
 
-        txtAgeReg.setText("Age");
         txtAgeReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAgeRegActionPerformed(evt);

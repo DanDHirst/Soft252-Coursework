@@ -71,6 +71,7 @@ public class AuthAdminController extends AuthHandler {
             modelStore.adminStore.addUser(admin);
             AuthAdminView.setTxtResponseReg("Account create Sucessfully");
             file.executeAction(modelStore);
+            AuthAdminView.setTxtPasswordReg("Created Admin Account");
         }
         
     }

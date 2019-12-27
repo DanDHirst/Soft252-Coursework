@@ -12,7 +12,7 @@ import usermodels.User;
  *
  * @author dhirst1
  */
-public interface CreateAccountStrategy {
+public interface ICreateAccountStrategy {
     public Models CreateAccount(Models models,User user);
     
 }
