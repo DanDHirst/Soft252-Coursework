@@ -37,7 +37,7 @@ public class AdminUIController {
         setSecretaryList();
     }
     
-    public void setUpOnClicks(){
+    private void setUpOnClicks(){
         this.AdminView.btnAddUser(new AdminUIController.AddUser());
         this.AdminView.btnRemoveUser(new AdminUIController.RemoveUser());
         this.AdminView.listDoctorClick(new AdminUIController.ShowDoctorUser());
@@ -47,7 +47,7 @@ public class AdminUIController {
         this.AdminView.btnSubmitFeedback(new AdminUIController.SubmitFeedback());
     }
 
-    public void setDoctorsList() {
+    private void setDoctorsList() {
         int amntOfDocs = modelStore.doctorStore.getUsers().size();
 
         String[] doctors = new String[amntOfDocs];
@@ -57,7 +57,7 @@ public class AdminUIController {
         AdminView.setListDoctors(doctors);
     }
 
-    public void setSecretaryList() {
+    private void setSecretaryList() {
         int amntOfSecretaries = modelStore.secretaryStore.getUsers().size();
 
         String[] secretaries = new String[amntOfSecretaries];
