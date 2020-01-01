@@ -251,11 +251,25 @@ public class TestWritingAndReading {
      @Test 
      public void TestMedicineStorageAfterFileRead(){
          int MedicineNumber = 0;
-         for (Medicine med: ReadFilestore.medicineStore.getMedicine()) {
-             assertTrue("test if the Medicine dosage is the same", med.getDosage().equals(modelStore.medicineStore.getMedicine().get(MedicineNumber).getDosage()));
+         for (Medicine med: ReadFilestore.medicineStore.getMedicine() ) {
+             if (med.getDosage() != null) { // if statment needs as dosage will most of the time be null
+                 assertTrue("test if the Medicine dosage is the same", med.getDosage().equals(modelStore.medicineStore.getMedicine().get(MedicineNumber).getDosage()));
+             } 
              assertTrue("test if the Medicine name is the same", med.getName().equals(modelStore.medicineStore.getMedicine().get(MedicineNumber).getName()));
              assertTrue("test if the Medicine quantity is the same", med.getQuantity() == (modelStore.medicineStore.getMedicine().get(MedicineNumber).getQuantity()));
              MedicineNumber +=1;
+         }
+     }
+     
+     @Test 
+     public void TestFeedbackStorageAfterFileRead(){
+         int FeedbackNumber = 0;
+         for (DoctorFeedback feed: ReadFilestore.doctorFeedbackStore.getDoctorsFeedback()) {
+             assertTrue("test if the DoctorFeedback ID is the same", feed.getDoctorID().equals(modelStore.doctorFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getDoctorID()));
+             assertTrue("test if the DoctorFeedback notes is the same", feed.getFeedbackNotes().equals(modelStore.doctorFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getFeedbackNotes()));
+             assertTrue("test if the DoctorFeedback rating is the same", feed.getRating()== (modelStore.doctorFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getRating()));
+             assertTrue("test if the DoctorFeedback rating ID is the same", feed.getRatingID()== (modelStore.doctorFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getRatingID()));
+             FeedbackNumber +=1;
          }
      }
 }
