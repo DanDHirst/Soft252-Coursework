@@ -199,6 +199,41 @@ public class TestWritingAndReading {
     
      }
      @Test
+     public void TestPendingPatientAfterFileRead() {
+         int patientNumber = 0;
+         for (User pat: ReadFilestore.pendingAccountsStore.getUsers()) {
+             assertTrue("test if the patient Username is the same", pat.getUsername().equals(modelStore.pendingAccountsStore.getUsers().get(patientNumber).getUsername()));
+             assertTrue("test if the patient password is the same", pat.getPassword().equals(modelStore.pendingAccountsStore.getUsers().get(patientNumber).getPassword()));
+             assertTrue("test if the patient firstname is the same", pat.getFirstName().equals(modelStore.pendingAccountsStore.getUsers().get(patientNumber).getFirstName()));
+             assertTrue("test if the patient surname is the same", pat.getSurname().equals(modelStore.pendingAccountsStore.getUsers().get(patientNumber).getSurname()));
+             assertTrue("test if the patient address is the same", pat.getAddress().equals(modelStore.pendingAccountsStore.getUsers().get(patientNumber).getAddress()));
+             Patient tempPat = (Patient) modelStore.pendingAccountsStore.getUsers().get(patientNumber);
+             Patient tempPatFromFile = (Patient) pat;
+             assertTrue("test if the patient gender is the same", tempPat.getSex().equals(tempPatFromFile.getSex()));
+             assertTrue("test if the patient age is the same", tempPat.getAge() == (tempPatFromFile.getAge()));
+             patientNumber +=1;
+         }
+    
+     }
+     @Test
+     public void TestPendingTerminatePatientAfterFileRead() {
+         int patientNumber = 0;
+         for (User pat: ReadFilestore.pendingTerminateStore.getUsers()) {
+             assertTrue("test if the patient Username is the same", pat.getUsername().equals(modelStore.pendingTerminateStore.getUsers().get(patientNumber).getUsername()));
+             assertTrue("test if the patient password is the same", pat.getPassword().equals(modelStore.pendingTerminateStore.getUsers().get(patientNumber).getPassword()));
+             assertTrue("test if the patient firstname is the same", pat.getFirstName().equals(modelStore.pendingTerminateStore.getUsers().get(patientNumber).getFirstName()));
+             assertTrue("test if the patient surname is the same", pat.getSurname().equals(modelStore.pendingTerminateStore.getUsers().get(patientNumber).getSurname()));
+             assertTrue("test if the patient address is the same", pat.getAddress().equals(modelStore.pendingTerminateStore.getUsers().get(patientNumber).getAddress()));
+             Patient tempPat = (Patient) modelStore.pendingTerminateStore.getUsers().get(patientNumber);
+             Patient tempPatFromFile = (Patient) pat;
+             assertTrue("test if the patient gender is the same", tempPat.getSex().equals(tempPatFromFile.getSex()));
+             assertTrue("test if the patient age is the same", tempPat.getAge() == (tempPatFromFile.getAge()));
+             patientNumber +=1;
+         }
+    
+     }
+     
+     @Test
      public void TestDoctorStorageAfterFileRead(){
          int DoctorNumber = 0;
          for (User dr: ReadFilestore.doctorStore.getUsers()) {
@@ -260,6 +295,18 @@ public class TestWritingAndReading {
              MedicineNumber +=1;
          }
      }
+     @Test 
+     public void TestRequestedMedicineStorageAfterFileRead(){
+         int MedicineNumber = 0;
+         for (Medicine med: ReadFilestore.requestMedicineStore.getMedicine() ) {
+             if (med.getDosage() != null) { // if statment needs as dosage will most of the time be null
+                 assertTrue("test if the Medicine dosage is the same", med.getDosage().equals(modelStore.requestMedicineStore.getMedicine().get(MedicineNumber).getDosage()));
+             } 
+             assertTrue("test if the Medicine name is the same", med.getName().equals(modelStore.requestMedicineStore.getMedicine().get(MedicineNumber).getName()));
+             assertTrue("test if the Medicine quantity is the same", med.getQuantity() == (modelStore.requestMedicineStore.getMedicine().get(MedicineNumber).getQuantity()));
+             MedicineNumber +=1;
+         }
+     }
      
      @Test 
      public void TestFeedbackStorageAfterFileRead(){
@@ -270,6 +317,53 @@ public class TestWritingAndReading {
              assertTrue("test if the DoctorFeedback rating is the same", feed.getRating()== (modelStore.doctorFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getRating()));
              assertTrue("test if the DoctorFeedback rating ID is the same", feed.getRatingID()== (modelStore.doctorFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getRatingID()));
              FeedbackNumber +=1;
+         }
+     }
+     @Test 
+     public void TestPendingFeedbackStorageAfterFileRead(){
+         int FeedbackNumber = 0;
+         for (DoctorFeedback feed: ReadFilestore.doctorPendingFeedbackStore.getDoctorsFeedback()) {
+             assertTrue("test if the DoctorFeedback ID is the same", feed.getDoctorID().equals(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getDoctorID()));
+             assertTrue("test if the DoctorFeedback notes is the same", feed.getFeedbackNotes().equals(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getFeedbackNotes()));
+             assertTrue("test if the DoctorFeedback rating is the same", feed.getRating()== (modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getRating()));
+             assertTrue("test if the DoctorFeedback rating ID is the same", feed.getRatingID()== (modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(FeedbackNumber).getRatingID()));
+             FeedbackNumber +=1;
+         }
+     }
+     @Test 
+     public void TestAppointmentStorageAfterFileRead(){
+         int AppointmentNumber = 0;
+         for (Appointment ap: ReadFilestore.appointmentStore.getAppointments()) {
+             assertTrue("test if the Appointment doctor ID is the same", ap.getDoctorID().equals(modelStore.appointmentStore.getAppointments().get(AppointmentNumber).getDoctorID()));
+             assertTrue("test if the Appointment end time is the same", ap.getEndTime().equals(modelStore.appointmentStore.getAppointments().get(AppointmentNumber).getEndTime()));
+             assertTrue("test if the Appointment ID is the same", ap.getAppointmentID()== (modelStore.appointmentStore.getAppointments().get(AppointmentNumber).getAppointmentID()));
+             if (ap.getNotes()!= null){
+                 assertTrue("test if the Appointment notes is the same", ap.getNotes().equals(modelStore.appointmentStore.getAppointments().get(AppointmentNumber).getNotes()));
+             }
+             assertTrue("test if the Appointment PatientID  is the same", ap.getPatientID().equals(modelStore.appointmentStore.getAppointments().get(AppointmentNumber).getPatientID()));
+             if (ap.getReason() != null) {
+                 assertTrue("test if the Appointment reason is the same", ap.getReason().equals(modelStore.appointmentStore.getAppointments().get(AppointmentNumber).getReason()));
+             }
+             assertTrue("test if the Appointment start time is the same", ap.getStartTime().equals(modelStore.appointmentStore.getAppointments().get(AppointmentNumber).getStartTime()));
+             AppointmentNumber +=1;
+         }
+     }
+     @Test 
+     public void TestPendingAppointmentStorageAfterFileRead(){
+         int AppointmentNumber = 0;
+         for (Appointment ap: ReadFilestore.pendingAppointmentsStore.getAppointments()) {
+             assertTrue("test if the Appointment doctor ID is the same", ap.getDoctorID().equals(modelStore.pendingAppointmentsStore.getAppointments().get(AppointmentNumber).getDoctorID()));
+             assertTrue("test if the Appointment end time is the same", ap.getEndTime().equals(modelStore.pendingAppointmentsStore.getAppointments().get(AppointmentNumber).getEndTime()));
+             assertTrue("test if the Appointment ID is the same", ap.getAppointmentID()== (modelStore.pendingAppointmentsStore.getAppointments().get(AppointmentNumber).getAppointmentID()));
+             if (ap.getNotes()!= null){
+                 assertTrue("test if the Appointment notes is the same", ap.getNotes().equals(modelStore.pendingAppointmentsStore.getAppointments().get(AppointmentNumber).getNotes()));
+             }
+             assertTrue("test if the Appointment PatientID  is the same", ap.getPatientID().equals(modelStore.pendingAppointmentsStore.getAppointments().get(AppointmentNumber).getPatientID()));
+             if (ap.getReason() != null) {
+                 assertTrue("test if the Appointment reason is the same", ap.getReason().equals(modelStore.pendingAppointmentsStore.getAppointments().get(AppointmentNumber).getReason()));
+             }
+             assertTrue("test if the Appointment start time is the same", ap.getStartTime().equals(modelStore.pendingAppointmentsStore.getAppointments().get(AppointmentNumber).getStartTime()));
+             AppointmentNumber +=1;
          }
      }
 }
