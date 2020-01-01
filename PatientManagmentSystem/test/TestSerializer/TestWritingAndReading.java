@@ -196,8 +196,66 @@ public class TestWritingAndReading {
              assertTrue("test if the patient age is the same", tempPat.getAge() == (tempPatFromFile.getAge()));
              patientNumber +=1;
          }
-         
-         
-           
+    
+     }
+     @Test
+     public void TestDoctorStorageAfterFileRead(){
+         int DoctorNumber = 0;
+         for (User dr: ReadFilestore.doctorStore.getUsers()) {
+             assertTrue("test if the Doctors Username is the same", dr.getUsername().equals(modelStore.doctorStore.getUsers().get(DoctorNumber).getUsername()));
+             assertTrue("test if the Doctors password is the same", dr.getPassword().equals(modelStore.doctorStore.getUsers().get(DoctorNumber).getPassword()));
+             assertTrue("test if the Doctors firstname is the same", dr.getFirstName().equals(modelStore.doctorStore.getUsers().get(DoctorNumber).getFirstName()));
+             assertTrue("test if the Doctors surname is the same", dr.getSurname().equals(modelStore.doctorStore.getUsers().get(DoctorNumber).getSurname()));
+             assertTrue("test if the Doctors address is the same", dr.getAddress().equals(modelStore.doctorStore.getUsers().get(DoctorNumber).getAddress()));
+             DoctorNumber +=1;
+         }
+     }
+     @Test 
+     public void TestSecertaryStorageAfterFileRead(){
+         int SecertaryNumber = 0;
+         for (User sec: ReadFilestore.secretaryStore.getUsers()) {
+             assertTrue("test if the Secertary Username is the same", sec.getUsername().equals(modelStore.secretaryStore.getUsers().get(SecertaryNumber).getUsername()));
+             assertTrue("test if the Secertary password is the same", sec.getPassword().equals(modelStore.secretaryStore.getUsers().get(SecertaryNumber).getPassword()));
+             assertTrue("test if the Secertary firstname is the same", sec.getFirstName().equals(modelStore.secretaryStore.getUsers().get(SecertaryNumber).getFirstName()));
+             assertTrue("test if the Secertary surname is the same", sec.getSurname().equals(modelStore.secretaryStore.getUsers().get(SecertaryNumber).getSurname()));
+             assertTrue("test if the Secertary address is the same", sec.getAddress().equals(modelStore.secretaryStore.getUsers().get(SecertaryNumber).getAddress()));
+             SecertaryNumber +=1;
+         }
+     }
+     @Test 
+     public void TestAdminStorageAfterFileRead(){
+         int AdminNumber = 0;
+         for (User ad: ReadFilestore.adminStore.getUsers()) {
+             assertTrue("test if the Admin Username is the same", ad.getUsername().equals(modelStore.adminStore.getUsers().get(AdminNumber).getUsername()));
+             assertTrue("test if the Admin password is the same", ad.getPassword().equals(modelStore.adminStore.getUsers().get(AdminNumber).getPassword()));
+             assertTrue("test if the Admin firstname is the same", ad.getFirstName().equals(modelStore.adminStore.getUsers().get(AdminNumber).getFirstName()));
+             assertTrue("test if the Admin surname is the same", ad.getSurname().equals(modelStore.adminStore.getUsers().get(AdminNumber).getSurname()));
+             assertTrue("test if the Admin address is the same", ad.getAddress().equals(modelStore.adminStore.getUsers().get(AdminNumber).getAddress()));
+             AdminNumber +=1;
+         }
+     }
+     
+     @Test 
+     public void TestPrescriptionStorageAfterFileRead(){
+         int PrescriptionNumber = 0;
+         for (Prescription pre: ReadFilestore.prescriptionStore.getPrescriptions()) {
+             assertTrue("test if the Prescription date is the same", pre.getDatePrescriped().equals(modelStore.prescriptionStore.getPrescriptions().get(PrescriptionNumber).getDatePrescriped()));
+             assertTrue("test if the Prescription doctor is the same", pre.getDoctor().equals(modelStore.prescriptionStore.getPrescriptions().get(PrescriptionNumber).getDoctor()));
+             assertTrue("test if the Prescription medicine is the same", pre.getMedicine().getName().equals(modelStore.prescriptionStore.getPrescriptions().get(PrescriptionNumber).getMedicine().getName()));
+             assertTrue("test if the Prescription notes is the same", pre.getNotes().equals(modelStore.prescriptionStore.getPrescriptions().get(PrescriptionNumber).getNotes()));
+             assertTrue("test if the Prescription patient is the same", pre.getPatient().equals(modelStore.prescriptionStore.getPrescriptions().get(PrescriptionNumber).getPatient()));
+             assertTrue("test if the Prescription id is the same", pre.getPrescriptionID()==(modelStore.prescriptionStore.getPrescriptions().get(PrescriptionNumber).getPrescriptionID()));
+             PrescriptionNumber +=1;
+         }
+     }
+     @Test 
+     public void TestMedicineStorageAfterFileRead(){
+         int MedicineNumber = 0;
+         for (Medicine med: ReadFilestore.medicineStore.getMedicine()) {
+             assertTrue("test if the Medicine dosage is the same", med.getDosage().equals(modelStore.medicineStore.getMedicine().get(MedicineNumber).getDosage()));
+             assertTrue("test if the Medicine name is the same", med.getName().equals(modelStore.medicineStore.getMedicine().get(MedicineNumber).getName()));
+             assertTrue("test if the Medicine quantity is the same", med.getQuantity() == (modelStore.medicineStore.getMedicine().get(MedicineNumber).getQuantity()));
+             MedicineNumber +=1;
+         }
      }
 }
