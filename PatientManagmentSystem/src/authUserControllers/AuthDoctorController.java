@@ -17,9 +17,23 @@ import userscontroller.DoctorUIController;
  * @author dhirst1
  */
 public class AuthDoctorController {
+
+    /**
+     *sets up the view 
+     */
     public AuthDoctorUI AuthDoctorView;
+
+    /**
+     * sets up the modelStore
+     */
     public Models modelStore;
     
+    /**
+     *Constructor for authDoctorController
+     * <p> sets up the modelStore and the view</p>
+     * <p> sets up the onclicks for the doctorView </p>
+     * @param modelStore
+     */
     public AuthDoctorController(Models modelStore) {
         this.modelStore = modelStore; 
         AuthDoctorView = new AuthDoctorUI();    

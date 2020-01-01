@@ -20,7 +20,10 @@ import modelStore.Models;
 public class WriteFile extends TemplateFileManagement{
     FileWriter file;
     
-
+    /**
+     *Closes the file to be written to
+     * <p> Closes the JSON file so it can be accessed again</p>
+     */
     @Override
     protected void closeFile() {
         try {
@@ -30,6 +33,10 @@ public class WriteFile extends TemplateFileManagement{
         }
     }
 
+    /**
+     *Opens the file
+     * <p> Opens the file data.json to be written to </p>
+     */
     @Override
     protected void openFile() {
         try {
@@ -39,6 +46,10 @@ public class WriteFile extends TemplateFileManagement{
         }
     }
 
+    /**
+     *Writes models to file
+     * <p> writes the models to the file using GSON </p>
+     */
     @Override
     protected void modifyFile() {
         try {

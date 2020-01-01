@@ -20,10 +20,29 @@ import userscontroller.PatientUIController;
  * @author dhirst1
  */
 public class AuthPatientController extends AuthHandler {
+
+    /**
+     *sets up the authpatientview 
+     */
     public AuthPatientUI AuthPatientView;
+
+    /**
+     * sets up the modelStore
+     */
     public Models modelStore;
+
+    /**
+     * sets up the writeFile object
+     */
     public WriteFile file = new WriteFile();
 
+    /**
+     *Constructor for the authPatientController
+     * <p> sets strategy for requesting an account </p>
+     * <p> sets up modelStore and the view </p>
+     * <p> sets up the onclicks </p>
+     * @param modelStore
+     */
     public AuthPatientController( Models modelStore) {
         RequestAccount acc = new RequestAccount();
         setStrategy(acc);

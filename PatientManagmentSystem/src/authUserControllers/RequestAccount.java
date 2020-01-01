@@ -14,6 +14,13 @@ import usermodels.User;
  */
 public class RequestAccount implements CreateAccountStrategy {
 
+    /**
+     *Creates a pending account for a patient
+     * <p> adds a patient user to the pending accounts store</p>
+     * @param models
+     * @param user
+     * @return the updated modelStore with new patient inside
+     */
     @Override
     public Models CreateAccount(Models models, User user) {
         models.pendingAccountsStore.addUser(user);

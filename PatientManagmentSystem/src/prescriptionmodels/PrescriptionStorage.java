@@ -15,26 +15,42 @@ import java.util.ArrayList;
 public class PrescriptionStorage implements Serializable{
     ArrayList<Prescription> prescriptions= new ArrayList<>();
 
+    /**
+     *
+     */
     public PrescriptionStorage() {
     }
 
-    
+    /**
+     *
+     * @param prescription
+     */
     public void addPrescription(Prescription prescription) {
         this.prescriptions.add(prescription);
     }
 
-    
+    /**
+     *
+     * @param prescription
+     */
     public void removePrescriptions(Prescription prescription) {
         prescriptions.remove(prescription);
     }
 
-
+    /**
+     *
+     * @param prescription
+     * @return
+     */
     public Prescription findPrescription(Prescription prescription) {
         int index = prescriptions.indexOf(prescription);
         return prescriptions.get(index);
     }
 
-
+    /**
+     *
+     * @return
+     */
     public ArrayList<Prescription> getPrescriptions() {
         return this.prescriptions;
     }

@@ -574,159 +574,324 @@ public class AdminUI extends javax.swing.JFrame {
         });
     }
     // for the adding and removing a user
+
+    /**
+     *Action listener for adding a user button
+     * @param listener
+     */
     public void btnAddUser(ActionListener listener){
         this.btnAdd.addActionListener(listener);
     }
+
+    /**
+     *Action listener for removing a user button
+     * @param listener
+     */
     public void btnRemoveUser(ActionListener listener){
         this.btnRemove.addActionListener(listener);
     }
+
+    /**
+     *ListSelectionListener 
+     * @param listener
+     */
     public void listDoctorClick(ListSelectionListener listener){
         this.listDoctors.addListSelectionListener(listener);
         
     }
+
+    /**
+     * listener to set up the on change list selection
+     * @param listener
+     */
     public void listSecretaryClick(ListSelectionListener listener){
         this.listSecretary.addListSelectionListener(listener);
         
     }
+
+    /**
+     *
+     */
     public void selectDoctorRad(){
         this.radDoctor.doClick();
     }
+
+    /**
+     *
+     */
     public void selectSecretaryRad(){
         this.radSecretary.doClick(); ;
     }
     
+    /**
+     *
+     */
     public void deselectDoctor(){
         listDoctors.clearSelection();
     }
+
+    /**
+     *
+     */
     public void deselectSecretary(){
         listSecretary.clearSelection();
     } 
+
+    /**
+     *
+     * @return
+     */
     public String getListDoctor() {
         return listDoctors.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listDoctors
+     */
     public void setListDoctors(String[] listDoctors) {
         this.listDoctors.setListData(listDoctors);
         this.listDoctorsRatings.setListData(listDoctors);
     }
 
-
-    
-
+    /**
+     *
+     * @return
+     */
     public String getListSecretary() {
         return listSecretary.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listSecretary
+     */
     public void setListSecretary(String[] listSecretary) {
         this.listSecretary.setListData(listSecretary);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAddress() {
         return txtAddress.getText();
     }
 
+    /**
+     *
+     * @param txtAddress
+     */
     public void setTxtAddress(String txtAddress) {
         this.txtAddress.setText(txtAddress);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAdminID() {
         return txtAdminID.getText();
     }
 
+    /**
+     *
+     * @param txtAdminID
+     */
     public void setTxtAdminID(String txtAdminID) {
         this.txtAdminID.setText(txtAdminID);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtFirstname() {
         return txtFirstname.getText();
     }
 
+    /**
+     *
+     * @param txtFirstname
+     */
     public void setTxtFirstname(String txtFirstname) {
         this.txtFirstname.setText(txtFirstname);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPassword() {
         return txtPassword.getText();
     }
 
+    /**
+     *
+     * @param txtPassword
+     */
     public void setTxtPassword(String txtPassword) {
         this.txtPassword.setText(txtPassword);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtSurname() {
         return txtSurname.getText();
     }
 
+    /**
+     *
+     * @param txtSurname
+     */
     public void setTxtSurname(String txtSurname) {
         this.txtSurname.setText(txtSurname);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtUsername() {
         return txtUsername.getText();
     }
 
+    /**
+     *
+     * @param txtUsername
+     */
     public void setTxtUsername(String txtUsername) {
         this.txtUsername.setText(txtUsername);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtUser() {
         return txtUser.getText();
     }
 
+    /**
+     *
+     * @param txtUser
+     */
     public void setTxtUser(String txtUser) {
         this.txtUser.setText(txtUser);
     }
     
     //for checking the ratings of a user
+
+    /**
+     *
+     * @return
+     */
     public String getListRatingDoctor() {
         return this.listDoctorsRatings.getSelectedValue();
     }
     
+    /**
+     *
+     * @param listener
+     */
     public void listDoctorRatingClick(ListSelectionListener listener){
         this.listDoctorsRatings.addListSelectionListener(listener);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtInfo() {
         return txtInfo.getText();
     }
 
+    /**
+     *
+     * @param txtInfo
+     */
     public void setTxtInfo(String txtInfo) {
         this.txtInfo.setText(txtInfo);
     }
+
+    /**
+     *
+     * @param txtInfo
+     */
     public void addTxtInfo(String txtInfo){
         this.txtInfo.append(txtInfo);
     }
+
+    /**
+     *
+     * @return
+     */
     public String getListFeedback() {
         return this.listDoctorFeedback.getSelectedValue();
     }
 
+    /**
+     *
+     * @param feedback
+     */
     public void setListFeedback(String[] feedback) {
         this.listDoctorFeedback.setListData(feedback);
         
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void listDoctorFeedbackClick(ListSelectionListener listener){
         this.listDoctorFeedback.addListSelectionListener(listener);
     }
 
+    /**
+     *
+     * @param listener
+     */
     public void btnSubmitFeedback(ActionListener listener){
         this.btnSumbitFeedback.addActionListener(listener);
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSlideRating() {
         return slideRating.getValue();
     }
 
+    /**
+     *
+     * @param slideRating
+     */
     public void setSlideRating(int slideRating) {
         this.slideRating.setValue(slideRating);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtFeedback() {
         return txtFeedback.getText();
     }
 
+    /**
+     *
+     * @param txtFeedback
+     */
     public void setTxtFeedback(String txtFeedback) {
         this.txtFeedback.setText(txtFeedback);
     }
+
+    /**
+     *
+     */
     public void clearAllforFeedback(){
         this.slideRating.setValue(3);
         this.listDoctorsRatings.clearSelection();

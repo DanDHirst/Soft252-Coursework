@@ -21,6 +21,11 @@ import modelStore.Models;
 public class ReadFile extends TemplateFileManagement{
     FileReader file;
     
+    /**
+     *Reads JSON data from a file
+     * <p> Reads file using GSON and writes it to a Models object
+     * </p>
+     */
     @Override
     protected void modifyFile() {
         Models store = null;
@@ -36,6 +41,11 @@ public class ReadFile extends TemplateFileManagement{
         }
     }
 
+    /**
+     *Closes the open file
+     * <p> Closes the open file so the contents save and can 
+     * be accessed again </p>
+     */
     @Override
     protected void closeFile() {
         try {
@@ -45,6 +55,10 @@ public class ReadFile extends TemplateFileManagement{
         }
     }
 
+    /**
+     * Opens the file to be read from
+     * <p> Opens the file Data.json to be read from </p>
+     */
     @Override
     protected void openFile() {
         try {

@@ -14,9 +14,30 @@ import java.util.ArrayList;
  * @author dhirst1
  */
 public interface IAppointmentManagement {
-   public void addAppointment(Appointment appointment);
-   public void removeAppointment(Appointment appointment);
-   public Appointment findAppointment(Appointment appointment);
-   public ArrayList<Appointment> getAppointments();
+
+    /**
+     * 
+     * @param appointment
+     */
+    public void addAppointment(Appointment appointment);
+
+    /**
+     *
+     * @param appointment
+     */
+    public void removeAppointment(Appointment appointment);
+
+    /**
+     *
+     * @param appointment
+     * @return
+     */
+    public Appointment findAppointment(Appointment appointment);
+
+    /**
+     *
+     * @return
+     */
+    public ArrayList<Appointment> getAppointments();
    
 }

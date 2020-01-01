@@ -365,140 +365,283 @@ public class PatientUI extends javax.swing.JFrame {
             }
         });
     }
+
+    /**
+     *
+     * @param userID
+     */
     public void setPatientID(String userID){
         this.txtPatientID.setText(userID);
     }
+
+    /**
+     *
+     * @return
+     */
     public String getPatientID(){
         return this.txtPatientID.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxAppointment() {
         return (String) this.boxAppointment.getSelectedItem();
     }
 
+    /**
+     *
+     * @param appointment
+     */
     public void setBoxAppointment(String appointment) {
         this.boxAppointment.addItem(appointment);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxHistory() {
         return (String) this.boxHistory.getSelectedItem();
     }
 
+    /**
+     *
+     * @param history
+     */
     public void setBoxHistory(String history) {
         this.boxHistory.addItem(history);
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String getBoxPrescription() {
         return (String) this.boxPrescription.getSelectedItem();
     }
 
+    /**
+     *
+     * @param prescription
+     */
     public void setBoxPrescription(String prescription) {
         this.boxPrescription.addItem(prescription);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void setBtnPatientTerminate(ActionListener listener){
         this.btnAccountTerminate.addActionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void setBtnPatientViewAppointment(ActionListener listener){
         this.btnAppointment.addActionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void setBtnPatientViewPrescription(ActionListener listener){
         this.btnPrescription.addActionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void setBtnPatientViewDoctor(ActionListener listener){
         this.btnDoctorView.addActionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void setBtnSaveFeedback(ActionListener listener){
         this.btnSubmitFeedback.addActionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void setBtnSubmitAppointment(ActionListener listener){
         this.btnSubmitDate.addActionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void setBtnPatientHistory(ActionListener listener){
         this.btnHistory.addActionListener(listener);
     }
     
-
+    /**
+     *
+     * @return
+     */
     public String getBoxDoctor() {
         return (String) boxDoctors.getSelectedItem();
     }
 
+    /**
+     *
+     * @param Doctors
+     */
     public void setBoxDoctors(String Doctors) {
         this.boxDoctors.addItem(Doctors);
     }
 
-    
+    /**
+     *
+     * @return
+     */
     public String getTxtInfo() {
         return txtInfo.getText();
     }
     
+    /**
+     *
+     * @param txtInfo
+     */
     public void addTxtInfo(String txtInfo){
         this.txtInfo.append(txtInfo);
     }
+
+    /**
+     *
+     * @param txtInfo
+     */
     public void setTxtInfo(String txtInfo) {
         this.txtInfo.setText(txtInfo);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxViewDoctors() {
         return (String) boxViewDoctors.getSelectedItem();
     }
 
+    /**
+     *
+     * @param boxViewDoctors
+     */
     public void setBoxViewDoctors(String boxViewDoctors) {
         this.boxViewDoctors.addItem(boxViewDoctors);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxRating() {
         return (String) boxRating.getSelectedItem();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtFeedback() {
         return txtFeedback.getText();
     }
 
+    /**
+     *
+     * @param txtFeedback
+     */
     public void setTxtFeedback(String txtFeedback) {
         this.txtFeedback.setText(txtFeedback);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtMinEnd() {
         return txtMinEnd.getText();
     }
 
+    /**
+     *
+     * @param txtEndDate
+     */
     public void setTxtMinEnd(String txtEndDate) {
         this.txtMinEnd.setText(txtEndDate);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtMinStart() {
         return txtMinStart.getText();
     }
 
+    /**
+     *
+     * @param txtStartDate
+     */
     public void setTxtMinStart(String txtStartDate) {
         this.txtMinStart.setText(txtStartDate);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxEndHour() {
         return (String) boxEndHour.getSelectedItem();
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String getBoxStartHour() {
         return (String) boxStartHour.getSelectedItem();
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateEnd() {
         return dateEnd.getDate();
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Date getDateStart() {
         return dateStart.getDate();
     }
 
-    
-    
+    /**
+     *
+     * @return
+     */
     public String getBoxDoctorAppointment() {
         return (String) this.boxDoctorsAppointment.getSelectedItem();
     }
 
+    /**
+     *
+     * @param Doctors
+     */
     public void setBoxDoctorsAppoitment(String Doctors) {
         this.boxDoctorsAppointment.addItem(Doctors);
     }

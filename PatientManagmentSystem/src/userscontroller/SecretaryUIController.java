@@ -26,10 +26,30 @@ import usermodels.User;
  * @author dhirst1
  */
 public class SecretaryUIController {
+
+    /**
+     *This is were the view is stored
+     */
     public SecretaryUI SecretaryView;
+
+    /**
+     * This is the models storage
+     */
     public Models modelStore;
+
+    /**
+     * Object to initalise the writefile object
+     */
     public WriteFile file = new WriteFile();
 
+    /**
+     *Constructor to set up the controller
+     * <p> initalises the Secretary view and modelStore</p>
+     * <p> sets up the users, apppointments and medStock on screen</p>
+     * <p> sets up the onClicks listeners </p>
+     * @param modelStore
+     * @param UserID
+     */
     public SecretaryUIController(Models modelStore, String UserID) {
         this.modelStore = modelStore;
         this.SecretaryView = new SecretaryUI();
@@ -43,6 +63,11 @@ public class SecretaryUIController {
         
         
     }
+
+    /**
+     *Save the model to file
+     * <p> calls the writeFile object to write the models to the file</p>
+     */
     public void saveData(){
         file.executeAction(modelStore);
     } 

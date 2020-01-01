@@ -25,10 +25,30 @@ import usermodels.User;
  * @author dhirst1
  */
 public class DoctorUIController {
+
+    /**
+     *Sets up the modelStore
+     */
     public Models modelStore;
+
+    /**
+     * this is were the view is stored
+     */
     public DoctorUI DoctorView;
+
+    /**
+     *The writeFile is Initialised here
+     */
     public WriteFile file = new WriteFile();
 
+    /**
+     * Constructor to set up the controller
+     * <p> sets up the view and modelStore </p>
+     * <p> sets up the onclicks listeners </p>
+     * <p> set up the appointment and patient data </p>
+     * @param modelStore
+     * @param UserID
+     */
     public DoctorUIController(Models modelStore, String UserID) {
         this.modelStore = modelStore;
         this.DoctorView = new DoctorUI();
@@ -38,6 +58,11 @@ public class DoctorUIController {
         setUpAppointment();
         setUpPatients();
     }
+
+    /**
+     *Save the model to file
+     * <p> calls the writeFile object to write the models to the file</p>
+     */
     public void saveData(){
         file.executeAction(modelStore);
     } 

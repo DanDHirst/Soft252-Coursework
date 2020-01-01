@@ -17,9 +17,23 @@ import userscontroller.SecretaryUIController;
  * @author dhirst1
  */
 public class AuthSecretaryController {
+
+    /**
+     * sets up the authsecretaryview
+     */
     public AuthSecretaryUI AuthSecretaryView;
+
+    /**
+     * sets up the modelStore
+     */
     public Models modelStore;
     
+    /**
+     *Constructor for the Auth secretary Controller
+     * <p> sets up the view and the modelStore </p>
+     * <p> sets up the onclick listener </p>
+     * @param modelStore
+     */
     public AuthSecretaryController(Models modelStore) {
          
         this.modelStore = modelStore;

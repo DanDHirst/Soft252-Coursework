@@ -1073,398 +1073,812 @@ public class SecretaryUI extends javax.swing.JFrame {
         });
     }
 
-    
+    /**
+     *
+     * @return
+     */
     public String getTxtSecretaryID() {
         return txtSecretaryID.getText();
     }
 
+    /**
+     *
+     * @param txtSecretaryID
+     */
     public void setTxtSecretaryID(String txtSecretaryID) {
         this.txtSecretaryID.setText(txtSecretaryID);
     }
     
     
     //Approve Patient
+
+    /**
+     *
+     * @param listener
+     */
     public void btnApprovePatient(ActionListener listener){
         this.btnApprovePatient.addActionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void listApprovePatientListener(ListSelectionListener listener){
         this.listApprovePatient.addListSelectionListener(listener);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getListApprovePatient() {
         return listApprovePatient.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listApprovePatient
+     */
     public void setListApprovePatient(String[] listApprovePatient) {
         this.listApprovePatient.setListData(listApprovePatient);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtApproveAddress() {
         return txtApproveAddress.getText();
     }
 
+    /**
+     *
+     * @param txtApproveAddress
+     */
     public void setTxtApproveAddress(String txtApproveAddress) {
         this.txtApproveAddress.setText(txtApproveAddress);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtApproveAge() {
         return txtApproveAge.getText();
     }
 
+    /**
+     *
+     * @param txtApproveAge
+     */
     public void setTxtApproveAge(String txtApproveAge) {
         this.txtApproveAge.setText(txtApproveAge);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtApproveFirstname() {
         return txtApproveFirstname.getText();
     }
 
+    /**
+     *
+     * @param txtApproveFirstname
+     */
     public void setTxtApproveFirstname(String txtApproveFirstname) {
         this.txtApproveFirstname.setText(txtApproveFirstname);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtApproveGender() {
         return txtApproveGender.getText();
     }
 
+    /**
+     *
+     * @param txtApproveGender
+     */
     public void setTxtApproveGender(String txtApproveGender) {
         this.txtApproveGender.setText(txtApproveGender);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtApprovePassword() {
         return txtApprovePassword.getText();
     }
 
+    /**
+     *
+     * @param txtApprovePassword
+     */
     public void setTxtApprovePassword(String txtApprovePassword) {
         this.txtApprovePassword.setText(txtApprovePassword);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtApproveSurname() {
         return txtApproveSurname.getText();
     }
 
+    /**
+     *
+     * @param txtApproveSurname
+     */
     public void setTxtApproveSurname(String txtApproveSurname) {
         this.txtApproveSurname.setText(txtApproveSurname);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtApproveUsername() {
         return txtApproveUsername.getText();
     }
 
+    /**
+     *
+     * @param txtApproveUsername
+     */
     public void setTxtApproveUsername(String txtApproveUsername) {
         this.txtApproveUsername.setText(txtApproveUsername);
     }
     
     //remove patient
+
+    /**
+     *
+     * @param listener
+     */
     public void btnRemovePatient(ActionListener listener){
         this.btnRemovePatient.addActionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void listPatientListener(ListSelectionListener listener){
         this.listPatients.addListSelectionListener(listener);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void listTermiatePatientListener(ListSelectionListener listener){
         this.listPatientTerminate.addListSelectionListener(listener);
     }
     
+    /**
+     *
+     * @return
+     */
     public String getListPatientTerminate() {
         return listPatientTerminate.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listPatientTerminate
+     */
     public void setListPatientTerminate(String[] listPatientTerminate) {
         this.listPatientTerminate.setListData(listPatientTerminate);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getListPatients() {
         return listPatients.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listPatients
+     */
     public void setListPatients(String[] listPatients) {
         this.listPatients.setListData(listPatients);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtRemoveUsername() {
         return txtRemoveUsername.getText();
     }
 
+    /**
+     *
+     * @param txtRemoveUsername
+     */
     public void setTxtRemoveUsername(String txtRemoveUsername) {
         this.txtRemoveUsername.setText(txtRemoveUsername);
     }
     
+    /**
+     *
+     */
     public void deselectPatientList(){
         this.listPatients.clearSelection();
     }
+
+    /**
+     *
+     */
     public void deselectPatientTerminateList(){
         this.listPatientTerminate.clearSelection();
     }
 
     // to add appointments
+
+    /**
+     *
+     * @param listener
+     */
     public void listPendingAppointmentsonClick(ListSelectionListener listener){
         this.listPendingAppointments.addListSelectionListener(listener);
     }
+
+    /**
+     *
+     * @return
+     */
     public String getListPendingAppointments() {
         return listPendingAppointments.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listPendingAppointments
+     */
     public void setListPendingAppointments(String[] listPendingAppointments) {
         this.listPendingAppointments.setListData(listPendingAppointments);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxDoctor() {
         return (String) boxDoctor.getSelectedItem();
     }
 
+    /**
+     *
+     * @param boxDoctor
+     */
     public void addBoxDoctor(String boxDoctor) {
         this.boxDoctor.addItem(boxDoctor);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxEndHour() {
         return (String) boxEndHour.getSelectedItem();
     }
 
+    /**
+     *
+     * @param boxEndHour
+     */
     public void setBoxEndHour(String boxEndHour) {
         this.boxEndHour.addItem(boxEndHour);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxStartHour() {
         return (String) boxStartHour.getSelectedItem();
     }
 
+    /**
+     *
+     * @param boxStartHour
+     */
     public void setBoxStartHour(String boxStartHour) {
         this.boxStartHour.addItem(boxStartHour);
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateStart() {
         return dateStart.getDate();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAppResponse() {
         return txtAppResponse.getText();
     }
 
+    /**
+     *
+     * @param txtAppResponse
+     */
     public void setTxtAppResponse(String txtAppResponse) {
         this.txtAppResponse.setText(txtAppResponse);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtMinEnd() {
         return txtMinEnd.getText();
     }
 
+    /**
+     *
+     * @param txtMinEnd
+     */
     public void setTxtMinEnd(String txtMinEnd) {
         this.txtMinEnd.setText(txtMinEnd);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtMinStart() {
         return txtMinStart.getText();
     }
 
+    /**
+     *
+     * @param txtMinStart
+     */
     public void setTxtMinStart(String txtMinStart) {
         this.txtMinStart.setText(txtMinStart);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPatientApp() {
         return txtPatientApp.getText();
     }
 
+    /**
+     *
+     * @param txtPatientApp
+     */
     public void setTxtPatientApp(String txtPatientApp) {
         this.txtPatientApp.setText(txtPatientApp);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtUserEnd() {
         return txtUserEnd.getText();
     }
 
+    /**
+     *
+     * @param txtUserEnd
+     */
     public void setTxtUserEnd(String txtUserEnd) {
         this.txtUserEnd.setText(txtUserEnd);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtUserStart() {
         return txtUserStart.getText();
     }
 
+    /**
+     *
+     * @param txtUserStart
+     */
     public void setTxtUserStart(String txtUserStart) {
         this.txtUserStart.setText(txtUserStart);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtRequestDoctor() {
         return txtRequestDoctor.getText();
     }
 
+    /**
+     *
+     * @param txtRequestDoctor
+     */
     public void setTxtRequestDoctor(String txtRequestDoctor) {
         this.txtRequestDoctor.setText(txtRequestDoctor);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void btnCreateAppointmentListener(ActionListener listener){
         this.btnCreateAppointment.addActionListener(listener);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAppointmentID() {
         return txtAppointmentID.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentID
+     */
     public void setTxtAppointmentID(String txtAppointmentID) {
         this.txtAppointmentID.setText(txtAppointmentID);
     }
+
+    /**
+     *
+     */
     public void deselectPendingAppointment(){
         this.listPendingAppointments.clearSelection();
     }
     
     //give medicine to patient
+
+    /**
+     *
+     * @param listener
+     */
     public void listMedicinePatientonClick(ListSelectionListener listener){
         this.listPatientMedicine.addListSelectionListener(listener);
     }
+
+    /**
+     *
+     * @return
+     */
     public String getListMedicinePatient() {
         return listPatientMedicine.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listMedicinePatient
+     */
     public void setListMedicinePatient(String[] listMedicinePatient) {
         this.listPatientMedicine.setListData(listMedicinePatient);
     }
     
+    /**
+     *
+     * @param listener
+     */
     public void listPrescriptionPatientonClick(ListSelectionListener listener){
         this.listPatientPrescription.addListSelectionListener(listener);
     }
+
+    /**
+     *
+     * @return
+     */
     public String getListPrescriptionPatient() {
         return listPatientPrescription.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listPrescriptionPatient
+     */
     public void setListPrescriptionPatient(String[] listPrescriptionPatient) {
         this.listPatientPrescription.setListData(listPrescriptionPatient);
     }
     
+    /**
+     *
+     * @param listener
+     */
     public void btnGiveMed(ActionListener listener){
         this.btnGiveMedicine.addActionListener(listener);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPreDate() {
         return txtPreDate.getText();
     }
 
+    /**
+     *
+     * @param txtPreDate
+     */
     public void setTxtPreDate(String txtPreDate) {
         this.txtPreDate.setText(txtPreDate);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPreDoctorID() {
         return txtPreDoctorID.getText();
     }
 
+    /**
+     *
+     * @param txtPreDoctorID
+     */
     public void setTxtPreDoctorID(String txtPreDoctorID) {
         this.txtPreDoctorID.setText(txtPreDoctorID);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPreMedDosage() {
         return txtPreMedDosage.getText();
     }
 
+    /**
+     *
+     * @param txtPreMedDosage
+     */
     public void setTxtPreMedDosage(String txtPreMedDosage) {
         this.txtPreMedDosage.setText(txtPreMedDosage);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPreMedName() {
         return txtPreMedName.getText();
     }
 
+    /**
+     *
+     * @param txtPreMedName
+     */
     public void setTxtPreMedName(String txtPreMedName) {
         this.txtPreMedName.setText(txtPreMedName);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPreMedQty() {
         return txtPreMedQty.getText();
     }
 
+    /**
+     *
+     * @param txtPreMedQty
+     */
     public void setTxtPreMedQty(String txtPreMedQty) {
         this.txtPreMedQty.setText(txtPreMedQty);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPreNotes() {
         return txtPreNotes.getText();
     }
 
+    /**
+     *
+     * @param txtPreNotes
+     */
     public void setTxtPreNotes(String txtPreNotes) {
         this.txtPreNotes.setText(txtPreNotes);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPrePatientID() {
         return txtPrePatientID.getText();
     }
 
+    /**
+     *
+     * @param txtPrePatientID
+     */
     public void setTxtPrePatientID(String txtPrePatientID) {
         this.txtPrePatientID.setText(txtPrePatientID);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPreResponse() {
         return txtPreResponse.getText();
     }
 
+    /**
+     *
+     * @param txtPreResponse
+     */
     public void setTxtPreResponse(String txtPreResponse) {
         this.txtPreResponse.setText(txtPreResponse);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPrescriptionID() {
         return txtPrescriptionID.getText();
     }
 
+    /**
+     *
+     * @param txtPrescriptionID
+     */
     public void setTxtPrescriptionID(String txtPrescriptionID) {
         this.txtPrescriptionID.setText(txtPrescriptionID);
     }
+
+    /**
+     *
+     */
     public void deselectPresscriptionID(){
         this.listPatientPrescription.clearSelection();
     }
+
+    /**
+     *
+     */
     public void deselectPrePatient(){
         this.listPatientMedicine.clearSelection();
     }
     
+    /**
+     *
+     * @param listener
+     */
     public void btnAddMedicine(ActionListener listener){
         this.btnAddMedicine.addActionListener(listener);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtOrderMed() {
         return txtOrderMed.getText();
     }
 
+    /**
+     *
+     * @param txtOrderMed
+     */
     public void setTxtOrderMed(String txtOrderMed) {
         this.txtOrderMed.setText(txtOrderMed);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtOrderMedQty() {
         return txtOrderMedQty.getText();
     }
 
+    /**
+     *
+     * @param txtOrderMedQty
+     */
     public void setTxtOrderMedQty(String txtOrderMedQty) {
         this.txtOrderMedQty.setText(txtOrderMedQty);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtOrderResponse() {
         return txtOrderResponse.getText();
     }
 
+    /**
+     *
+     * @param txtOrderResponse
+     */
     public void setTxtOrderResponse(String txtOrderResponse) {
         this.txtOrderResponse.setText(txtOrderResponse);
     }
     
+    /**
+     *
+     * @return
+     */
     public String getListMedicineStock() {
         return this.listMedicineStock.getSelectedValue();
     }
 
+    /**
+     *
+     * @param ListMedicineStock
+     */
     public void setListMedicineStock(String[] ListMedicineStock) {
         this.listMedicineStock.setListData(ListMedicineStock);
     }
     
+    /**
+     *
+     * @param listener
+     */
     public void ListMedicineStock(ListSelectionListener listener){
         this.listMedicineStock.addListSelectionListener(listener);
     }
+
+    /**
+     *
+     */
     public void deselectMedStock(){
         this.listMedicineStock.clearSelection();
     }
     
+    /**
+     *
+     * @param listener
+     */
     public void ListMedicineRequestedStock(ListSelectionListener listener){
         this.listMedicineRequestedStock.addListSelectionListener(listener);
     }
+
+    /**
+     *
+     * @param ListMedicineStock
+     */
     public void setListMedicineRequestedStock(String[] ListMedicineStock) {
         this.listMedicineRequestedStock.setListData(ListMedicineStock);
     }
+
+    /**
+     *
+     * @return
+     */
     public String getListMedicineRequestedStock() {
         return this.listMedicineRequestedStock.getSelectedValue();
     }
     
+    /**
+     *
+     */
     public void deselectMedRequestedStock(){
         this.listMedicineRequestedStock.clearSelection();
     }

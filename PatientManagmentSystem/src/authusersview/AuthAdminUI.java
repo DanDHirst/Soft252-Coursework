@@ -316,7 +316,12 @@ public class AuthAdminUI extends javax.swing.JFrame {
             }
         });
     }
-     public void setBtnAdminLoginListner(ActionListener listener){
+
+    /**
+     *
+     * @param listener
+     */
+    public void setBtnAdminLoginListner(ActionListener listener){
         btnGo.addActionListener(listener);
     }
      public void setBtnAdminCreateAccountListener(ActionListener listener){

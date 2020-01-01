@@ -12,8 +12,29 @@ import java.util.ArrayList;
  * @author dan
  */
 public interface IUserManagement {
+
+    /**
+     * adds user abstract implementation
+     * @param user
+     */
     public void addUser(User user);
+
+    /**
+     * remove user abstract implementation
+     * @param user
+     */
     public void removeUser(User user);
+
+    /**
+     * finds user abstract implementation
+     * @param user
+     * @return a user object
+     */
     public User findUser(User user);
+
+    /**
+     * gets the users
+     * @return a array list of users
+     */
     public ArrayList<User> getUsers();
 }

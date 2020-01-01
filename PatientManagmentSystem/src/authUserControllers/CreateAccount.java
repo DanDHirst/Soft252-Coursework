@@ -14,6 +14,13 @@ import usermodels.User;
  */
 public class CreateAccount implements CreateAccountStrategy {
 
+    /**
+     * strategy to create an account
+     * <p> adds a user to adminstore </p>
+     * @param models
+     * @param user
+     * @return the updated models with the new admin 
+     */
     @Override
     public Models CreateAccount(Models models, User user) {
         models.adminStore.addUser(user);

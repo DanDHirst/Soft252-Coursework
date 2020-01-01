@@ -19,10 +19,29 @@ import userscontroller.AdminUIController;
  * @author dhirst1
  */
 public class AuthAdminController extends AuthHandler {
+
+    /**
+     *sets up the view 
+     */
     public AuthAdminUI AuthAdminView;
+
+    /**
+     * sets up the modelStore
+     */
     public Models modelStore;
+
+    /**
+     * initialises the writeFile object
+     */
     public WriteFile file = new WriteFile();
     
+    /**
+     *Constructor for AuthAdminController
+     * <p> sets up the strategy to create an account </p>
+     * <p> sets up modelStore and the AuthAdminView</p>
+     * <p> sets up the onclicks listeners </p>
+     * @param modelStore
+     */
     public AuthAdminController(Models modelStore) {
         CreateAccount acc = new CreateAccount();
         setStrategy(acc);

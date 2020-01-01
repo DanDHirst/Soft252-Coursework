@@ -729,269 +729,548 @@ public class DoctorUI extends javax.swing.JFrame {
         });
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtDoctorID() {
         return txtDoctorID.getText();
     }
 
+    /**
+     *
+     * @param txtDoctorID
+     */
     public void setTxtDoctorID(String txtDoctorID) {
         this.txtDoctorID.setText(txtDoctorID);
     }
     
 
     //view appointments
+
+    /**
+     *
+     * @return
+     */
     public String getListAppointments() {
         return listAppointments.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listAppointments
+     */
     public void setListAppointments(String[] listAppointments) {
         this.listAppointments.setListData(listAppointments);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void listAppointmentsOnChange(ListSelectionListener listener){
         this.listAppointments.addListSelectionListener(listener);
     }
     
     // set up appointment data
+
+    /**
+     *
+     * @param listener
+     */
     public void btnCompleteAppointment(ActionListener listener){
         this.btnAppointmentSave.addActionListener(listener);
     }
     
+    /**
+     *
+     * @return
+     */
     public String getTxtAppointmentDate() {
         return txtAppointmentDate.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentDate
+     */
     public void setTxtAppointmentDate(String txtAppointmentDate) {
         this.txtAppointmentDate.setText(txtAppointmentDate);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAppointmentID() {
         return txtAppointmentID.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentID
+     */
     public void setTxtAppointmentID(String txtAppointmentID) {
         this.txtAppointmentID.setText(txtAppointmentID);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAppointmentNotes() {
         return txtAppointmentNotes.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentNotes
+     */
     public void setTxtAppointmentNotes(String txtAppointmentNotes) {
         this.txtAppointmentNotes.setText(txtAppointmentNotes);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAppointmentPatient() {
         return txtAppointmentPatient.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentPatient
+     */
     public void setTxtAppointmentPatient(String txtAppointmentPatient) {
         this.txtAppointmentPatient.setText(txtAppointmentPatient);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAppointmentReason() {
         return txtAppointmentReason.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentReason
+     */
     public void setTxtAppointmentReason(String txtAppointmentReason) {
         this.txtAppointmentReason.setText(txtAppointmentReason);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtAppointmentTime() {
         return txtAppointmentTime.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentTime
+     */
     public void setTxtAppointmentTime(String txtAppointmentTime) {
         this.txtAppointmentTime.setText(txtAppointmentTime);
     }
+
+    /**
+     *
+     */
     public void deselectAppointment(){
         this.listAppointments.clearSelection();
     }
     
     //patient history
+
+    /**
+     *
+     * @return
+     */
     public String getListHistoryAppointments() {
         return this.listAppointmentHistory.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listAppointments
+     */
     public void setListHistoryAppointments(String[] listAppointments) {
         this.listAppointmentHistory.setListData(listAppointments);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void listHistoryAppointmentsOnChange(ListSelectionListener listener){
         this.listAppointmentHistory.addListSelectionListener(listener);
     }
     
+    /**
+     *
+     * @return
+     */
     public String getListHistoryPatient() {
         return this.listPaitentHistory.getSelectedValue();
     }
 
+    /**
+     *
+     * @param listAppointments
+     */
     public void setListHistoryPatient(String[] listAppointments) {
         this.listPaitentHistory.setListData(listAppointments);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void listHistoryPatientOnChange(ListSelectionListener listener){
         this.listPaitentHistory.addListSelectionListener(listener);
     }
     
+    /**
+     *
+     * @param txtAppointmentDate
+     */
     public void setHistoryTxtAppointmentDate(String txtAppointmentDate) {
         this.txtHistoryAppointmentDate.setText(txtAppointmentDate);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHistoryTxtAppointmentID() {
         return txtHistoryAppointmentID.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentID
+     */
     public void setHistoryTxtAppointmentID(String txtAppointmentID) {
         this.txtHistoryAppointmentID.setText(txtAppointmentID);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHistoryTxtAppointmentNotes() {
         return txtHistoryAppointmentNotes.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentNotes
+     */
     public void setTxtHistoryAppointmentNotes(String txtAppointmentNotes) {
         this.txtHistoryAppointmentNotes.setText(txtAppointmentNotes);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtHistoryAppointmentPatient() {
         return txtHistoryAppointmentPatient.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentPatient
+     */
     public void setTxtHistoryAppointmentPatient(String txtAppointmentPatient) {
         this.txtHistoryAppointmentPatient.setText(txtAppointmentPatient);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtHistoryAppointmentReason() {
         return txtHistoryAppointmentReason.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentReason
+     */
     public void setTxtHistoryAppointmentReason(String txtAppointmentReason) {
         this.txtHistoryAppointmentReason.setText(txtAppointmentReason);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtHistoryAppointmentTime() {
         return txtHistoryAppointmentTime.getText();
     }
 
+    /**
+     *
+     * @param txtAppointmentTime
+     */
     public void setTxtHistoryAppointmentTime(String txtAppointmentTime) {
         this.txtHistoryAppointmentTime.setText(txtAppointmentTime);
     }
     //Prescribe medicines
     
+    /**
+     *
+     * @param listAppointments
+     */
     public void setListPatientPrescribe(String[] listAppointments) {
         this.listPaitentPrescribe.setListData(listAppointments);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void listPatientPrescribeOnChange(ListSelectionListener listener){
         this.listPaitentPrescribe.addListSelectionListener(listener);
     }
     
+    /**
+     *
+     * @return
+     */
     public String getListPatientPrescribe() {
         return this.listPaitentPrescribe.getSelectedValue();
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void btnPrescribeMedicine(ActionListener listener){
         this.btnPrescribe.addActionListener(listener);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPrescribeMedDose() {
         return txtPrescribeMedDose.getText();
     }
 
+    /**
+     *
+     * @param txtPrescribeMedDose
+     */
     public void setTxtPrescribeMedDose(String txtPrescribeMedDose) {
         this.txtPrescribeMedDose.setText(txtPrescribeMedDose);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPrescribeMedName() {
         return txtPrescribeMedName.getText();
     }
 
+    /**
+     *
+     * @param txtPrescribeMedName
+     */
     public void setTxtPrescribeMedName(String txtPrescribeMedName) {
         this.txtPrescribeMedName.setText(txtPrescribeMedName);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPrescribeMedQty() {
         return txtPrescribeMedQty.getText();
     }
 
+    /**
+     *
+     * @param txtPrescribeMedQty
+     */
     public void setTxtPrescribeMedQty(String txtPrescribeMedQty) {
         this.txtPrescribeMedQty.setText(txtPrescribeMedQty);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPrescribeNotes() {
         return txtPrescribeNotes.getText();
     }
 
+    /**
+     *
+     * @param txtPrescribeNotes
+     */
     public void setTxtPrescribeNotes(String txtPrescribeNotes) {
         this.txtPrescribeNotes.setText(txtPrescribeNotes);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtPrescribePatient() {
         return txtPrescribePatient.getText();
     }
 
+    /**
+     *
+     * @param txtPrescribePatient
+     */
     public void setTxtPrescribePatient(String txtPrescribePatient) {
         this.txtPrescribePatient.setText(txtPrescribePatient);
     }
     
     //request medicine
+
+    /**
+     *
+     * @param listener
+     */
     public void btnRequestAppointment(ActionListener listener){
         this.btnMedRequest.addActionListener(listener);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtRequestMedName() {
         return txtRequestMedName.getText();
     }
 
+    /**
+     *
+     * @param txtRequestMedName
+     */
     public void setTxtRequestMedName(String txtRequestMedName) {
         this.txtRequestMedName.setText(txtRequestMedName);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtRequestMedQty() {
         return txtRequestMedQty.getText();
     }
 
+    /**
+     *
+     * @param txtRequestMedQty
+     */
     public void setTxtRequestMedQty(String txtRequestMedQty) {
         this.txtRequestMedQty.setText(txtRequestMedQty);
     }
+
+    /**
+     *
+     * @param listener
+     */
     public void btnRequestMedicine(ActionListener listener){
         this.btnMedRequest.addActionListener(listener);
     }
     // book future appointment
+
+    /**
+     *
+     * @param listener
+     */
      public void btnSubmitAppointment(ActionListener listener){
         this.btnSubmitDate.addActionListener(listener);
     }
+
+    /**
+     *
+     * @return
+     */
     public String getBoxPatient() {
         return (String) boxPatientAppointment.getSelectedItem();
     }
 
+    /**
+     *
+     * @param Doctors
+     */
     public void setBoxPatient(String Doctors) {
         this.boxPatientAppointment.addItem(Doctors);
     }
-     public String getTxtMinEnd() {
+
+    /**
+     *
+     * @return
+     */
+    public String getTxtMinEnd() {
         return txtMinEnd.getText();
     }
 
+    /**
+     *
+     * @param txtEndDate
+     */
     public void setTxtMinEnd(String txtEndDate) {
         this.txtMinEnd.setText(txtEndDate);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTxtMinStart() {
         return txtMinStart.getText();
     }
 
+    /**
+     *
+     * @param txtStartDate
+     */
     public void setTxtMinStart(String txtStartDate) {
         this.txtMinStart.setText(txtStartDate);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBoxEndHour() {
         return (String) boxEndHour.getSelectedItem();
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String getBoxStartHour() {
         return (String) boxStartHour.getSelectedItem();
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getDateEnd() {
         return dateEnd.getDate();
     }
 
-
+    /**
+     *
+     * @return
+     */
     public Date getDateStart() {
         return dateStart.getDate();
     }

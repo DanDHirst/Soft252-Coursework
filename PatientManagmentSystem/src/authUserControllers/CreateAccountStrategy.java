@@ -13,6 +13,13 @@ import usermodels.User;
  * @author dhirst1
  */
 public interface CreateAccountStrategy {
+
+    /**
+     * The create account strategy
+     * @param models
+     * @param user
+     * @return the updated models
+     */
     public Models CreateAccount(Models models,User user);
     
 }

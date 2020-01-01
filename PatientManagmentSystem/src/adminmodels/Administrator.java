@@ -14,9 +14,20 @@ import usermodels.User;
  */
 public class Administrator extends User {
 
+    /**
+     * default constructor so can save read from the json file
+     */
     public Administrator(){
     }
     
+    /**
+     * Constructor that call the super call user to create and admin
+     * @param username
+     * @param password
+     * @param firstName
+     * @param surname
+     * @param address
+     */
     public Administrator(String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
     }

@@ -12,11 +12,29 @@ import java.util.ArrayList;
  * @author dan
  */
 public interface IMedicineStorage {
+
+    /**
+     *abstract add medicine
+     * @param medicine
+     */
     public void addMedicine(Medicine medicine);
 
+    /**
+     * abstract remove medicine
+     * @param medicine
+     */
     public void removeMedicine(Medicine medicine);
 
+    /**
+     *abstract find medicine
+     * @param medicine
+     * @return a medicine object
+     */
     public Medicine findMedicine(Medicine medicine);
 
+    /**
+     *abstract get all medicines
+     * @return array list of medicine objects
+     */
     public ArrayList<Medicine> getMedicine();
 }

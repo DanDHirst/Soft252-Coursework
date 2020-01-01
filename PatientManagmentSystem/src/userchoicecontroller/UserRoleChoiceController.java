@@ -19,9 +19,24 @@ import userchoiceview.UserRoleChoice;
  * @author dhirst1
  */
 public class UserRoleChoiceController {
+
+    /**
+     *This is were the userchoice view is stored
+     */
     public UserRoleChoice theView;
     //User models
+
+    /**
+     * The models are stored here
+     */
     public Models modelStore;
+
+    /**
+     *constructor for the controller
+     * <p> sets up view and modelStore</p>
+     * <p> sets up onclick listeners </p>
+     * @param modelStore
+     */
     public UserRoleChoiceController(Models modelStore) {
         
         this.modelStore = modelStore;

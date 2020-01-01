@@ -23,10 +23,29 @@ import usermodels.User;
  */
 public class AdminUIController {
 
+    /**
+     * The view stored in the admin view
+     */
     public AdminUI AdminView;
+
+    /**
+     * Models stored in this class 
+     */
     public Models modelStore;
+
+    /**
+     * Initialise the writeFile class
+     */
     public WriteFile file = new WriteFile();
 
+    /**
+     *The constructor to set up the controller
+     * <p> The constructor sets up the view</p>
+     * <p> The constructor sets up the data on screen 
+     *  such as the on clicks and user lists </p>
+     * @param modelStore
+     * @param UserID
+     */
     public AdminUIController(Models modelStore, String UserID) {
         this.modelStore = modelStore;
         AdminView = new AdminUI();
@@ -66,6 +85,11 @@ public class AdminUIController {
         }
         AdminView.setListSecretary(secretaries);
     }
+
+    /**
+     * Method that calls the writeFile object
+     * <p> This calls the method to write the models to the json file </p>
+     */
     public void saveData(){
         file.executeAction(modelStore);
     } 
