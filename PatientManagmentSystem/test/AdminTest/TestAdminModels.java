@@ -3,23 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package AdminTest;
 
+import adminmodels.Administrator;
+import adminmodels.AdministratorStorage;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import patientmodels.Patient;
-import patientmodels.PatientStorage;
 
 /**
  *
  * @author dan
  */
-public class PatientTest {
+public class TestAdminModels {
     
-    public PatientTest() {
+    public TestAdminModels() {
     }
     
     @BeforeClass
@@ -44,10 +45,8 @@ public class PatientTest {
     // @Test
     // public void hello() {}
     @Test
-    public void TestPatientAttributes(){
-        Patient person = new Patient(20,"male","person123", "password", "firstname", "surname","25 a place");
-        assertEquals("testing age method", 20, person.getAge());
-        assertEquals("testing gender method", "male", person.getSex());
+    public void TestAdminAttributes(){
+        Administrator person = new Administrator("person123", "password", "firstname", "surname","25 a place");
         assertEquals("testing username method", "person123", person.getUsername());
         assertEquals("testing password method","password",person.getPassword());
         assertEquals("testing firstname method","firstname",person.getFirstName());
@@ -55,11 +54,20 @@ public class PatientTest {
         assertEquals("testing address method","25 a place",person.getAddress());
     }
     @Test
-    public void TestPatientStorage(){
-        Patient person = new Patient(20,"male","person123", "password", "firstname", "surname","25 a place");
-        PatientStorage patientStore = new PatientStorage();
-        patientStore.addUser(person);
-        person = (Patient) patientStore.findUser(person);
-        assertEquals("testing if can cast and get back the sex","male",person.getSex());
+    public void TestAdminStorage(){
+        //testing adding a person
+        Administrator person = new Administrator("person123", "password", "firstname", "surname","25 a place");
+        AdministratorStorage adminStore = new AdministratorStorage();
+        adminStore.addUser(person);
+        assertEquals("Test if admin in storage", "person123", adminStore.getUsers().get(0).getUsername());
+        //test editing a user
+        adminStore.getUsers().get(0).setUsername("james");
+        assertEquals("Test if editing a admin in storage works", "james", adminStore.getUsers().get(0).getUsername());
+        //testing removing a user
+        adminStore.removeUser(person);
+        assertEquals("Test if remove function works", 0 , adminStore.getUsers().size());
+        
+        
     }
+    
 }
