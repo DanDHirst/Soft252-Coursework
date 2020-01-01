@@ -16,6 +16,10 @@ import usermodels.IUserManagement;
  */
 public class PendingTerminatePatientAccounts implements IUserManagement , Serializable{
     ArrayList<Patient> patients= new ArrayList<>();
+
+    /**
+     * Constructor for the pending accounts to be terminated
+     */
     public PendingTerminatePatientAccounts() {
     }
 

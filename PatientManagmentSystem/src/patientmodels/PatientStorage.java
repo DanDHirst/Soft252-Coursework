@@ -16,6 +16,10 @@ import usermodels.IUserManagement;
  */
 public class PatientStorage implements IUserManagement , Serializable{
     ArrayList<Patient> patients= new ArrayList<>();
+
+    /**
+     * Constructor to initialise the patient Storage
+     */
     public PatientStorage() {
     }
 

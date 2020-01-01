@@ -15,26 +15,45 @@ import java.util.ArrayList;
 public class DoctorPendingFeedbackStorage implements IDoctorFeedbackStorage , Serializable{
     private ArrayList<DoctorFeedback> doctorsFeedback = new ArrayList<>();
 
+    /**
+     *Constructor to initialise the storage
+     */
     public DoctorPendingFeedbackStorage() {
     }
     
+    /**
+     * adds the doctor feedback by passing in a DoctorFeedback object
+     * @param doctorFeedback
+     */
     @Override
     public void addDoctorFeedback(DoctorFeedback doctorFeedback) {
         this.doctorsFeedback.add(doctorFeedback);
     }
 
-    
+    /**
+     * removes the doctor feedback by passing in a DoctorFeedback object
+     * @param doctorFeedback
+     */
     @Override
     public void removeDoctorFeedback(DoctorFeedback doctorFeedback) {
         doctorsFeedback.remove(doctorFeedback);
     }
 
-
+    /**
+     * finds the doctor feedback by passing in a DoctorFeedback object
+     * @param doctorFeedback
+     * @return the index of the doctorFeedback
+     */
     @Override
     public DoctorFeedback findDoctorFeedback(DoctorFeedback doctorFeedback) {
         int index = doctorsFeedback.indexOf(doctorFeedback);
         return doctorsFeedback.get(index);
     }
+
+    /**
+     * gets all of the feedback
+     * @return array list of DoctorFeedback objects
+     */
     @Override
     public ArrayList<DoctorFeedback> getDoctorsFeedback() {
         return doctorsFeedback;

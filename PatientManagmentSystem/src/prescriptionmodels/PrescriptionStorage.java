@@ -16,13 +16,13 @@ public class PrescriptionStorage implements Serializable{
     ArrayList<Prescription> prescriptions= new ArrayList<>();
 
     /**
-     *
+     *Constructor for the prescription storage
      */
     public PrescriptionStorage() {
     }
 
     /**
-     *
+     *adds prescription by passing in a prescription object
      * @param prescription
      */
     public void addPrescription(Prescription prescription) {
@@ -30,7 +30,7 @@ public class PrescriptionStorage implements Serializable{
     }
 
     /**
-     *
+     * removes prescription by passing in a prescription object
      * @param prescription
      */
     public void removePrescriptions(Prescription prescription) {
@@ -38,9 +38,9 @@ public class PrescriptionStorage implements Serializable{
     }
 
     /**
-     *
+     *find prescription by passing in a prescription object
      * @param prescription
-     * @return
+     * @return index of the prescription integer
      */
     public Prescription findPrescription(Prescription prescription) {
         int index = prescriptions.indexOf(prescription);
@@ -48,8 +48,8 @@ public class PrescriptionStorage implements Serializable{
     }
 
     /**
-     *
-     * @return
+     *gets all the prescriptions
+     * @return array list of the prescription objects 
      */
     public ArrayList<Prescription> getPrescriptions() {
         return this.prescriptions;

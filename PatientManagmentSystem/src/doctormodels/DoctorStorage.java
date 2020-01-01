@@ -17,6 +17,9 @@ import usermodels.IUserManagement;
 public class DoctorStorage implements IUserManagement , Serializable{
     ArrayList<User> doctors = new ArrayList<>();
 
+    /**
+     * Constructor to set up doctorStorage
+     */
     public DoctorStorage() {
     }
 

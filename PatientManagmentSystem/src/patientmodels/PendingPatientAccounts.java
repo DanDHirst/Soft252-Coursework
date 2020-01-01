@@ -16,6 +16,10 @@ import usermodels.IUserManagement;
  */
 public class PendingPatientAccounts implements IUserManagement , Serializable{
     ArrayList<Patient> patients= new ArrayList<>();
+
+    /**
+     * Constructor to initialise the pending patient accounts
+     */
     public PendingPatientAccounts() {
     }
 

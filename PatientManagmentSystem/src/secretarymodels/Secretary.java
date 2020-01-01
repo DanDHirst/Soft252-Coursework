@@ -14,10 +14,21 @@ import usermodels.User;
  */
 public class Secretary extends User implements Serializable{
 
+    /**
+     * constructor to set up secretary so can read form the json file
+     */
     public Secretary(){
         
     }
 
+    /**
+     * constructor that calls the super user constructor
+     * @param username
+     * @param password
+     * @param firstName
+     * @param surname
+     * @param address
+     */
     public Secretary(String username, String password, String firstName, String surname, String address) {
         super(username, password, firstName, surname, address);
     }

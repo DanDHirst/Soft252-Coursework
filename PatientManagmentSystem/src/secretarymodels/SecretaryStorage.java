@@ -17,6 +17,9 @@ import usermodels.IUserManagement;
 public class SecretaryStorage implements IUserManagement , Serializable{
     ArrayList<User> secretaries = new ArrayList<>();
 
+    /**
+     * constructor to set up secretary storage
+     */
     public SecretaryStorage() {
     }
 

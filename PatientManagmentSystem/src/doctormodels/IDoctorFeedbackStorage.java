@@ -14,9 +14,29 @@ import java.util.ArrayList;
  */
 public interface IDoctorFeedbackStorage {
 
+    /**
+     * adds doctor feedback by passing in a doctor feedback object
+     * @param doctorFeedback
+     */
     public void addDoctorFeedback(DoctorFeedback doctorFeedback);
+
+    /**
+     *removes doctor feedback by passing in a doctor feedback object
+     * @param doctorFeedback
+     */
     public void removeDoctorFeedback(DoctorFeedback doctorFeedback);
-    public DoctorFeedback findDoctorFeedback(DoctorFeedback doctorFeedback) ;
-    public ArrayList<DoctorFeedback> getDoctorsFeedback() ;
+
+    /**
+     * finds doctor feedback by passing in a doctor feedback object
+     * @param doctorFeedback
+     * @return the index of the doctorFeedback
+     */
+    public DoctorFeedback findDoctorFeedback(DoctorFeedback doctorFeedback);
+
+    /**
+     * gets doctor feedback
+     * @return the array list of doctors feedback
+     */
+    public ArrayList<DoctorFeedback> getDoctorsFeedback();
     
 }

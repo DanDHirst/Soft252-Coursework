@@ -16,13 +16,13 @@ public class RequestMedicineStore implements IMedicineStorage , Serializable {
     ArrayList<Medicine> medicines = new ArrayList<>();
 
     /**
-     *
+     * constructor for the request a medicine storage
      */
     public RequestMedicineStore() {
     }
 
     /**
-     *
+     *adds a medicine by passing in a medicine object
      * @param medicine
      */
     @Override
@@ -31,7 +31,7 @@ public class RequestMedicineStore implements IMedicineStorage , Serializable {
     }
 
     /**
-     *
+     *removes a medicine by passing in a medicine object
      * @param medicine
      */
     @Override
@@ -40,9 +40,9 @@ public class RequestMedicineStore implements IMedicineStorage , Serializable {
     }
 
     /**
-     *
+     *finds a medicine by passing in a medicine object
      * @param medicine
-     * @return
+     * @return the index of the medicine as a integer
      */
     @Override
     public Medicine findMedicine(Medicine medicine) {
@@ -51,8 +51,8 @@ public class RequestMedicineStore implements IMedicineStorage , Serializable {
     }
 
     /**
-     *
-     * @return
+     * gets all the medicines
+     * @return array list of medicine objects
      */
     @Override
     public ArrayList<Medicine> getMedicine() {
