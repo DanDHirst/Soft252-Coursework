@@ -190,9 +190,10 @@ public class TestWritingAndReading {
              assertTrue("test if the patient firstname is the same", pat.getFirstName().equals(modelStore.patientStore.getUsers().get(patientNumber).getFirstName()));
              assertTrue("test if the patient surname is the same", pat.getSurname().equals(modelStore.patientStore.getUsers().get(patientNumber).getSurname()));
              assertTrue("test if the patient address is the same", pat.getAddress().equals(modelStore.patientStore.getUsers().get(patientNumber).getAddress()));
-             
-             
-             
+             Patient tempPat = (Patient) modelStore.patientStore.getUsers().get(patientNumber);
+             Patient tempPatFromFile = (Patient) pat;
+             assertTrue("test if the patient gender is the same", tempPat.getSex().equals(tempPatFromFile.getSex()));
+             assertTrue("test if the patient age is the same", tempPat.getAge() == (tempPatFromFile.getAge()));
              patientNumber +=1;
          }
          
