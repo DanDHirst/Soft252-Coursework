@@ -298,7 +298,7 @@ public class DoctorUIController {
         }
         public String checkDateMonth(Date aDate){ // prevents from crashing if month is less than 10
             if (aDate.getMonth() < 10) {
-                String newDate = "0" + Integer.toString(aDate.getMonth());
+                String newDate = "0" + Integer.toString(aDate.getMonth()+1);
                 
                 return newDate;
             }
