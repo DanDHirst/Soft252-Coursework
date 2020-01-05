@@ -217,6 +217,7 @@ public class PatientUIController {
             DoctorFeedback drFeedback = new DoctorFeedback(doctor,rating,feedback,ratingID);
             modelStore.doctorPendingFeedbackStore.addDoctorFeedback(drFeedback);
             PatientView.setTxtFeedback("");
+            PatientView.setTxtAppResponse("Feedback submitted");
             saveData();
 //            System.out.println(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(0).getFeedbackNotes());
         }
@@ -248,6 +249,7 @@ public class PatientUIController {
             int getAppointmentID = modelStore.appointmentStore.getAppointments().get(SizeOfAppoitments).getAppointmentID() +1;
             Appointment ap = new Appointment(getAppointmentID,datetimeStart, dateTimeEnd, doctor, patientID);
             modelStore.pendingAppointmentsStore.addAppointment(ap);
+            PatientView.setTxtAppResponse("Appointment requested");
             saveData();
             
         }

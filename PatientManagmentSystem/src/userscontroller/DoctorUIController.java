@@ -250,6 +250,7 @@ public class DoctorUIController {
             Medicine med = new Medicine(medName, medQty);
             modelStore.requestMedicineStore.addMedicine(med);
             clearRequestMedicine();
+            DoctorView.setTxtMedResponse("Medicine requested");
             saveData();
         }
         
@@ -282,6 +283,7 @@ public class DoctorUIController {
             int getAppointmentID = modelStore.appointmentStore.getAppointments().get(SizeOfAppoitments).getAppointmentID() +1;
             Appointment ap = new Appointment(getAppointmentID,datetimeStart, dateTimeEnd, doctor, patientID);
             modelStore.pendingAppointmentsStore.addAppointment(ap);
+            DoctorView.setTxtAppResponse("Appointment Requested");
             saveData();
             
         }
