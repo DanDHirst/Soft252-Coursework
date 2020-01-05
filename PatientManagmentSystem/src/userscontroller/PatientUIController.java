@@ -217,7 +217,7 @@ public class PatientUIController {
             DoctorFeedback drFeedback = new DoctorFeedback(doctor,rating,feedback,ratingID);
             modelStore.doctorPendingFeedbackStore.addDoctorFeedback(drFeedback);
             PatientView.setTxtFeedback("");
-            PatientView.setTxtAppResponse("Feedback submitted");
+            PatientView.setTxtFeedbackResponse("Feedback submitted");
             saveData();
 //            System.out.println(modelStore.doctorPendingFeedbackStore.getDoctorsFeedback().get(0).getFeedbackNotes());
         }
